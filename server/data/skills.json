@@ -1,0 +1,10 @@
+{
+  "nodes": [
+    { "id": "react", "label": "React", "type": "skill" },
+    { "id": "typescript", "label": "TypeScript", "type": "skill" },
+    { "id": "express", "label": "Express", "type": "skill" }
+  ],
+  "edges": [
+    { "from": "react", "to": "typescript" }
+  ]
+}

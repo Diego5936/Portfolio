@@ -1,0 +1,18 @@
+[
+  {
+    "id": "portfolio",
+    "title": "Portfolio",
+    "subtitle": "Full-stack Vite + Express",
+    "tags": ["React", "TypeScript", "Express"],
+    "links": {
+      "github": "https://github.com/Diego5936/Portfolio",
+      "live": null
+    },
+    "highlights": [
+      "Client/server dev workflow with proxy",
+      "Typed API contracts",
+      "Resume download endpoint"
+    ],
+    "skills": ["react", "typescript", "express"]
+  }
+]
