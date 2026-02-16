@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/Header";
 import { Layout } from "@/components/layout/Layout";
 import { Hero } from "@/components/home/Hero";
+import { ProjectsSection } from "@/components/projects/ProjectsSection";
 
 function SectionStub({ id, title }: { id: string; title: string }) {
   return (
@@ -23,7 +24,7 @@ export default function Home() {
         <main>
           <Hero />
 
-          <SectionStub id="projects" title="Projects" />
+          <ProjectsSection />
           <SectionStub id="skills" title="Skills" />
           <SectionStub id="resume" title="Resume" />
           <SectionStub id="about" title="About" />
