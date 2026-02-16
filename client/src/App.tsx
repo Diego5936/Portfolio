@@ -53,7 +53,9 @@ export default function App() {
 
   return (
     <main style={{ padding: 24, fontFamily: "system-ui" }}>
-      <h1>Portfolio</h1>
+      <h1 className="text-4xl font-bold text-blue-500">
+        Portfolio
+      </h1>
 
       <a href="/api/resume"style={{display: "inline-block", marginBottom: 16}}>
         Download Resume
