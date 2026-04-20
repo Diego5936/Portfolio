@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { projects } from "@/projects";
-import type { ProjectMedia } from "@/projects/types";
+import { projects } from "@/data/projects";
+import type { ProjectMedia } from "@/data/projects/types";
 
 export function ProjectsSection() {
   const [selectedId, setSelectedId] = useState<string | null>(null);

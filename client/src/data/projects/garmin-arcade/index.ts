@@ -1,4 +1,4 @@
-import type { Project } from "@/projects/types";
+import type { Project } from "@/data/projects/types";
 
 export const garminArcadeProject: Project = {
   id: "garmin-arcade-gallery",

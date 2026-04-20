@@ -1,4 +1,4 @@
-import type { Project } from "@/projects/types";
+import type { Project } from "@/data/projects/types";
 
 export const aiTrainingEnvProject: Project = {
   id: "ai-training-env",

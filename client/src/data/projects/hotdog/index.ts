@@ -1,4 +1,4 @@
-import type { Project } from "@/projects/types";
+import type { Project } from "@/data/projects/types";
 import hotdogImage from "./media/hotdog.jpg";
 import hotdogVideo from "./media/Thumbnail.mp4";
 import hotdogFinalReport from "./media/final_report.pdf";
