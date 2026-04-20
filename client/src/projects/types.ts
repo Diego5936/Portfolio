@@ -3,16 +3,30 @@ export type ProjectLink = {
   href: string;
 };
 
-export type ProjectImage = {
+export type ProjectMedia = {
   src: string;
   alt: string;
+  kind: "image" | "video";
+  poster?: string;
+};
+
+export type ProjectDescriptionSection = {
+  heading: string;
+  paragraphs: string[];
+};
+
+export type ProjectDocument = {
+  label: string;
+  href: string;
+  kind: "pdf";
 };
 
 export type Project = {
   id: string;
   title: string;
-  highlights: string[];
+  descriptionSections: ProjectDescriptionSection[];
   techs: string[];
   links: ProjectLink[];
-  images: ProjectImage[];
+  media: ProjectMedia[];
+  documents?: ProjectDocument[];
 };

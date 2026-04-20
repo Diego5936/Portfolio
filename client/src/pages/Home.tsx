@@ -22,9 +22,8 @@ export default function Home() {
       <Layout>
         <main>
           <Hero />
-          <SectionStub id="skills" title="Skills" />
-          <SectionStub id="resume" title="Resume" />
           <SectionStub id="about" title="About" />
+          <SectionStub id="skills" title="Skills" />
 
           <footer className="py-10 text-sm text-muted-foreground">
             © {new Date().getFullYear()} Diego Pedroza
