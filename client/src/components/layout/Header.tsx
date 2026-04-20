@@ -1,16 +1,16 @@
 import { Github, Linkedin, FileText } from "lucide-react";
 
 const nav = [
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "/projects" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Skills", href: "/#skills" },
 ];
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b bg-background/70 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <a href="#home" className="font-semibold tracking-tight">
+        <a href="/" className="font-semibold tracking-tight">
           dpedroza
           <span className="text-muted-foreground">.dev</span>
         </a>

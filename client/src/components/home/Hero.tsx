@@ -31,7 +31,7 @@ export function Hero() {
 
           <div className="mt-7 flex flex-wrap gap-3">
             <Button asChild>
-              <a href="#projects">Explore projects</a>
+              <a href="/projects">Explore projects</a>
             </Button>
             <Button asChild variant="outline">
               <a href="#about">About me</a>
