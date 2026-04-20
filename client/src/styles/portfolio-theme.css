@@ -1,0 +1,29 @@
+:root {
+  /* Centralized portfolio presentation tokens */
+  --portfolio-section-title-size: 1.5rem;
+  --portfolio-detail-title-size: 1.125rem;
+  --portfolio-detail-body-size: 1rem;
+  --portfolio-detail-body-leading: 1.625;
+
+  /* Keep these ready for future color tuning */
+  --portfolio-surface-muted: hsl(var(--muted));
+  --portfolio-text-muted: hsl(var(--muted-foreground));
+}
+
+.portfolio-section-title {
+  font-size: var(--portfolio-section-title-size);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.portfolio-detail-title {
+  font-size: var(--portfolio-detail-title-size);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.portfolio-detail-body {
+  font-size: var(--portfolio-detail-body-size);
+  line-height: var(--portfolio-detail-body-leading);
+  color: var(--portfolio-text-muted);
+}

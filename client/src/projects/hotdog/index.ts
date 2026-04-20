@@ -27,7 +27,8 @@ export const hotdogProject: Project = {
       heading: "Memorable Experiment",
       paragraphs: [
         "One of the most interesting tests asked HotDog to look for an unconscious friend. The robot identified a YOLOE person detection, reasoned over the box geometry, and inferred that a wider-than-tall person likely meant someone was lying down.",
-        "We built HotDog to explore VLA-style open-ended reasoning in robotics, and that experiment validated the level of generalization we were aiming for.",
+        "We built HotDog to explore VLA-style open-ended reasoning in robotics, and that experiment validated the level of generalization we were aiming for. Some of the most interesting moments were actually when the robot appeared to “fail,” because those moments showed that the system was often saw more than we expected. For example, when we asked it to look for a backpack, it would sometimes begin driving in the opposite direction of where we had placed the test backpack. We realized that this was not a mistake, YOLOE’s vision was powerful enough to detect a different backpack all the way across the room, even when we did not expect that object to be picked up at all.",
+        "Now we understand that HotDog is ultimately constrained by the tools it has at its disposal. Currently, it can reason using camera input, ultrasonic sensing, and movement. If we were to expand that toolset with additions like LiDAR or IMU sensors, it would be able to reason over even more environmental data and context, which makes the potential of this kind of system incredibly exciting.",
       ],
     },
   ],

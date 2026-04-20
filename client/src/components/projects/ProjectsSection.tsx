@@ -31,7 +31,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="py-14 sm:py-20">
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold tracking-tight">Projects</h2>
+        <h2 className="portfolio-section-title">Projects</h2>
         <p className="mt-2 text-muted-foreground">Click a project to focus it.</p>
       </div>
 
@@ -123,8 +123,8 @@ export function ProjectsSection() {
               <div className="mt-6 space-y-5">
                 {selected.descriptionSections.map((section) => (
                   <div key={`${selected.id}-${section.heading}`}>
-                    <h4 className="text-lg font-semibold tracking-tight">{section.heading}</h4>
-                    <div className="mt-2 space-y-3 text-base leading-relaxed text-muted-foreground">
+                    <h4 className="portfolio-detail-title">{section.heading}</h4>
+                    <div className="portfolio-detail-body mt-2 space-y-3">
                       {section.paragraphs.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
                       ))}
