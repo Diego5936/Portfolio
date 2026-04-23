@@ -5,7 +5,7 @@ import hotdogFinalReport from "./media/final_report.pdf";
 
 export const hotdogProject: Project = {
   id: "hotdog",
-  title: "HotDog - Multi-Agent LLM-Controlled JetBot",
+  title: "HotDog - Multi-Agent LLM-Driven Jetbot",
   descriptionSections: [
     {
       heading: "Origin",
@@ -32,23 +32,16 @@ export const hotdogProject: Project = {
       ],
     },
   ],
-  techs: ["FastAPI", "WebSocket", "React", "Next.js", "Tailwind", "YOLOE", "Jetson"],
+  techs: ["Python", "FastAPI", "WebSockets", "React", "Next.js", "Tailwind", "YOLOE", "Jetson"],
   links: [
     { label: "Repository", href: "https://github.com/ENG4060-C/final-project" },
     { label: "Video Demo", href: "https://youtu.be/sI2yJACUfRg" },
   ],
-  documents: [{ label: "Final Report (PDF)", href: hotdogFinalReport, kind: "pdf" }],
+  documents: [
+    { label: "Design Report", href: hotdogFinalReport, kind: "pdf" }
+  ],
   media: [
-    {
-      src: hotdogVideo,
-      alt: "HotDog JetBot demo clip",
-      kind: "video",
-      poster: hotdogImage,
-    },
-    {
-      src: hotdogImage,
-      alt: "HotDog JetBot Robot",
-      kind: "image",
-    },
+    {src: hotdogVideo, alt: "HotDog JetBot demo clip", kind: "video"},
+    {src: hotdogImage, alt: "HotDog JetBot Robot", kind: "image"}
   ],
 };

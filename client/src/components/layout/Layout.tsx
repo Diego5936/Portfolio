@@ -8,7 +8,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,hsl(var(--muted))_0%,transparent_35%)]" />
       </div>
 
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto w-full max-w-[min(100%,85rem)] px-3 sm:px-4 lg:px-5">
         {children}
       </div>
     </div>

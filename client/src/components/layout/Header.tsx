@@ -9,7 +9,7 @@ const nav = [
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b bg-background/70 backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-14 max-w-[min(100%,85rem)] items-center justify-between px-3 sm:px-4 lg:px-5">
         <a href="/" className="font-semibold tracking-tight">
           dpedroza
           <span className="text-muted-foreground">.dev</span>

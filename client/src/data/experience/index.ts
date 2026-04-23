@@ -6,5 +6,3 @@ export const experiences: ExperienceItem[] = [
   ucfInstituteOfAiExperience,
   pheratechSystemsExperience,
 ];
-
-export type { ExperienceItem } from "@/data/experience/types";

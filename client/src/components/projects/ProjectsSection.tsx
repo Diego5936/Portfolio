@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import type { ProjectMedia } from "@/data/projects/types";
 
 export function ProjectsSection() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [mediaIndex, setMediaIndex] = useState(0);
   const selected = projects.find((project) => project.id === selectedId) ?? null;
+
+  useEffect(() => {
+    if (selectedId) setMediaIndex(0);
+  }, [selectedId]);
   const maxVisibleTechs = 3;
   const getPreviewText = (text: string, maxLength = 130) =>
     text.length > maxLength ? `${text.slice(0, maxLength).trimEnd()}...` : text;
@@ -35,7 +41,7 @@ export function ProjectsSection() {
         <p className="mt-2 text-muted-foreground">Click a project to focus it.</p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
         {projects.map((project) => (
           <button
             key={project.id}
@@ -51,7 +57,7 @@ export function ProjectsSection() {
 
             {project.media[0] && (
               <div className="mt-4 overflow-hidden rounded-xl border bg-muted/20">
-                {renderMedia(project.media[0], "h-36 w-full object-cover")}
+                {renderMedia(project.media[0], "block h-auto w-full object-cover")}
               </div>
             )}
 
@@ -89,7 +95,10 @@ export function ProjectsSection() {
             onClick={() => setSelectedId(null)}
           />
 
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedId(null)}
+          >
             <div
               className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border bg-card p-6 shadow-xl animate-in fade-in zoom-in-95"
               onClick={(event) => event.stopPropagation()}
@@ -108,15 +117,50 @@ export function ProjectsSection() {
               </div>
 
               {selected.media.length > 0 && (
-                <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                  {selected.media.map((mediaItem) => (
-                    <div
-                      key={`${selected.id}-${mediaItem.src}`}
-                      className="overflow-hidden rounded-xl border bg-muted/20"
-                    >
-                      {renderMedia(mediaItem, "h-44 w-full object-cover")}
+                <div className="mt-5 flex w-full flex-col items-center">
+                  <div
+                    className={`flex w-full items-center gap-3 ${selected.media.length > 1 ? "" : "justify-center"}`}
+                  >
+                    {selected.media.length > 1 && (
+                      <button
+                        type="button"
+                        aria-label="Previous media"
+                        className="shrink-0 rounded-md border bg-background p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          setMediaIndex((index) =>
+                            (index - 1 + selected.media.length) % selected.media.length
+                          );
+                        }}
+                      >
+                        <ChevronLeft className="h-5 w-5" />
+                      </button>
+                    )}
+                    <div className="flex min-h-[14rem] flex-1 items-center justify-center overflow-hidden rounded-xl border bg-muted/20 sm:min-h-[17.5rem]">
+                      {renderMedia(
+                        selected.media[mediaIndex],
+                        "max-h-[min(50vh,22rem)] w-full max-w-full object-contain"
+                      )}
                     </div>
-                  ))}
+                    {selected.media.length > 1 && (
+                      <button
+                        type="button"
+                        aria-label="Next media"
+                        className="shrink-0 rounded-md border bg-background p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          setMediaIndex((index) => (index + 1) % selected.media.length);
+                        }}
+                      >
+                        <ChevronRight className="h-5 w-5" />
+                      </button>
+                    )}
+                  </div>
+                  {selected.media.length > 1 && (
+                    <p className="mt-2 text-center text-sm tabular-nums text-muted-foreground">
+                      {mediaIndex + 1} / {selected.media.length}
+                    </p>
+                  )}
                 </div>
               )}
 

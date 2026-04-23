@@ -1,4 +1,4 @@
-import { experiences } from "@/data/experience/index";
+import { experiences } from "@/data/experience";
 
 export function ExperienceSection() {
   return (

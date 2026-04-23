@@ -1,4 +1,5 @@
 import type { Project } from "@/data/projects/types";
+import websiteVideo from "./media/website-video.mp4";
 
 export const thetaTauWebsiteProject: Project = {
   id: "theta-tau-website",
@@ -14,6 +15,10 @@ export const thetaTauWebsiteProject: Project = {
     },
   ],
   techs: ["PostgreSQL", "Express", "React", "Node.js", "Linux", "AWS LightSail"],
-  links: [{ label: "Live Site", href: "https://ucfthetatau.org" }],
-  media: [],
+  links: [
+    { label: "Live Site", href: "https://ucfthetatau.org" }
+  ],
+  media: [
+    {src: websiteVideo, alt: "Theta Tau Website", kind: "video"}
+  ],
 };
