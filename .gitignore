@@ -18,6 +18,18 @@ pnpm-debug.log*
 .env
 .env.*.local
 
+# Python
+.venv/
+venv/
+env/
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Generated diffusion images
+server/public/generated/
+
 # TypeScript
 *.tsbuildinfo
 
