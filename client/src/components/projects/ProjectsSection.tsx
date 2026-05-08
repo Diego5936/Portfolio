@@ -34,6 +34,9 @@ export function ProjectsSection() {
     return <img src={media.src} alt={media.alt} className={className} loading="lazy" />;
   };
 
+  const shouldShowDualPreview = (project: (typeof projects)[number]) =>
+    project.media.length > 1 && project.media[0].isSquare && project.media[1].isSquare;
+
   return (
     <section id="projects" className="py-14 sm:py-20">
       <div className="mb-6">
@@ -57,7 +60,20 @@ export function ProjectsSection() {
 
             {project.media[0] && (
               <div className="mt-4 overflow-hidden rounded-xl border bg-muted/20">
-                {renderMedia(project.media[0], "block h-auto w-full object-cover")}
+                {shouldShowDualPreview(project) ? (
+                  <div className="grid grid-cols-2 gap-2 p-2">
+                    {[project.media[0], project.media[1]].map((media) => (
+                      <div
+                        key={media.src}
+                        className="aspect-square overflow-hidden rounded-lg bg-muted/40"
+                      >
+                        {renderMedia(media, "h-full w-full object-cover")}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  renderMedia(project.media[0], "block h-auto w-full object-cover")
+                )}
               </div>
             )}
 

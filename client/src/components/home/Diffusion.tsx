@@ -14,6 +14,7 @@ interface DiffusionGenerationJob {
 }
 
 export function Diffusion() {
+  const diffusionEnabled = false;
   const apiBaseUrl = useMemo(
     () => import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3001",
     [],
@@ -24,6 +25,12 @@ export function Diffusion() {
   const hasStartedRef = useRef(false);
 
   useEffect(() => {
+    if (!diffusionEnabled) {
+      setIsLoading(false);
+      setLoadError(null);
+      return;
+    }
+
     if (hasStartedRef.current) {
       return;
     }

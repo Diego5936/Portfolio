@@ -8,6 +8,7 @@ export type ProjectMedia = {
   alt: string;
   kind: "image" | "video";
   poster?: string;
+  isSquare?: boolean;
 };
 
 export type ProjectDescriptionSection = {
