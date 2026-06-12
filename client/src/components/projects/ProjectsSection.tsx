@@ -1,7 +1,41 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { projects } from "@/data/projects";
-import type { ProjectMedia } from "@/data/projects/types";
+import type { Project, ProjectMedia } from "@/data/projects/types";
+
+function projectSurfaceStyle(project: Project): CSSProperties {
+  return {
+    backgroundColor: project.panelColor,
+    ...(project.textColor
+      ? {
+          color: project.textColor,
+          ["--portfolio-text-muted" as string]: project.textColor,
+          ["--portfolio-scroll-thumb" as string]: "rgba(255, 255, 255, 0.32)",
+          ["--portfolio-scroll-thumb-hover" as string]: "rgba(255, 255, 255, 0.5)",
+        }
+      : {}),
+  };
+}
+
+function techPillClassName(project: Project, extra = "") {
+  return project.skillsCircleColor
+    ? `shrink-0 rounded-full px-2.5 py-1 text-xs ${extra}`.trim()
+    : `shrink-0 rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground ${extra}`.trim();
+}
+
+function techPillStyle(project: Project): CSSProperties | undefined {
+  if (!project.skillsCircleColor) return undefined;
+  return {
+    backgroundColor: project.skillsCircleColor,
+    color: project.textColor,
+  };
+}
+
+function mutedLinkClassName(project: Project) {
+  return project.textColor
+    ? "text-sm opacity-80 transition hover:opacity-100"
+    : "text-sm text-muted-foreground hover:text-foreground";
+}
 
 export function ProjectsSection() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -49,11 +83,19 @@ export function ProjectsSection() {
           <button
             key={project.id}
             onClick={() => setSelectedId(project.id)}
-            className="group flex h-full flex-col rounded-2xl border bg-card p-5 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
+            className="group flex h-full flex-col rounded-2xl border border-white/10 p-5 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
+            style={projectSurfaceStyle(project)}
           >
             <div className="flex items-start justify-between gap-3">
               <h3 className="text-lg font-semibold tracking-tight">{project.title}</h3>
-              <span className="text-xs text-muted-foreground opacity-0 transition group-hover:opacity-100">
+              <span
+                className={
+                  project.textColor
+                    ? "text-xs opacity-0 transition group-hover:opacity-70"
+                    : "text-xs text-muted-foreground opacity-0 transition group-hover:opacity-100"
+                }
+                style={project.textColor ? { color: project.textColor } : undefined}
+              >
                 Open
               </span>
             </div>
@@ -78,7 +120,13 @@ export function ProjectsSection() {
             )}
 
             {getProjectPreview(project) && (
-              <p className="mt-4 text-sm text-muted-foreground">
+              <p
+                className={
+                  project.textColor
+                    ? "mt-4 text-sm opacity-80"
+                    : "mt-4 text-sm text-muted-foreground"
+                }
+              >
                 {getPreviewText(getProjectPreview(project))}
               </p>
             )}
@@ -88,13 +136,17 @@ export function ProjectsSection() {
                 {project.techs.slice(0, maxVisibleTechs).map((tech) => (
                   <span
                     key={tech}
-                    className="shrink-0 rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground"
+                    className={techPillClassName(project)}
+                    style={techPillStyle(project)}
                   >
                     {tech}
                   </span>
                 ))}
                 {project.techs.length > maxVisibleTechs && (
-                  <span className="shrink-0 rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground">
+                  <span
+                    className={techPillClassName(project)}
+                    style={techPillStyle(project)}
+                  >
                     {project.techs.length - maxVisibleTechs}+
                   </span>
                 )}
@@ -116,7 +168,8 @@ export function ProjectsSection() {
             onClick={() => setSelectedId(null)}
           >
             <div
-              className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border bg-card p-6 shadow-xl animate-in fade-in zoom-in-95"
+              className="portfolio-modal-scroll max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-white/10 p-6 pr-4 shadow-xl animate-in fade-in zoom-in-95 sm:pr-5"
+              style={projectSurfaceStyle(selected)}
               onClick={(event) => event.stopPropagation()}
             >
               <div className="flex items-start justify-between gap-4">
@@ -126,7 +179,11 @@ export function ProjectsSection() {
 
                 <button
                   onClick={() => setSelectedId(null)}
-                  className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
+                  className={
+                    selected.textColor
+                      ? "rounded-md px-3 py-2 text-sm opacity-80 transition hover:opacity-100"
+                      : "rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
+                  }
                 >
                   Close
                 </button>
@@ -141,7 +198,11 @@ export function ProjectsSection() {
                       <button
                         type="button"
                         aria-label="Previous media"
-                        className="shrink-0 rounded-md border bg-background p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                        className={
+                          selected.textColor
+                            ? "shrink-0 rounded-md border border-white/15 bg-black/20 p-2 opacity-80 transition hover:opacity-100"
+                            : "shrink-0 rounded-md border bg-background p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                        }
                         onClick={(event) => {
                           event.stopPropagation();
                           setMediaIndex((index) =>
@@ -152,7 +213,13 @@ export function ProjectsSection() {
                         <ChevronLeft className="h-5 w-5" />
                       </button>
                     )}
-                    <div className="flex min-h-[14rem] flex-1 items-center justify-center overflow-hidden rounded-xl border bg-muted/20 sm:min-h-[17.5rem]">
+                    <div
+                      className={
+                        selected.textColor
+                          ? "flex min-h-[14rem] flex-1 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-black/20 sm:min-h-[17.5rem]"
+                          : "flex min-h-[14rem] flex-1 items-center justify-center overflow-hidden rounded-xl border bg-muted/20 sm:min-h-[17.5rem]"
+                      }
+                    >
                       {renderMedia(
                         selected.media[mediaIndex],
                         "max-h-[min(50vh,22rem)] w-full max-w-full object-contain"
@@ -162,7 +229,11 @@ export function ProjectsSection() {
                       <button
                         type="button"
                         aria-label="Next media"
-                        className="shrink-0 rounded-md border bg-background p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                        className={
+                          selected.textColor
+                            ? "shrink-0 rounded-md border border-white/15 bg-black/20 p-2 opacity-80 transition hover:opacity-100"
+                            : "shrink-0 rounded-md border bg-background p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                        }
                         onClick={(event) => {
                           event.stopPropagation();
                           setMediaIndex((index) => (index + 1) % selected.media.length);
@@ -173,7 +244,13 @@ export function ProjectsSection() {
                     )}
                   </div>
                   {selected.media.length > 1 && (
-                    <p className="mt-2 text-center text-sm tabular-nums text-muted-foreground">
+                    <p
+                      className={
+                        selected.textColor
+                          ? "mt-2 text-center text-sm tabular-nums opacity-80"
+                          : "mt-2 text-center text-sm tabular-nums text-muted-foreground"
+                      }
+                    >
                       {mediaIndex + 1} / {selected.media.length}
                     </p>
                   )}
@@ -184,7 +261,9 @@ export function ProjectsSection() {
                 {selected.descriptionSections.map((section) => (
                   <div key={`${selected.id}-${section.heading}`}>
                     <h4 className="portfolio-detail-title">{section.heading}</h4>
-                    <div className="portfolio-detail-body mt-2 space-y-3">
+                    <div
+                      className={`portfolio-detail-body mt-2 space-y-3 ${selected.textColor ? "opacity-80" : ""}`}
+                    >
                       {section.paragraphs.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
                       ))}
@@ -203,7 +282,7 @@ export function ProjectsSection() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-foreground"
+                        className={mutedLinkClassName(selected)}
                       >
                         {link.label} →
                       </a>
@@ -217,12 +296,19 @@ export function ProjectsSection() {
                   <h4 className="text-xl font-semibold tracking-tight">Documents</h4>
                   <div className="mt-3 space-y-4">
                     {selected.documents.map((document) => (
-                      <div key={document.href} className="rounded-xl border bg-muted/10 p-3">
+                      <div
+                        key={document.href}
+                        className={
+                          selected.textColor
+                            ? "rounded-xl border border-white/10 bg-black/20 p-3"
+                            : "rounded-xl border bg-muted/10 p-3"
+                        }
+                      >
                         <a
                           href={document.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm text-muted-foreground hover:text-foreground"
+                          className={mutedLinkClassName(selected)}
                         >
                           {document.label} →
                         </a>
@@ -245,7 +331,8 @@ export function ProjectsSection() {
                   {selected.techs.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground"
+                      className={techPillClassName(selected, "")}
+                      style={techPillStyle(selected)}
                     >
                       {tech}
                     </span>

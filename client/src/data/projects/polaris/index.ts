@@ -6,6 +6,9 @@ import fdd from "./media/Final Design Document.pdf";
 export const polarisProject: Project = {
   id: "polaris",
   title: "Polaris - Accessible Indoor Navigation",
+  panelColor: "#162a58",
+  textColor: "#c8daf8",
+  skillsCircleColor: "#244878",
   descriptionSections: [
     {
       heading: "Overview",

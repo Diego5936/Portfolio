@@ -3,6 +3,7 @@ import type { Project } from "@/data/projects/types";
 export const aiTrainingEnvProject: Project = {
   id: "ai-training-env",
   title: "AI Training Environment",
+  panelColor: "#19191d",
   descriptionSections: [
     {
       heading: "Overview",

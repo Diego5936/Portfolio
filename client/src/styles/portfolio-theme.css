@@ -1,3 +1,25 @@
+.portfolio-sunset-bg {
+  background-color: #050508;
+  background-image:
+    radial-gradient(
+      ellipse 120% 85% at 50% 100%,
+      rgba(220, 90, 50, 0.26) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 70% 55% at 88% 12%,
+      rgba(130, 45, 100, 0.16) 0%,
+      transparent 48%
+    ),
+    linear-gradient(
+      to bottom,
+      #030304 0%,
+      #0b0610 42%,
+      #140a08 72%,
+      #1a0c06 100%
+    );
+}
+
 :root {
   /* Centralized portfolio presentation tokens */
   --portfolio-section-title-size: 1.5rem;
@@ -26,4 +48,31 @@
   font-size: var(--portfolio-detail-body-size);
   line-height: var(--portfolio-detail-body-leading);
   color: var(--portfolio-text-muted);
+}
+
+.portfolio-modal-scroll {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--portfolio-scroll-thumb, rgba(255, 255, 255, 0.28))
+    transparent;
+}
+
+.portfolio-modal-scroll::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.portfolio-modal-scroll::-webkit-scrollbar-track {
+  margin-block: 0.75rem;
+  background: transparent;
+}
+
+.portfolio-modal-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background-color: var(--portfolio-scroll-thumb, rgba(255, 255, 255, 0.22));
+  background-clip: content-box;
+}
+
+.portfolio-modal-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: var(--portfolio-scroll-thumb-hover, rgba(255, 255, 255, 0.38));
 }

@@ -25,6 +25,9 @@ export type ProjectDocument = {
 export type Project = {
   id: string;
   title: string;
+  panelColor: string;
+  textColor?: string;
+  skillsCircleColor?: string;
   descriptionSections: ProjectDescriptionSection[];
   techs: string[];
   links: ProjectLink[];

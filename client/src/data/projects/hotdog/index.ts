@@ -6,6 +6,9 @@ import hotdogFinalReport from "./media/final_report.pdf";
 export const hotdogProject: Project = {
   id: "hotdog",
   title: "HotDog - Multi-Agent LLM-Driven Jetbot",
+  panelColor: "#102820",
+  textColor: "#d4ede0",
+  skillsCircleColor: "#1e5038",
   descriptionSections: [
     {
       heading: "Origin",

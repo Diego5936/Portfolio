@@ -109,7 +109,9 @@ export function Diffusion() {
       <div className="grid items-center gap-10 lg:grid-cols-2">
         {/* Left: Diffusion image generation surface */}
         <div className="relative order-2 lg:order-1">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border bg-card shadow-sm">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 shadow-sm">
+            <div className="portfolio-sunset-bg absolute inset-0" />
+
             {job?.imageUrl ? (
               <img
                 src={
@@ -120,12 +122,10 @@ export function Diffusion() {
                 alt="AI-generated diffusion background"
                 className="absolute inset-0 h-full w-full object-cover"
               />
-            ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-card to-muted" />
-            )}
+            ) : null}
 
             <div
-              className="absolute inset-0 bg-primary/15 transition-all duration-700"
+              className="absolute inset-0 bg-black/25 transition-all duration-700"
               style={{ opacity: Math.max(0, 1 - (job?.progress ?? 0) / 100) }}
             />
 
@@ -155,8 +155,8 @@ export function Diffusion() {
               </div>
             </div>
           </div>
-          <div className="pointer-events-none absolute -bottom-4 -left-4 h-24 w-24 rounded-2xl bg-muted/60 blur-2xl" />
-          <div className="pointer-events-none absolute -top-6 -right-6 h-28 w-28 rounded-full bg-muted/60 blur-2xl" />
+          <div className="pointer-events-none absolute -bottom-4 -left-4 h-24 w-24 rounded-2xl bg-orange-600/20 blur-2xl" />
+          <div className="pointer-events-none absolute -top-6 -right-6 h-28 w-28 rounded-full bg-fuchsia-900/25 blur-2xl" />
         </div>
 
         {/* Right: Intro */}
