@@ -4,6 +4,7 @@ export const strataProject: Project = {
   id: "strata",
   title: "Strata: Neuro-Evolution of Augmenting Topologies Implementation",
   panelColor: "#19191d",
+  accentColor: "#6a6090",
   descriptionSections: [
     {
       heading: "Overview",

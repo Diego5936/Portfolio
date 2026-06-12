@@ -4,9 +4,9 @@ import websiteVideo from "./media/website-video.mp4";
 export const thetaTauWebsiteProject: Project = {
   id: "theta-tau-website",
   title: "Theta Tau Chapter Website",
-  panelColor: "#341822",
-  textColor: "#f0d4dc",
-  skillsCircleColor: "#5a2838",
+  panelColor: "#83142C",
+  accentColor: "#7e6322",
+  textColor: "#fff3f3",
   descriptionSections: [
     {
       heading: "Overview",

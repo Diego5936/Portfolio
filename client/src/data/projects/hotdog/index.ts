@@ -5,14 +5,15 @@ import hotdogFinalReport from "./media/final_report.pdf";
 
 export const hotdogProject: Project = {
   id: "hotdog",
-  title: "HotDog - Multi-Agent LLM-Driven Jetbot",
-  panelColor: "#102820",
-  textColor: "#d4ede0",
-  skillsCircleColor: "#1e5038",
+  title: "HotDog",
+  panelColor: "#000000",
+  accentColor: "#007a1b",
+  textColor: "#daf7e3",
   descriptionSections: [
     {
       heading: "Origin",
       paragraphs: [
+        "Hotdog is a multi-agent LLM-driven autonomous robot, capable of interpreting vague, natural-language goals and turning them into action!",
         "HotDog began as our final project for Intro to Robotics. Since our group was entirely made up of computer science majors, we knew we wanted to build something that leaned heavily into software and AI.",
         "We wanted to apply paradigms and theory we learned in class, so we created HotDog: an open-ended, LLM-driven autonomous robot that interprets natural-language goals and turns them into action.",
       ],

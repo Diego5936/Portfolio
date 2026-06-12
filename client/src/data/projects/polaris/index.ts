@@ -5,15 +5,15 @@ import fdd from "./media/Final Design Document.pdf";
 
 export const polarisProject: Project = {
   id: "polaris",
-  title: "Polaris - Accessible Indoor Navigation",
-  panelColor: "#162a58",
-  textColor: "#c8daf8",
-  skillsCircleColor: "#244878",
+  title: "Polaris",
+  panelColor: "#1364b0",
+  accentColor: "#12765c",
+  textColor: "#e7eefb",
   descriptionSections: [
     {
       heading: "Overview",
       paragraphs: [
-        "Polaris is a deployed iOS indoor navigation application focused on accessibility wayfinding in complex indoor spaces such as hospitals, campus buildings, and large office complexes. Its purpose is to make indoor navigation feel as seamless and intuitive as outdoor navigation, especially for users who may face mobility, visual, or other accessibility-related challenges. Instead of treating accessibility as an extra feature, Polaris is built around the idea that navigation should be usable and dependable for everyone.",
+        "Polaris is a deployed iOS indoor navigation application focused on accessibility. It helps people with various accessible needs navigate in complex indoor spaces. Its purpose is to make indoor navigation feel as seamless and intuitive as outdoor navigation, especially for users who may face mobility, visual, or other accessibility-related challenges. Instead of treating accessibility as an extra feature, Polaris is built around the idea that navigation should be usable and dependable for everyone.",
       ],
     },
     {

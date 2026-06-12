@@ -6,6 +6,7 @@ import type { Project, ProjectMedia } from "@/data/projects/types";
 function projectSurfaceStyle(project: Project): CSSProperties {
   return {
     backgroundColor: project.panelColor,
+    borderColor: project.accentColor,
     ...(project.textColor
       ? {
           color: project.textColor,
@@ -18,15 +19,15 @@ function projectSurfaceStyle(project: Project): CSSProperties {
 }
 
 function techPillClassName(project: Project, extra = "") {
-  return project.skillsCircleColor
+  return project.accentColor
     ? `shrink-0 rounded-full px-2.5 py-1 text-xs ${extra}`.trim()
     : `shrink-0 rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground ${extra}`.trim();
 }
 
 function techPillStyle(project: Project): CSSProperties | undefined {
-  if (!project.skillsCircleColor) return undefined;
+  if (!project.accentColor) return undefined;
   return {
-    backgroundColor: project.skillsCircleColor,
+    backgroundColor: project.accentColor,
     color: project.textColor,
   };
 }
@@ -72,67 +73,56 @@ export function ProjectsSection() {
     project.media.length > 1 && project.media[0].isSquare && project.media[1].isSquare;
 
   return (
-    <section id="projects" className="py-14 sm:py-20">
-      <div className="mb-6">
-        <h2 className="portfolio-section-title">Projects</h2>
-        <p className="mt-2 text-muted-foreground">Click a project to focus it.</p>
-      </div>
+    <section id="projects" className="pb-14 pt-6 sm:pb-20 sm:pt-8">
+      <h2 className="mb-6 text-center text-4xl font-semibold tracking-tight sm:text-5xl">
+        Projects
+      </h2>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
         {projects.map((project) => (
           <button
             key={project.id}
             onClick={() => setSelectedId(project.id)}
-            className="group flex h-full flex-col rounded-2xl border border-white/10 p-5 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
+            className="project-card group h-full border shadow-sm transition hover:-translate-y-1 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
             style={projectSurfaceStyle(project)}
           >
-            <div className="flex items-start justify-between gap-3">
-              <h3 className="text-lg font-semibold tracking-tight">{project.title}</h3>
-              <span
-                className={
-                  project.textColor
-                    ? "text-xs opacity-0 transition group-hover:opacity-70"
-                    : "text-xs text-muted-foreground opacity-0 transition group-hover:opacity-100"
-                }
-                style={project.textColor ? { color: project.textColor } : undefined}
-              >
-                Open
-              </span>
+            <div className="project-card-tab-row">
+              <div className="project-card-tab">
+                <h3 className="project-card-title">{project.title}</h3>
+              </div>
+              <div className="project-card-tab-rail" aria-hidden="true" />
             </div>
 
             {project.media[0] && (
-              <div className="mt-4 overflow-hidden rounded-xl border bg-muted/20">
+              <div className="project-card-media">
                 {shouldShowDualPreview(project) ? (
-                  <div className="grid grid-cols-2 gap-2 p-2">
+                  <div className="project-card-dual-preview">
                     {[project.media[0], project.media[1]].map((media) => (
-                      <div
-                        key={media.src}
-                        className="aspect-square overflow-hidden rounded-lg bg-muted/40"
-                      >
+                      <div key={media.src} className="project-card-dual-preview-item">
                         {renderMedia(media, "h-full w-full object-cover")}
                       </div>
                     ))}
                   </div>
                 ) : (
-                  renderMedia(project.media[0], "block h-auto w-full object-cover")
+                  renderMedia(project.media[0], "aspect-[16/10] h-auto w-full object-cover")
                 )}
               </div>
             )}
 
-            {getProjectPreview(project) && (
-              <p
-                className={
-                  project.textColor
-                    ? "mt-4 text-sm opacity-80"
-                    : "mt-4 text-sm text-muted-foreground"
-                }
-              >
-                {getPreviewText(getProjectPreview(project))}
-              </p>
-            )}
+            <div className="project-card-body">
+              {getProjectPreview(project) && (
+                <p
+                  className={
+                    project.textColor
+                      ? "text-sm opacity-80"
+                      : "text-sm text-muted-foreground"
+                  }
+                >
+                  {getPreviewText(getProjectPreview(project))}
+                </p>
+              )}
 
-            <div className="mt-auto pt-4">
-              <div className="flex flex-nowrap items-end gap-2 overflow-hidden">
+              <div className="project-card-techs">
                 {project.techs.slice(0, maxVisibleTechs).map((tech) => (
                   <span
                     key={tech}
@@ -168,7 +158,7 @@ export function ProjectsSection() {
             onClick={() => setSelectedId(null)}
           >
             <div
-              className="portfolio-modal-scroll max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-white/10 p-6 pr-4 shadow-xl animate-in fade-in zoom-in-95 sm:pr-5"
+              className="portfolio-modal-scroll max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border p-6 pr-4 shadow-xl animate-in fade-in zoom-in-95 sm:pr-5"
               style={projectSurfaceStyle(selected)}
               onClick={(event) => event.stopPropagation()}
             >
