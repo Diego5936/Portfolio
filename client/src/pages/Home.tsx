@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/Header";
 import { Layout } from "@/components/layout/Layout";
 import { Diffusion } from "@/components/home/Diffusion";
+import { SkillsSection } from "@/components/sections/SkillsSection";
 
 function SectionStub({ id, title }: { id: string; title: string }) {
   return (
@@ -23,7 +24,7 @@ export default function Home() {
         <main>
           <Diffusion />
           <SectionStub id="about" title="About" />
-          <SectionStub id="skills" title="Skills" />
+          <SkillsSection />
 
           <footer className="py-10 text-sm text-muted-foreground">
             © {new Date().getFullYear()} Diego Pedroza

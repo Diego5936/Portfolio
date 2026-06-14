@@ -1,6 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { Layout } from "@/components/layout/Layout";
-import { ProjectsSection } from "@/components/projects/ProjectsSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
 
 export default function Projects() {
   return (
