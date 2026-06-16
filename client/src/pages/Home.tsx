@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import { Layout } from "@/components/layout/Layout";
 import { Diffusion } from "@/components/home/Diffusion";
@@ -17,6 +18,17 @@ function SectionStub({ id, title }: { id: string; title: string }) {
 }
 
 export default function Home() {
+  useEffect(() => {
+    const sectionId = window.location.hash.replace("#", "");
+    if (!sectionId) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ block: "start" });
+    });
+  }, []);
+
   return (
     <>
       <Header />

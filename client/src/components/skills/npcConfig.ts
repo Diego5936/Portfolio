@@ -34,6 +34,15 @@ export const NPC_CONFIG = {
     preMoveLookDurationSeconds: 0.4, // Face travel direction before walking
     walkFrameDurationSeconds: 0.15, // Seconds per walk animation frame
 
+    // ---- Hang / Drag Logic -----
+    hangDragScale: 1.95, // Scale while lifted (simulates z-axis pull)
+    hangLiftOffsetY: 10, // Sprite shifts up while scaled
+    hangLandDurationSeconds: 0.6, // Time to scale back down on release
+    hangHandLocalX: 1, // Hand X as fraction from center to right edge
+    hangHandLocalY: 1, // Hand Y as fraction from center to top edge
+    hangHandOffsetX: -7, // Fine-tune
+    hangHandOffsetY: 2, // Fine-tune
+
     // ---- Summon Logic -----
     summonSpeed: 120, // Speed when walking back to post (px/s)
     stayTimeAfterSummonSeconds: 15, // Seconds to hold post after trumpet summon

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Application } from "pixi.js";
+import { Application, Rectangle } from "pixi.js";
 import { loadBlankSkinTextures } from "@/components/skills/blankSkin";
 import { getLineupPositions } from "@/components/skills/lineup";
 import { SkillNpc } from "@/components/skills/SkillNpc";
@@ -58,6 +58,10 @@ export function SkillsSection() {
 
         app.canvas.style.display = "block";
         mount.appendChild(app.canvas);
+        app.stage.eventMode = "passive";
+        // Ensure we can keep receiving pointermove events during drag
+        // even when the cursor isn't over an interactive display object.
+        app.stage.hitArea = app.screen;
 
         const blankSkinTextures = await loadBlankSkinTextures();
         const trumpetTexture = await loadTrumpetTexture();
@@ -78,6 +82,7 @@ export function SkillsSection() {
           );
 
           app!.stage.addChild(npc.container);
+          npc.setupPointerEvents(app!.stage, bounds);
           return npc;
         });
 
@@ -97,11 +102,31 @@ export function SkillsSection() {
 
           if (wanderDelay > 0) {
             wanderDelay -= dt;
+
+            for (const npc of npcs) {
+              if (npc.dragging) {
+                npc.updateDrag(dt);
+              } else if (npc.landing) {
+                const others = npcs.filter((other) => other !== npc);
+                npc.updateLanding(dt, bounds, others);
+              }
+            }
+
             return;
           }
 
           for (const npc of npcs) {
             const others = npcs.filter((other) => other !== npc);
+
+            if (npc.dragging) {
+              npc.updateDrag(dt);
+              continue;
+            }
+
+            if (npc.landing) {
+              npc.updateLanding(dt, bounds, others);
+              continue;
+            }
 
             if (npc.summoning) {
               npc.updateSummon(dt);
@@ -128,7 +153,7 @@ export function SkillsSection() {
   }, [npcLayoutKey]);
 
   return (
-    <section id="skills" className="py-14 sm:py-20">
+    <section id="skills" className="scroll-mt-14 py-14 sm:py-20 sm:scroll-mt-16">
       <div className="mb-6">
         <h2 className="portfolio-section-title">Skills</h2>
         <p className="mt-2 text-muted-foreground">

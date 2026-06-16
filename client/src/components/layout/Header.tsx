@@ -4,7 +4,39 @@ const nav = [
   { label: "Projects", href: "/projects" },
   { label: "Experience", href: "/experience" },
   { label: "Skills", href: "/#skills" },
-];
+] as const;
+
+function scrollToSection(id: string) {
+  const section = document.getElementById(id);
+  if (!section) {
+    return false;
+  }
+
+  section.scrollIntoView({ behavior: "smooth", block: "start" });
+  window.history.pushState(null, "", `#${id}`);
+  return true;
+}
+
+function handleNavClick(
+  event: React.MouseEvent<HTMLAnchorElement>,
+  href: string,
+) {
+  const url = new URL(href, window.location.origin);
+  const sectionId = url.hash.replace("#", "");
+
+  if (!sectionId) {
+    return;
+  }
+
+  event.preventDefault();
+
+  if (window.location.pathname !== url.pathname) {
+    window.location.assign(`${url.pathname}#${sectionId}`);
+    return;
+  }
+
+  scrollToSection(sectionId);
+}
 
 export function Header() {
   return (
@@ -20,6 +52,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
+              onClick={(event) => handleNavClick(event, item.href)}
               className="rounded-md px-3 py-2 text-sm text-muted-foreground transition hover:text-foreground"
             >
               {item.label}

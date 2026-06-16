@@ -1,4 +1,6 @@
 import { Assets, Texture } from "pixi.js";
+import hang1Skin from "@/assets/blank_skin/hang-1.png";
+import hang2Skin from "@/assets/blank_skin/hang-2.png";
 import down1Skin from "@/assets/blank_skin/down-1.png";
 import down2Skin from "@/assets/blank_skin/down-2.png";
 import left1Skin from "@/assets/blank_skin/left-1.png";
@@ -8,6 +10,11 @@ import right2Skin from "@/assets/blank_skin/right-2.png";
 import up1Skin from "@/assets/blank_skin/up-1.png";
 import up2Skin from "@/assets/blank_skin/up-2.png";
 import type { FacingDirection, WalkFrame } from "@/components/skills/direction";
+
+const HANG_SKIN_SOURCES: Record<WalkFrame, string> = {
+    1: hang1Skin,
+    2: hang2Skin,
+};
 
 const BLANK_SKIN_SOURCES: Record<
     FacingDirection,
@@ -22,16 +29,29 @@ const BLANK_SKIN_SOURCES: Record<
 export type BlankSkinTextures = Record<
     FacingDirection,
     Record<WalkFrame, Texture>
->;
+> & {
+    hang: Record<WalkFrame, Texture>;
+};
+
+function textureFromAlias(alias: string) {
+    const texture = Texture.from(alias);
+    texture.source.scaleMode = "nearest";
+    return texture;
+}
 
 export async function loadBlankSkinTextures() {
-    const entries = Object.entries(BLANK_SKIN_SOURCES).flatMap(
-        ([direction, frames]) =>
+    const entries = [
+        ...Object.entries(BLANK_SKIN_SOURCES).flatMap(([direction, frames]) =>
             Object.entries(frames).map(([frame, src]) => ({
                 alias: `blank-skin-${direction}-${frame}`,
                 src,
             })),
-    );
+        ),
+        ...Object.entries(HANG_SKIN_SOURCES).map(([frame, src]) => ({
+            alias: `blank-skin-hang-${frame}`,
+            src,
+        })),
+    ];
 
     await Assets.load(entries);
 
@@ -41,15 +61,24 @@ export async function loadBlankSkinTextures() {
             Object.fromEntries(
                 Object.keys(frames).map((frame) => {
                     const walkFrame = Number(frame) as WalkFrame;
-                    const texture = Texture.from(
-                        `blank-skin-${direction}-${frame}`,
-                    );
-                    texture.source.scaleMode = "nearest";
-                    return [walkFrame, texture];
+                    return [
+                        walkFrame,
+                        textureFromAlias(`blank-skin-${direction}-${frame}`),
+                    ];
                 }),
             ),
         ]),
-    ) as BlankSkinTextures;
+    ) as Record<FacingDirection, Record<WalkFrame, Texture>>;
 
-    return textures;
+    const hang = Object.fromEntries(
+        Object.keys(HANG_SKIN_SOURCES).map((frame) => {
+            const walkFrame = Number(frame) as WalkFrame;
+            return [
+                walkFrame,
+                textureFromAlias(`blank-skin-hang-${frame}`),
+            ];
+        }),
+    ) as Record<WalkFrame, Texture>;
+
+    return { ...textures, hang };
 }
