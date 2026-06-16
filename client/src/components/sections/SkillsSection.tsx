@@ -101,12 +101,14 @@ export function SkillsSection() {
           }
 
           for (const npc of npcs) {
+            const others = npcs.filter((other) => other !== npc);
+
             if (npc.summoning) {
               npc.updateSummon(dt);
             } else if (npc.wandering) {
-              npc.update(dt, bounds);
+              npc.update(dt, bounds, others);
             } else {
-              npc.updateAtPost(dt, bounds);
+              npc.updateAtPost(dt, bounds, others);
             }
           }
         });

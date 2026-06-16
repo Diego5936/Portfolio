@@ -1,7 +1,7 @@
 export const NPC_CONFIG = {
     size: 40,
-    labelFontSize: 10,
-    labelGap: 4, // Gap between label bottom and npche ad
+    labelFontSize: 12,
+    labelGap: 11, // Gap between label bottom and npche ad
     headTopInsetRatio: 0.28, // Hood top as fraction of sprite height from image top
     lineupSpacing: 65, // Distance between NPCs at linup
     lineupRowGap: 60, // Distance between rows in lineup
@@ -16,15 +16,17 @@ export const NPC_CONFIG = {
     speedMin: 40,
     speedMax: 25,
     arriveDistance: 4, // Distance to consider arrived at target
-    wanderMaxDistance: 100, // Furthest a target can be from current position (px)
-    wanderTargetCandidates: 4, // Random spots considered each time a target is picked
+    wanderPickAttempts: 20, // Random spots tried per target pick
+    minNpcSeparation: 72, // Min center distance from other NPCs at destination (px)
+    moveSeparationRadius: 55, // Light repulsion radius while walking (px)
+    moveSeparationStrength: 0.4, // Blend of repulsion vs toward-target while walking
 
     // Pause at destination before picking a new target
     pauseMinSeconds: 3, // Minimum seconds to pause
     pauseMaxSeconds: 10, // Maximum seconds to pause
 
     // ---- Look Around Logic -----
-    lookAroundChance: 0.7, // Chance to glance before choosing next action
+    lookAroundChance: 0.5, // Chance to glance before choosing next action
     lookDirectionCountMin: 1, // Minimum random glances in a look sequence
     lookDirectionCountMax: 3, // Maximum random glances in a look sequence
     lookDirectionDurationSeconds: 1.5, // Seconds to hold each glance

@@ -15,6 +15,25 @@ export type PanelBounds = {
     padding: number;
 };
 
+
+function minDistanceToOthers(
+    x: number,
+    y: number,
+    others: readonly SkillNpc[],
+): number {
+    let minDistance = Infinity;
+
+    for (const other of others) {
+        minDistance = Math.min(
+            minDistance,
+            Math.hypot(x - other.x, y - other.y),
+            Math.hypot(x - other.targetX, y - other.targetY),
+        );
+    }
+
+    return minDistance;
+}
+
 export class SkillNpc {
     skill: Skill;
     container: Container;
@@ -42,6 +61,7 @@ export class SkillNpc {
     wandering: boolean;
     summoning: boolean;
     looking: boolean;
+    pickRetryPending: boolean;
 
     constructor(
         skill: Skill,
@@ -73,6 +93,7 @@ export class SkillNpc {
         this.wandering = false;
         this.summoning = false;
         this.looking = false;
+        this.pickRetryPending = false;
 
         this.container = new Container();
         this.container.x = startX;
@@ -166,7 +187,7 @@ export class SkillNpc {
         this.setIdleFacing(this.lookQueue[0]);
     }
 
-    updateLook(dt: number, bounds: PanelBounds) {
+    updateLook(dt: number, bounds: PanelBounds, others: readonly SkillNpc[]) {
         this.lookTimer -= dt;
 
         if (this.lookTimer > 0) {
@@ -177,7 +198,7 @@ export class SkillNpc {
 
         if (this.lookIndex >= this.lookQueue.length) {
             this.looking = false;
-            this.decideAfterLook(bounds);
+            this.decideAfterLook(bounds, others);
             return;
         }
 
@@ -185,18 +206,22 @@ export class SkillNpc {
         this.lookTimer = NPC_CONFIG.lookDirectionDurationSeconds;
     }
 
-    tryBeginLookOrMove(bounds: PanelBounds) {
+    tryBeginLookOrMove(bounds: PanelBounds, others: readonly SkillNpc[]) {
         if (Math.random() < NPC_CONFIG.lookAroundChance) {
             this.beginLookAround();
             return;
         }
 
-        this.decideAfterLook(bounds);
+        this.decideAfterLook(bounds, others);
     }
 
-    decideAfterLook(bounds: PanelBounds) {
+    decideAfterLook(bounds: PanelBounds, others: readonly SkillNpc[]) {
         if (Math.random() < NPC_CONFIG.lookThenMoveChance) {
-            this.pickNewTarget(bounds);
+            if (this.pickNewTarget(bounds, others)) {
+                return;
+            }
+
+            this.pickRetryPending = true;
             return;
         }
 
@@ -240,13 +265,13 @@ export class SkillNpc {
         this.setIdleFacing(directionFromDelta(this.homeX - this.x, this.homeY - this.y));
     }
 
-    updateAtPost(dt: number, bounds: PanelBounds) {
+    updateAtPost(dt: number, bounds: PanelBounds, others: readonly SkillNpc[]) {
         if (this.postStayTimer > 0) {
             this.postStayTimer -= dt;
             return;
         }
 
-        this.tryLeavePost(dt, bounds);
+        this.tryLeavePost(dt, bounds, others);
     }
 
     updateSummon(dt: number) {
@@ -274,7 +299,11 @@ export class SkillNpc {
         this.container.y = this.y;
     }
 
-    tryLeavePost(dt: number, bounds: PanelBounds) {
+    tryLeavePost(
+        dt: number,
+        bounds: PanelBounds,
+        others: readonly SkillNpc[],
+    ) {
         this.leaveRollTimer += dt;
 
         if (this.leaveRollTimer < NPC_CONFIG.leaveRollIntervalSeconds) {
@@ -284,80 +313,103 @@ export class SkillNpc {
         this.leaveRollTimer -= NPC_CONFIG.leaveRollIntervalSeconds;
 
         if (Math.random() < NPC_CONFIG.leaveChance) {
-            this.beginWandering(bounds);
+            this.beginWandering(bounds, others);
         }
     }
 
-    beginWandering(bounds: PanelBounds) {
+    beginWandering(bounds: PanelBounds, others: readonly SkillNpc[]) {
         this.wandering = true;
-        this.tryBeginLookOrMove(bounds);
+        this.tryBeginLookOrMove(bounds, others);
     }
 
-    pickNewTarget(bounds: PanelBounds) {
+    pickNewTarget(bounds: PanelBounds, others: readonly SkillNpc[]): boolean {
         const { width, height, padding } = bounds;
         const minX = padding;
         const maxX = width - padding;
         const minY = padding;
         const maxY = height - padding;
 
-        const candidates: { x: number; y: number; distance: number }[] = [];
+        let best: { x: number; y: number; clearance: number } | null = null;
 
-        for (let i = 0; i < NPC_CONFIG.wanderTargetCandidates; i++) {
-            const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * NPC_CONFIG.wanderMaxDistance;
+        for (let i = 0; i < NPC_CONFIG.wanderPickAttempts; i++) {
+            const x = minX + Math.random() * (maxX - minX);
+            const y = minY + Math.random() * (maxY - minY);
+            const clearance = minDistanceToOthers(x, y, others);
 
-            const x = Math.min(
-                maxX,
-                Math.max(minX, this.x + Math.cos(angle) * distance),
-            );
-            const y = Math.min(
-                maxY,
-                Math.max(minY, this.y + Math.sin(angle) * distance),
-            );
-            const travelDistance = Math.hypot(x - this.x, y - this.y);
-
-            if (travelDistance < 1) {
+            if (clearance < NPC_CONFIG.minNpcSeparation) {
                 continue;
             }
 
-            candidates.push({ x, y, distance: travelDistance });
-        }
-
-        if (candidates.length === 0) {
-            this.targetX = this.x;
-            this.targetY = this.y;
-            return;
-        }
-
-        const weights = candidates.map(
-            (candidate) => 1 / (candidate.distance * candidate.distance),
-        );
-        const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
-        let roll = Math.random() * totalWeight;
-
-        for (let i = 0; i < candidates.length; i++) {
-            roll -= weights[i];
-            if (roll <= 0) {
-                this.targetX = candidates[i].x;
-                this.targetY = candidates[i].y;
-                this.beginPreMove();
-                return;
+            if (!best || clearance > best.clearance) {
+                best = { x, y, clearance };
             }
         }
 
-        const fallback = candidates[candidates.length - 1];
-        this.targetX = fallback.x;
-        this.targetY = fallback.y;
+        if (!best) {
+            return false;
+        }
+
+        this.pickRetryPending = false;
+        this.targetX = best.x;
+        this.targetY = best.y;
         this.beginPreMove();
+        return true;
     }
 
-    update(dt: number, bounds: PanelBounds) {
+    applyMoveSeparation(
+        others: readonly SkillNpc[],
+        moveX: number,
+        moveY: number,
+    ): { x: number; y: number } {
+        let sepX = 0;
+        let sepY = 0;
+
+        for (const other of others) {
+            const dx = this.x - other.x;
+            const dy = this.y - other.y;
+            const distance = Math.hypot(dx, dy);
+
+            if (
+                distance <= 0 ||
+                distance >= NPC_CONFIG.moveSeparationRadius
+            ) {
+                continue;
+            }
+
+            const strength =
+                (NPC_CONFIG.moveSeparationRadius - distance) /
+                NPC_CONFIG.moveSeparationRadius;
+            sepX += (dx / distance) * strength;
+            sepY += (dy / distance) * strength;
+        }
+
+        const sepLength = Math.hypot(sepX, sepY);
+        if (sepLength <= 0) {
+            return { x: moveX, y: moveY };
+        }
+
+        const blend = NPC_CONFIG.moveSeparationStrength;
+        const combinedX = moveX + (sepX / sepLength) * blend;
+        const combinedY = moveY + (sepY / sepLength) * blend;
+        const combinedLength = Math.hypot(combinedX, combinedY);
+
+        if (combinedLength <= 0) {
+            return { x: moveX, y: moveY };
+        }
+
+        return {
+            x: (combinedX / combinedLength) * Math.hypot(moveX, moveY),
+            y: (combinedY / combinedLength) * Math.hypot(moveX, moveY),
+        };
+    }
+
+    update(dt: number, bounds: PanelBounds, others: readonly SkillNpc[]) {
         if (!this.wandering) {
             return;
         }
 
         if (this.looking) {
-            this.updateLook(dt, bounds);
+            this.updateLook(dt, bounds, others);
             return;
         }
 
@@ -369,7 +421,7 @@ export class SkillNpc {
         if (this.pauseTimer > 0) {
             this.pauseTimer -= dt;
             if (this.pauseTimer <= 0) {
-                this.tryBeginLookOrMove(bounds);
+                this.tryBeginLookOrMove(bounds, others);
             }
             return;
         }
@@ -380,6 +432,14 @@ export class SkillNpc {
 
         if (distance < NPC_CONFIG.arriveDistance) {
             this.setIdleFacing(this.facing);
+
+            if (this.pickRetryPending) {
+                if (!this.pickNewTarget(bounds, others)) {
+                    return;
+                }
+                return;
+            }
+
             this.pauseTimer =
                 NPC_CONFIG.pauseMinSeconds +
                 Math.random() *
@@ -390,8 +450,14 @@ export class SkillNpc {
         this.faceMovement(dx, dy, dt);
 
         const step = this.speed * dt;
-        this.x += (dx / distance) * step;
-        this.y += (dy / distance) * step;
+        const move = this.applyMoveSeparation(
+            others,
+            (dx / distance) * step,
+            (dy / distance) * step,
+        );
+
+        this.x += move.x;
+        this.y += move.y;
 
         this.container.x = this.x;
         this.container.y = this.y;
