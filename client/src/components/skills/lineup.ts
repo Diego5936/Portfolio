@@ -2,6 +2,7 @@ import type { PanelBounds } from "@/components/skills/SkillNpc";
 import { NPC_CONFIG } from "@/components/skills/npcConfig";
 import type { Skill } from "@/data/skills/types";
 
+
 export function getLineupPositions(skills: Skill[], bounds: PanelBounds) {
     const sorted = [...skills].sort((a, b) =>
         a.name.localeCompare(b.name, undefined, { sensitivity: "base" }),

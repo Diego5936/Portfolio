@@ -5,6 +5,7 @@ import { NPC_CONFIG } from "@/components/skills/npcConfig";
 
 const TRUMPET_ALIAS = "trumpet";
 
+
 export async function loadTrumpetTexture() {
     await Assets.load({ alias: TRUMPET_ALIAS, src: trumpetImage });
     const texture = Texture.from(TRUMPET_ALIAS);

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Application } from "pixi.js";
-import { loadBlankSkinSouth } from "@/components/skills/blankSkin";
+import { loadBlankSkinTextures } from "@/components/skills/blankSkin";
 import { getLineupPositions } from "@/components/skills/lineup";
 import { SkillNpc } from "@/components/skills/SkillNpc";
 import { NPC_CONFIG, getNpcLayoutKey } from "@/components/skills/npcConfig";
@@ -59,7 +59,7 @@ export function SkillsSection() {
         app.canvas.style.display = "block";
         mount.appendChild(app.canvas);
 
-        const southTexture = await loadBlankSkinSouth();
+        const blankSkinTextures = await loadBlankSkinTextures();
         const trumpetTexture = await loadTrumpetTexture();
 
         if (cancelled || !mount) {
@@ -70,7 +70,12 @@ export function SkillsSection() {
         const lineup = getLineupPositions(skills, bounds);
         const npcs = skills.map((skill, index) => {
           const position = lineup[index];
-          const npc = new SkillNpc(skill, southTexture, position.x, position.y);
+          const npc = new SkillNpc(
+            skill,
+            blankSkinTextures,
+            position.x,
+            position.y,
+          );
 
           app!.stage.addChild(npc.container);
           return npc;

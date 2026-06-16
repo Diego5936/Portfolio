@@ -1,4 +1,11 @@
-import { Container, Sprite, Text, Texture } from "pixi.js";
+import { Container, Sprite, Text } from "pixi.js";
+import type { BlankSkinTextures } from "@/components/skills/blankSkin";
+import {
+    directionFromDelta,
+    randomLookDirections,
+    type FacingDirection,
+    type WalkFrame,
+} from "@/components/skills/direction";
 import { NPC_CONFIG } from "@/components/skills/npcConfig";
 import type { Skill } from "@/data/skills/types";
 
@@ -14,6 +21,8 @@ export class SkillNpc {
     nameTag: Container;
     sprite: Sprite;
     label: Text;
+    textures: BlankSkinTextures;
+    facing: FacingDirection;
     homeX: number;
     homeY: number;
     x: number;
@@ -24,16 +33,25 @@ export class SkillNpc {
     pauseTimer: number;
     leaveRollTimer: number;
     postStayTimer: number;
+    lookTimer: number;
+    lookQueue: FacingDirection[];
+    lookIndex: number;
+    preMoveTimer: number;
+    walkAnimTimer: number;
+    walkFrame: WalkFrame;
     wandering: boolean;
     summoning: boolean;
+    looking: boolean;
 
     constructor(
         skill: Skill,
-        texture: Texture,
+        textures: BlankSkinTextures,
         startX: number,
         startY: number,
     ) {
         this.skill = skill;
+        this.textures = textures;
+        this.facing = "south";
         this.homeX = startX;
         this.homeY = startY;
         this.x = startX;
@@ -46,14 +64,21 @@ export class SkillNpc {
         this.pauseTimer = 0;
         this.leaveRollTimer = 0;
         this.postStayTimer = 0;
+        this.lookTimer = 0;
+        this.lookQueue = [];
+        this.lookIndex = 0;
+        this.preMoveTimer = 0;
+        this.walkAnimTimer = 0;
+        this.walkFrame = 1;
         this.wandering = false;
         this.summoning = false;
+        this.looking = false;
 
         this.container = new Container();
         this.container.x = startX;
         this.container.y = startY;
 
-        this.sprite = new Sprite(texture);
+        this.sprite = new Sprite(textures.south[1]);
         this.sprite.anchor.set(0.5, 0.5);
         this.sprite.width = NPC_CONFIG.size;
         this.sprite.height = NPC_CONFIG.size;
@@ -86,9 +111,112 @@ export class SkillNpc {
         this.nameTag.y = headTop - NPC_CONFIG.labelGap;
     }
 
+    setIdleFacing(direction: FacingDirection) {
+        this.facing = direction;
+        this.walkAnimTimer = 0;
+        this.walkFrame = 1;
+        this.sprite.texture = this.textures[direction][1];
+    }
+
+    updateWalkFacing(direction: FacingDirection, dt: number) {
+        if (this.facing !== direction) {
+            this.facing = direction;
+            this.walkAnimTimer = 0;
+            this.walkFrame = 1;
+        }
+
+        this.walkAnimTimer += dt;
+
+        if (this.walkAnimTimer >= NPC_CONFIG.walkFrameDurationSeconds) {
+            this.walkAnimTimer -= NPC_CONFIG.walkFrameDurationSeconds;
+            this.walkFrame = this.walkFrame === 1 ? 2 : 1;
+        }
+
+        this.sprite.texture = this.textures[direction][this.walkFrame];
+    }
+
+    faceToward(x: number, y: number) {
+        this.setIdleFacing(directionFromDelta(x - this.x, y - this.y));
+    }
+
+    faceMovement(dx: number, dy: number, dt: number) {
+        this.updateWalkFacing(directionFromDelta(dx, dy), dt);
+    }
+
+    beginLookAround() {
+        const lookCount =
+            NPC_CONFIG.lookDirectionCountMin +
+            Math.floor(
+                Math.random() *
+                    (NPC_CONFIG.lookDirectionCountMax -
+                        NPC_CONFIG.lookDirectionCountMin +
+                        1),
+            );
+
+        this.looking = true;
+        this.lookIndex = 0;
+        this.lookQueue = randomLookDirections(lookCount, this.facing);
+        this.lookTimer = NPC_CONFIG.lookDirectionDurationSeconds;
+
+        if (this.lookQueue.length === 0) {
+            this.looking = false;
+            return;
+        }
+
+        this.setIdleFacing(this.lookQueue[0]);
+    }
+
+    updateLook(dt: number, bounds: PanelBounds) {
+        this.lookTimer -= dt;
+
+        if (this.lookTimer > 0) {
+            return;
+        }
+
+        this.lookIndex += 1;
+
+        if (this.lookIndex >= this.lookQueue.length) {
+            this.looking = false;
+            this.decideAfterLook(bounds);
+            return;
+        }
+
+        this.setIdleFacing(this.lookQueue[this.lookIndex]);
+        this.lookTimer = NPC_CONFIG.lookDirectionDurationSeconds;
+    }
+
+    tryBeginLookOrMove(bounds: PanelBounds) {
+        if (Math.random() < NPC_CONFIG.lookAroundChance) {
+            this.beginLookAround();
+            return;
+        }
+
+        this.decideAfterLook(bounds);
+    }
+
+    decideAfterLook(bounds: PanelBounds) {
+        if (Math.random() < NPC_CONFIG.lookThenMoveChance) {
+            this.pickNewTarget(bounds);
+            return;
+        }
+
+        this.pauseTimer =
+            NPC_CONFIG.pauseMinSeconds +
+            Math.random() *
+                (NPC_CONFIG.pauseMaxSeconds - NPC_CONFIG.pauseMinSeconds);
+    }
+
+    beginPreMove() {
+        this.faceToward(this.targetX, this.targetY);
+        this.preMoveTimer = NPC_CONFIG.preMoveLookDurationSeconds;
+    }
+
     beginSummon() {
         this.wandering = false;
+        this.looking = false;
+        this.lookQueue = [];
         this.pauseTimer = 0;
+        this.preMoveTimer = 0;
         this.leaveRollTimer = 0;
 
         const atHome =
@@ -101,6 +229,7 @@ export class SkillNpc {
             this.y = this.homeY;
             this.container.x = this.x;
             this.container.y = this.y;
+            this.setIdleFacing("south");
             this.postStayTimer = NPC_CONFIG.stayTimeAfterSummonSeconds;
             return;
         }
@@ -108,6 +237,7 @@ export class SkillNpc {
         this.summoning = true;
         this.targetX = this.homeX;
         this.targetY = this.homeY;
+        this.setIdleFacing(directionFromDelta(this.homeX - this.x, this.homeY - this.y));
     }
 
     updateAtPost(dt: number, bounds: PanelBounds) {
@@ -130,9 +260,12 @@ export class SkillNpc {
             this.container.x = this.x;
             this.container.y = this.y;
             this.summoning = false;
+            this.setIdleFacing("south");
             this.postStayTimer = NPC_CONFIG.stayTimeAfterSummonSeconds;
             return;
         }
+
+        this.faceMovement(dx, dy, dt);
 
         const step = NPC_CONFIG.summonSpeed * dt;
         this.x += (dx / distance) * step;
@@ -157,7 +290,7 @@ export class SkillNpc {
 
     beginWandering(bounds: PanelBounds) {
         this.wandering = true;
-        this.pickNewTarget(bounds);
+        this.tryBeginLookOrMove(bounds);
     }
 
     pickNewTarget(bounds: PanelBounds) {
@@ -207,6 +340,7 @@ export class SkillNpc {
             if (roll <= 0) {
                 this.targetX = candidates[i].x;
                 this.targetY = candidates[i].y;
+                this.beginPreMove();
                 return;
             }
         }
@@ -214,6 +348,7 @@ export class SkillNpc {
         const fallback = candidates[candidates.length - 1];
         this.targetX = fallback.x;
         this.targetY = fallback.y;
+        this.beginPreMove();
     }
 
     update(dt: number, bounds: PanelBounds) {
@@ -221,10 +356,20 @@ export class SkillNpc {
             return;
         }
 
+        if (this.looking) {
+            this.updateLook(dt, bounds);
+            return;
+        }
+
+        if (this.preMoveTimer > 0) {
+            this.preMoveTimer -= dt;
+            return;
+        }
+
         if (this.pauseTimer > 0) {
             this.pauseTimer -= dt;
             if (this.pauseTimer <= 0) {
-                this.pickNewTarget(bounds);
+                this.tryBeginLookOrMove(bounds);
             }
             return;
         }
@@ -234,12 +379,15 @@ export class SkillNpc {
         const distance = Math.hypot(dx, dy);
 
         if (distance < NPC_CONFIG.arriveDistance) {
+            this.setIdleFacing(this.facing);
             this.pauseTimer =
                 NPC_CONFIG.pauseMinSeconds +
                 Math.random() *
                     (NPC_CONFIG.pauseMaxSeconds - NPC_CONFIG.pauseMinSeconds);
             return;
         }
+
+        this.faceMovement(dx, dy, dt);
 
         const step = this.speed * dt;
         this.x += (dx / distance) * step;
