@@ -3,17 +3,32 @@ import type { Skill } from "@/data/skills/types";
 export const skills: Skill[] = [
     {
         name: "TensorFlow",
-        category: "framework",
+        category: "ai",
         sprite: "npc.png",
     },
     {
         name: "PyTorch",
-        category: "framework",
+        category: "ai",
         sprite: "npc.png",
     },
     {
         name: "scikit-learn",
-        category: "framework",
+        category: "ai",
+        sprite: "npc.png",
+    },
+    {
+        name: "Google ADK",
+        category: "ai",
+        sprite: "npc.png",
+    },
+    {
+        name: "Jupyter Notebook",
+        category: "ai",
+        sprite: "npc.png",
+    },
+    {
+        name: "YOLOE",
+        category: "ai",
         sprite: "npc.png",
     },
     {
@@ -37,13 +52,28 @@ export const skills: Skill[] = [
         sprite: "npc.png",
     },
     {
-        name: "NVIDIA Isaac Sim",
+        name: "Express",
         category: "framework",
         sprite: "npc.png",
     },
     {
-        name: "ROS/ROS2",
+        name: "MapKit",
         category: "framework",
+        sprite: "npc.png",
+    },
+    {
+        name: "NVIDIA Isaac Sim",
+        category: "robotics",
+        sprite: "npc.png",
+    },
+    {
+        name: "ROS/ROS2",
+        category: "robotics",
+        sprite: "npc.png",
+    },
+    {
+        name: "Jetson",
+        category: "robotics",
         sprite: "npc.png",
     },
     {
@@ -103,7 +133,22 @@ export const skills: Skill[] = [
     },
     {
         name: "Linux",
-        category: "tool",
+        category: "devops",
+        sprite: "npc.png",
+    },
+    {
+        name: "Docker",
+        category: "devops",
+        sprite: "npc.png",
+    },
+    {
+        name: "AWS Lightsail",
+        category: "devops",
+        sprite: "npc.png",
+    },
+    {
+        name: "Git",
+        category: "devops",
         sprite: "npc.png",
     },
     {
@@ -112,32 +157,32 @@ export const skills: Skill[] = [
         sprite: "npc.png",
     },
     {
-        name: "web-sockets",
+        name: "WebSockets",
         category: "tool",
         sprite: "npc.png",
     },
     {
-        name: "Google ADK",
+        name: "PostgreSQL",
         category: "tool",
         sprite: "npc.png",
     },
     {
-        name: "Docker",
+        name: "QGIS",
         category: "tool",
         sprite: "npc.png",
     },
     {
-        name: "AWS Lightsail",
+        name: "AutoCAD",
         category: "tool",
         sprite: "npc.png",
     },
     {
-        name: "Git",
+        name: "IMDF",
         category: "tool",
         sprite: "npc.png",
     },
     {
-        name: "Jupyter Notebook",
+        name: "Agile",
         category: "tool",
         sprite: "npc.png",
     },

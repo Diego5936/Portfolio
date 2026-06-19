@@ -46,6 +46,10 @@ export const NPC_CONFIG = {
     // ---- Summon Logic -----
     summonSpeed: 120, // Speed when walking back to post (px/s)
     stayTimeAfterSummonSeconds: 15, // Seconds to hold post after trumpet summon
+    exitOffscreenY: -48, // Y target when running off the top of the panel
+    reenterOffscreenY: -48, // Base Y when returning from off screen
+    reenterStaggerMin: 0, // Extra px above reenterOffscreenY (random min)
+    reenterStaggerMax: 100, // Extra px above reenterOffscreenY (random max)
     trumpetSize: 56, // Trumpet button size in pixels
     trumpetPadding: 16, // Padding from bottom-right corner
 } as const;

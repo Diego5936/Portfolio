@@ -60,6 +60,10 @@ export class SkillNpc {
     walkFrame: WalkFrame;
     wandering: boolean;
     summoning: boolean;
+    exiting: boolean;
+    hidden: boolean;
+    inFilter: boolean;
+    summonHoldPost: boolean;
     looking: boolean;
     pickRetryPending: boolean;
     hovered: boolean;
@@ -99,6 +103,10 @@ export class SkillNpc {
         this.walkFrame = 1;
         this.wandering = false;
         this.summoning = false;
+        this.exiting = false;
+        this.hidden = false;
+        this.inFilter = true;
+        this.summonHoldPost = true;
         this.looking = false;
         this.pickRetryPending = false;
         this.hovered = false;
@@ -493,7 +501,16 @@ export class SkillNpc {
         this.preMoveTimer = NPC_CONFIG.preMoveLookDurationSeconds;
     }
 
-    beginSummon() {
+    setHome(x: number, y: number) {
+        this.homeX = x;
+        this.homeY = y;
+    }
+
+    setInFilter(inFilter: boolean) {
+        this.inFilter = inFilter;
+    }
+
+    private resetMotionState() {
         if (this.dragging) {
             this.releaseDragListeners();
         }
@@ -504,11 +521,47 @@ export class SkillNpc {
         this.pauseTimer = 0;
         this.preMoveTimer = 0;
         this.leaveRollTimer = 0;
+        this.postStayTimer = 0;
         this.dragging = false;
         this.landing = false;
         this.landingTimer = 0;
         this.hovered = false;
         this.resetVisualPose();
+    }
+
+    reactivateFromHidden(homeX: number, homeY: number) {
+        this.hidden = false;
+        this.exiting = false;
+        this.container.visible = true;
+        this.container.eventMode = "static";
+        this.homeX = homeX;
+        this.homeY = homeY;
+        this.x = homeX;
+        const stagger =
+            NPC_CONFIG.reenterStaggerMin +
+            Math.random() *
+                (NPC_CONFIG.reenterStaggerMax - NPC_CONFIG.reenterStaggerMin);
+        this.y = NPC_CONFIG.reenterOffscreenY - stagger;
+        this.container.x = this.x;
+        this.container.y = this.y;
+    }
+
+    beginExit() {
+        this.resetMotionState();
+        this.inFilter = false;
+        this.exiting = true;
+        this.summoning = true;
+        this.targetX = this.x;
+        this.targetY = NPC_CONFIG.exitOffscreenY;
+        this.setIdleFacing("north");
+    }
+
+    beginSummon(options?: { holdPost?: boolean }) {
+        const holdPost = options?.holdPost ?? true;
+        this.summonHoldPost = holdPost;
+
+        this.resetMotionState();
+        this.exiting = false;
 
         const atHome =
             Math.hypot(this.homeX - this.x, this.homeY - this.y) <
@@ -521,7 +574,9 @@ export class SkillNpc {
             this.container.x = this.x;
             this.container.y = this.y;
             this.setIdleFacing("south");
-            this.postStayTimer = NPC_CONFIG.stayTimeAfterSummonSeconds;
+            this.postStayTimer = holdPost
+                ? NPC_CONFIG.stayTimeAfterSummonSeconds
+                : 0;
             return;
         }
 
@@ -532,7 +587,7 @@ export class SkillNpc {
     }
 
     updateAtPost(dt: number, bounds: PanelBounds, others: readonly SkillNpc[]) {
-        if (this.hovered || this.dragging || this.landing) {
+        if (!this.inFilter || this.hidden || this.hovered || this.dragging || this.landing) {
             return;
         }
 
@@ -549,18 +604,33 @@ export class SkillNpc {
             return;
         }
 
-        const dx = this.homeX - this.x;
-        const dy = this.homeY - this.y;
+        const targetX = this.exiting ? this.targetX : this.homeX;
+        const targetY = this.exiting ? this.targetY : this.homeY;
+        const dx = targetX - this.x;
+        const dy = targetY - this.y;
         const distance = Math.hypot(dx, dy);
 
         if (distance < NPC_CONFIG.arriveDistance) {
-            this.x = this.homeX;
-            this.y = this.homeY;
+            this.x = targetX;
+            this.y = targetY;
             this.container.x = this.x;
             this.container.y = this.y;
+
+            if (this.exiting) {
+                this.exiting = false;
+                this.summoning = false;
+                this.hidden = true;
+                this.container.visible = false;
+                this.container.eventMode = "none";
+                this.setIdleFacing("north");
+                return;
+            }
+
             this.summoning = false;
             this.setIdleFacing("south");
-            this.postStayTimer = NPC_CONFIG.stayTimeAfterSummonSeconds;
+            this.postStayTimer = this.summonHoldPost
+                ? NPC_CONFIG.stayTimeAfterSummonSeconds
+                : 0;
             return;
         }
 
@@ -678,7 +748,14 @@ export class SkillNpc {
     }
 
     update(dt: number, bounds: PanelBounds, others: readonly SkillNpc[]) {
-        if (!this.wandering || this.hovered || this.dragging || this.landing) {
+        if (
+            !this.inFilter ||
+            this.hidden ||
+            !this.wandering ||
+            this.hovered ||
+            this.dragging ||
+            this.landing
+        ) {
             return;
         }
 

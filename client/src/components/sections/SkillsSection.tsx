@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Application, Rectangle } from "pixi.js";
+import { Application } from "pixi.js";
+import {
+  CATEGORY_FILTERS,
+  type CategoryFilterId,
+} from "@/components/skills/categoryFilter";
 import { loadBlankSkinTextures } from "@/components/skills/blankSkin";
 import { getLineupPositions } from "@/components/skills/lineup";
 import { SkillNpc } from "@/components/skills/SkillNpc";
@@ -10,10 +14,28 @@ import { skills } from "@/data/skills";
 const PANEL_HEIGHT = 400;
 const PANEL_PADDING = 24;
 
+function getWanderOthers(npcs: SkillNpc[], npc: SkillNpc) {
+  return npcs.filter(
+    (other) =>
+      other !== npc &&
+      other.inFilter &&
+      !other.hidden &&
+      !other.exiting,
+  );
+}
+
+function getLandingOthers(npcs: SkillNpc[], npc: SkillNpc) {
+  return npcs.filter((other) => other !== npc && !other.hidden);
+}
 
 export function SkillsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const categoryFilterRef = useRef<
+    ((category: CategoryFilterId, options?: { holdPost?: boolean }) => void) | null
+  >(null);
   const [error, setError] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryFilterId>("all");
   const npcLayoutKey = getNpcLayoutKey();
 
   useEffect(() => {
@@ -59,8 +81,6 @@ export function SkillsSection() {
         app.canvas.style.display = "block";
         mount.appendChild(app.canvas);
         app.stage.eventMode = "passive";
-        // Ensure we can keep receiving pointermove events during drag
-        // even when the cursor isn't over an interactive display object.
         app.stage.hitArea = app.screen;
 
         const blankSkinTextures = await loadBlankSkinTextures();
@@ -86,16 +106,91 @@ export function SkillsSection() {
           return npc;
         });
 
-        function summonAll() {
+        let wanderDelay = NPC_CONFIG.wanderDelaySeconds;
+        let currentCategory: CategoryFilterId = "all";
+
+        function summonLineup() {
+          const category = currentCategory;
+          const filteredSkills =
+            category === "all"
+              ? skills
+              : skills.filter((skill) => skill.category === category);
+          const filteredLineup = getLineupPositions(filteredSkills, bounds);
+          const positionByName = new Map(
+            filteredSkills.map((skill, index) => [
+              skill.name,
+              filteredLineup[index],
+            ]),
+          );
+
           for (const npc of npcs) {
-            npc.beginSummon();
+            const isActive =
+              category === "all" || npc.skill.category === category;
+            const position = positionByName.get(npc.skill.name);
+
+            if (!isActive || !position) {
+              continue;
+            }
+
+            npc.setHome(position.x, position.y);
+
+            if (npc.hidden) {
+              npc.reactivateFromHidden(position.x, position.y);
+            }
+
+            npc.beginSummon({ holdPost: true });
           }
         }
 
-        const trumpet = createTrumpetButton(trumpetTexture, bounds, summonAll);
-        app.stage.addChild(trumpet);
+        function applyCategoryFilter(
+          category: CategoryFilterId,
+          options?: { holdPost?: boolean },
+        ) {
+          const holdPost = options?.holdPost ?? false;
+          const filteredSkills =
+            category === "all"
+              ? skills
+              : skills.filter((skill) => skill.category === category);
+          const filteredLineup = getLineupPositions(filteredSkills, bounds);
+          const positionByName = new Map(
+            filteredSkills.map((skill, index) => [
+              skill.name,
+              filteredLineup[index],
+            ]),
+          );
 
-        let wanderDelay = NPC_CONFIG.wanderDelaySeconds;
+          wanderDelay = NPC_CONFIG.wanderDelaySeconds;
+          currentCategory = category;
+          setSelectedCategory(category);
+
+          for (const npc of npcs) {
+            const isActive =
+              category === "all" || npc.skill.category === category;
+            const position = positionByName.get(npc.skill.name);
+
+            npc.setInFilter(isActive);
+
+            if (isActive && position) {
+              npc.setHome(position.x, position.y);
+
+              if (npc.hidden) {
+                npc.reactivateFromHidden(position.x, position.y);
+              }
+
+              npc.beginSummon({ holdPost });
+              continue;
+            }
+
+            if (!npc.hidden) {
+              npc.beginExit();
+            }
+          }
+        }
+
+        categoryFilterRef.current = applyCategoryFilter;
+
+        const trumpet = createTrumpetButton(trumpetTexture, bounds, summonLineup);
+        app.stage.addChild(trumpet);
 
         app.ticker.add((ticker) => {
           const dt = ticker.deltaMS / 1000;
@@ -104,11 +199,16 @@ export function SkillsSection() {
             wanderDelay -= dt;
 
             for (const npc of npcs) {
+              if (npc.hidden) {
+                continue;
+              }
+
               if (npc.dragging) {
                 npc.updateDrag(dt);
               } else if (npc.landing) {
-                const others = npcs.filter((other) => other !== npc);
-                npc.updateLanding(dt, bounds, others);
+                npc.updateLanding(dt, bounds, getLandingOthers(npcs, npc));
+              } else if (npc.summoning) {
+                npc.updateSummon(dt);
               }
             }
 
@@ -116,7 +216,9 @@ export function SkillsSection() {
           }
 
           for (const npc of npcs) {
-            const others = npcs.filter((other) => other !== npc);
+            if (npc.hidden) {
+              continue;
+            }
 
             if (npc.dragging) {
               npc.updateDrag(dt);
@@ -124,16 +226,23 @@ export function SkillsSection() {
             }
 
             if (npc.landing) {
-              npc.updateLanding(dt, bounds, others);
+              npc.updateLanding(dt, bounds, getLandingOthers(npcs, npc));
               continue;
             }
 
             if (npc.summoning) {
               npc.updateSummon(dt);
-            } else if (npc.wandering) {
-              npc.update(dt, bounds, others);
+              continue;
+            }
+
+            if (!npc.inFilter) {
+              continue;
+            }
+
+            if (npc.wandering) {
+              npc.update(dt, bounds, getWanderOthers(npcs, npc));
             } else {
-              npc.updateAtPost(dt, bounds, others);
+              npc.updateAtPost(dt, bounds, getWanderOthers(npcs, npc));
             }
           }
         });
@@ -147,6 +256,7 @@ export function SkillsSection() {
 
     return () => {
       cancelled = true;
+      categoryFilterRef.current = null;
       app?.destroy(true);
       mount.replaceChildren();
     };
@@ -167,10 +277,35 @@ export function SkillsSection() {
         </p>
       ) : null}
 
-      <div
-        ref={containerRef}
-        className="h-[400px] w-full overflow-hidden rounded-2xl border border-border/80 bg-card"
-      />
+      <div className="relative">
+        <div
+          ref={containerRef}
+          className="h-[400px] w-full overflow-hidden rounded-2xl border border-border/80 bg-card"
+        />
+
+        <div className="pointer-events-none absolute inset-0 flex flex-col-reverse items-start justify-end gap-1.5 p-3">
+          {CATEGORY_FILTERS.map((filter) => {
+            const isSelected = selectedCategory === filter.id;
+
+            return (
+              <button
+                key={filter.id}
+                type="button"
+                aria-pressed={isSelected}
+                className={[
+                  "pointer-events-auto min-w-[7.5rem] rounded-md border px-3 py-1.5 text-left text-xs font-medium shadow-sm transition-colors",
+                  isSelected
+                    ? "border-white/40 bg-white/20 text-white"
+                    : "border-white/20 bg-black/35 text-white/85 hover:bg-black/50",
+                ].join(" ")}
+                onClick={() => categoryFilterRef.current?.(filter.id)}
+              >
+                {filter.label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }
