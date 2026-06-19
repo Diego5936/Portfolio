@@ -1,0 +1,35 @@
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./server:/app
+      - server-node_modules:/app/node_modules
+      - server-generated:/app/public/generated
+      - server-model-cache:/app/.cache
+    environment:
+      PORT: 3001
+      PYTHON_PATH: python3
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+      - client-node_modules:/app/node_modules
+    environment:
+      VITE_DEV_API_PROXY: http://server:3001
+    depends_on:
+      - server
+
+volumes:
+  server-node_modules:
+  server-generated:
+  server-model-cache:
+  client-node_modules:

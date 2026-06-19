@@ -1,0 +1,31 @@
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    expose:
+      - "3001"
+    volumes:
+      - server-generated-prod:/app/public/generated
+      - server-model-cache-prod:/app/.cache
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      PYTHON_PATH: python3
+    restart: unless-stopped
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: ""
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+    restart: unless-stopped
+
+volumes:
+  server-generated-prod:
+  server-model-cache-prod:
