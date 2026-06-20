@@ -87,7 +87,7 @@ export function ProjectsSection() {
           <button
             key={project.id}
             onClick={() => setSelectedId(project.id)}
-            className="project-card group h-full border shadow-sm transition hover:-translate-y-1 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
+            className="project-card group h-full border shadow-sm focus:outline-none focus:ring-2 focus:ring-ring"
             style={projectSurfaceStyle(project)}
           >
             <div className="project-card-tab-row">
