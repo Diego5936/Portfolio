@@ -6,9 +6,6 @@ import game2048Image from "@/data/projects/garmin-arcade/media/sc_img-2048.png";
 export const garminArcadeProject: Project = {
   id: "garmin-arcade-gallery",
   title: "Garmin Arcade Gallery",
-  panelColor: "#000000",
-  accentColor: "#6848b0",
-  textColor: "#f4eeff",
   descriptionSections: [
     {
       heading: "🎮 ArcadeX for Garmin Smartwatches",

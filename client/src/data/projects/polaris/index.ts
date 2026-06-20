@@ -6,9 +6,6 @@ import fdd from "./media/Final Design Document.pdf";
 export const polarisProject: Project = {
   id: "polaris",
   title: "Polaris",
-  panelColor: "#1364b0",
-  accentColor: "#12765c",
-  textColor: "#e7eefb",
   descriptionSections: [
     {
       heading: "Overview",

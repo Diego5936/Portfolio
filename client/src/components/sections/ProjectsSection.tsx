@@ -1,41 +1,45 @@
-import { useEffect, useState, type CSSProperties } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight, ExternalLink, Github, Globe, Video, X } from "lucide-react";
 import { projects } from "@/data/projects";
-import type { Project, ProjectMedia } from "@/data/projects/types";
+import { ProjectCardTechs } from "@/components/sections/ProjectCardTechs";
+import type { ProjectMedia } from "@/data/projects/types";
+import type { LucideIcon } from "lucide-react";
 
-function projectSurfaceStyle(project: Project): CSSProperties {
-  return {
-    backgroundColor: project.panelColor,
-    borderColor: project.accentColor,
-    ...(project.textColor
-      ? {
-          color: project.textColor,
-          ["--portfolio-text-muted" as string]: project.textColor,
-          ["--portfolio-scroll-thumb" as string]: "rgba(255, 255, 255, 0.32)",
-          ["--portfolio-scroll-thumb-hover" as string]: "rgba(255, 255, 255, 0.5)",
-        }
-      : {}),
-  };
-}
+function getProjectLinkIcon(label: string, href: string): LucideIcon | null {
+  const normalizedLabel = label.toLowerCase();
+  const normalizedHref = href.toLowerCase();
 
-function techPillClassName(project: Project, extra = "") {
-  return project.accentColor
-    ? `shrink-0 rounded-full px-2.5 py-1 text-xs ${extra}`.trim()
-    : `shrink-0 rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground ${extra}`.trim();
-}
+  if (
+    normalizedLabel.includes("repository") ||
+    normalizedLabel.includes("github") ||
+    normalizedHref.includes("github.com")
+  ) {
+    return Github;
+  }
 
-function techPillStyle(project: Project): CSSProperties | undefined {
-  if (!project.accentColor) return undefined;
-  return {
-    backgroundColor: project.accentColor,
-    color: project.textColor,
-  };
-}
+  if (
+    normalizedLabel.includes("video") ||
+    normalizedLabel.includes("youtube") ||
+    normalizedHref.includes("youtube.com") ||
+    normalizedHref.includes("youtu.be")
+  ) {
+    return Video;
+  }
 
-function mutedLinkClassName(project: Project) {
-  return project.textColor
-    ? "text-sm opacity-80 transition hover:opacity-100"
-    : "text-sm text-muted-foreground hover:text-foreground";
+  if (normalizedLabel.includes("devpost") || normalizedHref.includes("devpost.com")) {
+    return ExternalLink;
+  }
+
+  if (
+    normalizedLabel.includes("live site") ||
+    normalizedLabel.includes("live demo") ||
+    normalizedLabel.includes("website") ||
+    normalizedLabel.includes("live")
+  ) {
+    return Globe;
+  }
+
+  return null;
 }
 
 export function ProjectsSection() {
@@ -46,9 +50,6 @@ export function ProjectsSection() {
   useEffect(() => {
     if (selectedId) setMediaIndex(0);
   }, [selectedId]);
-  const maxVisibleTechs = 3;
-  const getPreviewText = (text: string, maxLength = 130) =>
-    text.length > maxLength ? `${text.slice(0, maxLength).trimEnd()}...` : text;
   const getProjectPreview = (project: (typeof projects)[number]) =>
     project.descriptionSections[0]?.paragraphs[0] ?? "";
   const renderMedia = (media: ProjectMedia, className: string) => {
@@ -77,73 +78,55 @@ export function ProjectsSection() {
     project.media.length > 1 && project.media[0].isSquare && project.media[1].isSquare;
 
   return (
-    <section id="projects" className="pb-14 pt-6 sm:pb-20 sm:pt-8">
-      <h2 className="mb-6 text-center text-4xl font-semibold tracking-tight sm:text-5xl">
+    <section id="projects" className="projects-section pt-6 sm:pt-8">
+      <h2 className="mb-10 text-center text-4xl font-semibold tracking-tight sm:text-5xl">
         Projects
       </h2>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+      <div className="projects-grid">
         {projects.map((project) => (
           <button
             key={project.id}
+            data-project={project.id}
             onClick={() => setSelectedId(project.id)}
-            className="project-card group h-full border shadow-sm focus:outline-none focus:ring-2 focus:ring-ring"
-            style={projectSurfaceStyle(project)}
+            className="project-card group h-full focus:outline-none focus:ring-2 focus:ring-ring"
           >
-            <div className="project-card-tab-row">
-              <div className="project-card-tab">
-                <h3 className="project-card-title">{project.title}</h3>
-              </div>
-              <div className="project-card-tab-rail" aria-hidden="true" />
+            <div className="project-card-panel project-card-title-panel">
+              <h3 className="project-card-title">{project.title}</h3>
             </div>
 
-            {project.media[0] && (
-              <div className="project-card-media">
-                {shouldShowDualPreview(project) ? (
-                  <div className="project-card-dual-preview">
-                    {[project.media[0], project.media[1]].map((media) => (
-                      <div key={media.src} className="project-card-dual-preview-item">
-                        {renderMedia(media, "h-full w-full object-cover")}
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  renderMedia(project.media[0], "aspect-[16/10] h-auto w-full object-cover")
-                )}
-              </div>
-            )}
-
-            <div className="project-card-body">
-              {getProjectPreview(project) && (
-                <p
-                  className={
-                    project.textColor
-                      ? "text-sm opacity-80"
-                      : "text-sm text-muted-foreground"
-                  }
-                >
-                  {getPreviewText(getProjectPreview(project))}
-                </p>
+            <div className="project-card-panel project-card-content-panel">
+              {project.media[0] && (
+                <div className="project-card-media">
+                  {shouldShowDualPreview(project) ? (
+                    <div className="project-card-dual-preview">
+                      {[project.media[0], project.media[1]].map((media) => (
+                        <div key={media.src} className="project-card-dual-preview-item">
+                          {renderMedia(media, "h-full w-full object-cover")}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    renderMedia(project.media[0], "aspect-[16/10] h-auto w-full object-cover")
+                  )}
+                </div>
               )}
 
-              <div className="project-card-techs">
-                {project.techs.slice(0, maxVisibleTechs).map((tech) => (
-                  <span
-                    key={tech}
-                    className={techPillClassName(project)}
-                    style={techPillStyle(project)}
-                  >
-                    {tech}
-                  </span>
-                ))}
-                {project.techs.length > maxVisibleTechs && (
-                  <span
-                    className={techPillClassName(project)}
-                    style={techPillStyle(project)}
-                  >
-                    {project.techs.length - maxVisibleTechs}+
-                  </span>
+              <div className="project-card-body">
+                {getProjectPreview(project) && (
+                  <p className="project-card-preview text-sm">
+                    {getProjectPreview(project)}
+                  </p>
                 )}
+
+                <ProjectCardTechs techs={project.techs} />
+
+                <div className="project-card-details-link">
+                  <span>View Details</span>
+                  <span className="project-card-details-arrow-track" aria-hidden="true">
+                    <ChevronRight className="project-card-details-icon" />
+                  </span>
+                </div>
               </div>
             </div>
           </button>
@@ -162,91 +145,107 @@ export function ProjectsSection() {
             onClick={() => setSelectedId(null)}
           >
             <div
+              data-project={selected.id}
               className="portfolio-modal-scroll max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border p-6 pr-4 shadow-xl animate-in fade-in zoom-in-95 sm:pr-5"
-              style={projectSurfaceStyle(selected)}
               onClick={(event) => event.stopPropagation()}
             >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-2xl font-semibold tracking-tight">{selected.title}</h3>
+              <div className="project-modal-header">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="project-modal-title">{selected.title}</h3>
+
+                  <button
+                    type="button"
+                    onClick={() => setSelectedId(null)}
+                    aria-label="Close"
+                    className="project-modal-close shrink-0 transition"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
                 </div>
 
-                <button
-                  onClick={() => setSelectedId(null)}
-                  className={
-                    selected.textColor
-                      ? "rounded-md px-3 py-2 text-sm opacity-80 transition hover:opacity-100"
-                      : "rounded-md px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
-                  }
-                >
-                  Close
-                </button>
+                {selected.links.length > 0 && (
+                  <div className="project-modal-action-bar">
+                    {selected.links.map((link) => {
+                      const LinkIcon = getProjectLinkIcon(link.label, link.href);
+
+                      return (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-action-link"
+                        onClick={(event) => event.stopPropagation()}
+                      >
+                        {LinkIcon && (
+                          <LinkIcon className="project-action-link-icon" aria-hidden="true" />
+                        )}
+                        {link.label}
+                      </a>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
 
               {selected.media.length > 0 && (
-                <div className="mt-5 flex w-full flex-col items-center">
-                  <div
-                    className={`flex w-full items-center gap-3 ${selected.media.length > 1 ? "" : "justify-center"}`}
-                  >
+                <div className="project-media-showcase mt-5">
+                  <div className="project-media-frame">
                     {selected.media.length > 1 && (
-                      <button
-                        type="button"
-                        aria-label="Previous media"
-                        className={
-                          selected.textColor
-                            ? "shrink-0 rounded-md border border-white/15 bg-black/20 p-2 opacity-80 transition hover:opacity-100"
-                            : "shrink-0 rounded-md border bg-background p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
-                        }
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          setMediaIndex((index) =>
-                            (index - 1 + selected.media.length) % selected.media.length
-                          );
-                        }}
-                      >
-                        <ChevronLeft className="h-5 w-5" />
-                      </button>
+                      <>
+                        <button
+                          type="button"
+                          aria-label="Previous media"
+                          className="project-media-nav project-media-nav-prev"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setMediaIndex((index) =>
+                              (index - 1 + selected.media.length) % selected.media.length
+                            );
+                          }}
+                        >
+                          <ChevronLeft className="h-5 w-5" />
+                        </button>
+                        <button
+                          type="button"
+                          aria-label="Next media"
+                          className="project-media-nav project-media-nav-next"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setMediaIndex((index) => (index + 1) % selected.media.length);
+                          }}
+                        >
+                          <ChevronRight className="h-5 w-5" />
+                        </button>
+                      </>
                     )}
-                    <div
-                      className={
-                        selected.textColor
-                          ? "flex min-h-[14rem] flex-1 items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-black/20 sm:min-h-[17.5rem]"
-                          : "flex min-h-[14rem] flex-1 items-center justify-center overflow-hidden rounded-xl border bg-muted/20 sm:min-h-[17.5rem]"
-                      }
-                    >
-                      {renderMedia(
-                        selected.media[mediaIndex],
-                        "max-h-[min(50vh,22rem)] w-full max-w-full object-contain"
-                      )}
+
+                    <div className="project-media-stage">
+                      {renderMedia(selected.media[mediaIndex], "project-media-item")}
                     </div>
-                    {selected.media.length > 1 && (
-                      <button
-                        type="button"
-                        aria-label="Next media"
-                        className={
-                          selected.textColor
-                            ? "shrink-0 rounded-md border border-white/15 bg-black/20 p-2 opacity-80 transition hover:opacity-100"
-                            : "shrink-0 rounded-md border bg-background p-2 text-muted-foreground transition hover:bg-muted hover:text-foreground"
-                        }
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          setMediaIndex((index) => (index + 1) % selected.media.length);
-                        }}
-                      >
-                        <ChevronRight className="h-5 w-5" />
-                      </button>
-                    )}
                   </div>
+
                   {selected.media.length > 1 && (
-                    <p
-                      className={
-                        selected.textColor
-                          ? "mt-2 text-center text-sm tabular-nums opacity-80"
-                          : "mt-2 text-center text-sm tabular-nums text-muted-foreground"
-                      }
-                    >
-                      {mediaIndex + 1} / {selected.media.length}
-                    </p>
+                    <div className="project-media-dots" role="tablist" aria-label="Project media">
+                      {selected.media.map((media, index) => (
+                        <button
+                          key={media.src}
+                          type="button"
+                          role="tab"
+                          aria-label={`Show media ${index + 1} of ${selected.media.length}`}
+                          aria-selected={index === mediaIndex}
+                          className={
+                            index === mediaIndex
+                              ? "project-media-dot is-active"
+                              : "project-media-dot"
+                          }
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setMediaIndex(index);
+                          }}
+                        />
+                      ))}
+                    </div>
                   )}
                 </div>
               )}
@@ -255,9 +254,7 @@ export function ProjectsSection() {
                 {selected.descriptionSections.map((section) => (
                   <div key={`${selected.id}-${section.heading}`}>
                     <h4 className="portfolio-detail-title">{section.heading}</h4>
-                    <div
-                      className={`portfolio-detail-body mt-2 space-y-3 ${selected.textColor ? "opacity-80" : ""}`}
-                    >
+                    <div className="portfolio-detail-body mt-2 space-y-3">
                       {section.paragraphs.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
                       ))}
@@ -266,25 +263,6 @@ export function ProjectsSection() {
                 ))}
               </div>
 
-              {selected.links.length > 0 && (
-                <div className="mt-6">
-                  <h4 className="text-xl font-semibold tracking-tight">Links</h4>
-                  <div className="mt-3 flex flex-wrap gap-4 text-sm">
-                    {selected.links.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={mutedLinkClassName(selected)}
-                      >
-                        {link.label} →
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-
               {selected.documents && selected.documents.length > 0 && (
                 <div className="mt-6">
                   <h4 className="text-xl font-semibold tracking-tight">Documents</h4>
@@ -292,17 +270,13 @@ export function ProjectsSection() {
                     {selected.documents.map((document) => (
                       <div
                         key={document.href}
-                        className={
-                          selected.textColor
-                            ? "rounded-xl border border-white/10 bg-black/20 p-3"
-                            : "rounded-xl border bg-muted/10 p-3"
-                        }
+                        className="project-document-panel rounded-xl border p-3"
                       >
                         <a
                           href={document.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={mutedLinkClassName(selected)}
+                          className="project-muted-link transition hover:text-foreground"
                         >
                           {document.label} →
                         </a>
@@ -325,8 +299,7 @@ export function ProjectsSection() {
                   {selected.techs.map((tech) => (
                     <span
                       key={tech}
-                      className={techPillClassName(selected, "")}
-                      style={techPillStyle(selected)}
+                      className="project-tech-pill shrink-0 rounded-full px-2.5 py-1 text-xs"
                     >
                       {tech}
                     </span>

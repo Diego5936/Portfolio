@@ -3,8 +3,6 @@ import type { Project } from "@/data/projects/types";
 export const realVillagersProject: Project = {
   id: "real-villagers",
   title: "Real Villagers: Multi-Agent Reinforcement Learning in Minecraft",
-  panelColor: "#19191d",
-  accentColor: "#5a8848",
   descriptionSections: [
     {
       heading: "Overview",

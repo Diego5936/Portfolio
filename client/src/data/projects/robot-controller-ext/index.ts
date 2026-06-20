@@ -5,9 +5,6 @@ import spotTargets from "./media/spot-targets.gif";
 export const robotControllerExtProject: Project = {
   id: "robot-controller-ext",
   title: "Isaac Sim Robot Controller",
-  panelColor: "#000000",
-  accentColor: "#007a1b",
-  textColor: "#daf7e3",
   descriptionSections: [
     {
       heading: "Overview",

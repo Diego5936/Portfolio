@@ -14,7 +14,7 @@ interface DiffusionGenerationJob {
 }
 
 export function DiffusionPanel() {
-  const diffusionEnabled = false;
+  const diffusionEnabled = true;
   const apiBaseUrl = useMemo(
     () => import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3001",
     [],

@@ -6,9 +6,6 @@ import freeflowdemo from "./media/freeflow-jam-vid.gif";
 export const synthstepProject: Project = {
   id: "synthstep",
   title: "SynthStep",
-  panelColor: "#000000",
-  accentColor: "#007a1b",
-  textColor: "#daf7e3",
   descriptionSections: [
     {
       heading: "Inspiration",

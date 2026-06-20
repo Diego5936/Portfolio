@@ -6,9 +6,6 @@ import hotdogFinalReport from "./media/final_report.pdf";
 export const hotdogProject: Project = {
   id: "hotdog",
   title: "HotDog",
-  panelColor: "#000000",
-  accentColor: "#007a1b",
-  textColor: "#daf7e3",
   descriptionSections: [
     {
       heading: "Origin",
