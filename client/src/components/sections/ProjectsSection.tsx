@@ -66,6 +66,10 @@ export function ProjectsSection() {
       );
     }
 
+    if (media.kind === "gif") {
+      return <img src={media.src} alt={media.alt} className={className} />;
+    }
+
     return <img src={media.src} alt={media.alt} className={className} loading="lazy" />;
   };
 

@@ -6,7 +6,7 @@ export type ProjectLink = {
 export type ProjectMedia = {
   src: string;
   alt: string;
-  kind: "image" | "video";
+  kind: "image" | "video" | "gif";
   poster?: string;
   isSquare?: boolean;
 };

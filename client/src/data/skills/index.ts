@@ -77,6 +77,21 @@ export const skills: Skill[] = [
         sprite: "npc.png",
     },
     {
+        name: "Agentic Robotics",
+        category: "robotics",
+        sprite: "npc.png",
+    },
+    {
+        name: "Robot Control",
+        category: "robotics",
+        sprite: "npc.png",
+    },
+    {
+        name: "Sensor Integration",
+        category: "robotics",
+        sprite: "npc.png",
+    },
+    {
         name: "C",
         category: "language",
         sprite: "npc.png",
@@ -93,6 +108,11 @@ export const skills: Skill[] = [
     },
     {
         name: "Java",
+        category: "language",
+        sprite: "npc.png",
+    },
+    {
+        name: "JavaScript",
         category: "language",
         sprite: "npc.png",
     },
