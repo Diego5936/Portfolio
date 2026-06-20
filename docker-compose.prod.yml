@@ -16,8 +16,8 @@ services:
 
   client:
     build:
-      context: ./client
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: client/Dockerfile
       args:
         VITE_API_BASE_URL: ""
     ports:

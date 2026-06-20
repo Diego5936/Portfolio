@@ -263,7 +263,7 @@ export function SkillsSection() {
   }, [npcLayoutKey]);
 
   return (
-    <section id="skills" className="scroll-mt-14 py-14 sm:py-20 sm:scroll-mt-16">
+    <section id="skills" className="scroll-mt-14 py-14 sm:py-14 sm:scroll-mt-16">
       <div className="mb-6">
         <h2 className="portfolio-section-title">Skills</h2>
         <p className="mt-2 text-muted-foreground">
