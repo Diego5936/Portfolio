@@ -388,6 +388,13 @@ export function Header() {
             onClick={(event) => handleNavClick(event, "/")}
             className="portfolio-header-logo shrink-0 font-semibold tracking-tight"
           >
+            <img
+              src="/icon.png"
+              alt=""
+              className="portfolio-header-logo-icon"
+              width={36}
+              height={36}
+            />
             dpedroza
             <span className="text-muted-foreground">.dev</span>
           </a>

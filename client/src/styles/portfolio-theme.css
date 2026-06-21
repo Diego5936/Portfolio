@@ -541,8 +541,17 @@
 }
 
 .portfolio-header-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: calc(1 * var(--portfolio-header-line-height));
   line-height: calc(1.5 * var(--portfolio-header-line-height));
+}
+
+.portfolio-header-logo-icon {
+  flex-shrink: 0;
+  width: 1lh;
+  height: 1lh;
 }
 
 .portfolio-header-brand-nav {
