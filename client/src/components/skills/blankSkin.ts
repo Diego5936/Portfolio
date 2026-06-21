@@ -1,14 +1,14 @@
 import { Assets, Texture } from "pixi.js";
-import hang1Skin from "@/assets/blank_skin/hang-1.png";
-import hang2Skin from "@/assets/blank_skin/hang-2.png";
-import down1Skin from "@/assets/blank_skin/down-1.png";
-import down2Skin from "@/assets/blank_skin/down-2.png";
-import left1Skin from "@/assets/blank_skin/left-1.png";
-import left2Skin from "@/assets/blank_skin/left-2.png";
-import right1Skin from "@/assets/blank_skin/right-1.png";
-import right2Skin from "@/assets/blank_skin/right-2.png";
-import up1Skin from "@/assets/blank_skin/up-1.png";
-import up2Skin from "@/assets/blank_skin/up-2.png";
+import hang1Skin from "@/assets/skills-sections/skins/blank_skin/hang-1.png";
+import hang2Skin from "@/assets/skills-sections/skins/blank_skin/hang-2.png";
+import down1Skin from "@/assets/skills-sections/skins/blank_skin/down-1.png";
+import down2Skin from "@/assets/skills-sections/skins/blank_skin/down-2.png";
+import left1Skin from "@/assets/skills-sections/skins/blank_skin/left-1.png";
+import left2Skin from "@/assets/skills-sections/skins/blank_skin/left-2.png";
+import right1Skin from "@/assets/skills-sections/skins/blank_skin/right-1.png";
+import right2Skin from "@/assets/skills-sections/skins/blank_skin/right-2.png";
+import up1Skin from "@/assets/skills-sections/skins/blank_skin/up-1.png";
+import up2Skin from "@/assets/skills-sections/skins/blank_skin/up-2.png";
 import type { FacingDirection, WalkFrame } from "@/components/skills/direction";
 
 const HANG_SKIN_SOURCES: Record<WalkFrame, string> = {

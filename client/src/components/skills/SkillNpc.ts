@@ -7,6 +7,10 @@ import {
     type WalkFrame,
 } from "@/components/skills/direction";
 import { NPC_CONFIG } from "@/components/skills/npcConfig";
+import {
+    isPositionInPanelExclusion,
+    resolvePositionFromPanelExclusions,
+} from "@/components/skills/panelExclusions";
 import type { Skill } from "@/data/skills/types";
 
 export type PanelBounds = {
@@ -251,6 +255,17 @@ export class SkillNpc {
             height - padding - half,
             Math.max(padding + half, this.y),
         );
+        this.applyPanelExclusions(bounds);
+    }
+
+    private applyPanelExclusions(bounds: PanelBounds) {
+        const resolved = resolvePositionFromPanelExclusions(
+            this.x,
+            this.y,
+            bounds,
+        );
+        this.x = resolved.x;
+        this.y = resolved.y;
         this.container.x = this.x;
         this.container.y = this.y;
     }
@@ -599,7 +614,7 @@ export class SkillNpc {
         this.tryLeavePost(dt, bounds, others);
     }
 
-    updateSummon(dt: number) {
+    updateSummon(dt: number, bounds: PanelBounds) {
         if (this.hovered || this.dragging || this.landing) {
             return;
         }
@@ -639,8 +654,7 @@ export class SkillNpc {
         const step = NPC_CONFIG.summonSpeed * dt;
         this.x += (dx / distance) * step;
         this.y += (dy / distance) * step;
-        this.container.x = this.x;
-        this.container.y = this.y;
+        this.applyPanelExclusions(bounds);
     }
 
     tryLeavePost(
@@ -681,6 +695,10 @@ export class SkillNpc {
             const clearance = minDistanceToOthers(x, y, others);
 
             if (clearance < NPC_CONFIG.minNpcSeparation) {
+                continue;
+            }
+
+            if (isPositionInPanelExclusion(x, y, bounds)) {
                 continue;
             }
 
@@ -809,8 +827,6 @@ export class SkillNpc {
 
         this.x += move.x;
         this.y += move.y;
-
-        this.container.x = this.x;
-        this.container.y = this.y;
+        this.applyPanelExclusions(bounds);
     }
 }

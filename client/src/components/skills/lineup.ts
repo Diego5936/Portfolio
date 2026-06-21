@@ -11,14 +11,12 @@ export function getLineupPositions(skills: Skill[], bounds: PanelBounds) {
     const {
         lineupSpacing,
         lineupRowGap,
+        lineupRows,
         lineupBottomOffset,
     } = NPC_CONFIG;
 
     const baseY = bounds.height - bounds.padding - lineupBottomOffset;
-    const availableWidth = bounds.width - bounds.padding * 2;
-    const maxPerRow = Math.max(1, Math.floor(availableWidth / lineupSpacing) + 1);
-    const rowCount = Math.ceil(sorted.length / maxPerRow);
-    const perRow = Math.ceil(sorted.length / rowCount);
+    const perRow = Math.ceil(sorted.length / lineupRows);
 
     const rows: Skill[][] = [];
     for (let i = 0; i < sorted.length; i += perRow) {

@@ -1,11 +1,9 @@
 # HELLO from the README.md
 
-This is my portfolio <3 it was about time I had one! It's been fun getting to make it, but even more fun all the ideas that I've come up with.
+This is my portfolio <3 It's been fun getting to make it, but even more fun all the ideas that I've come up with.
 
-There are many things that I still want to improve, ideas I have that I want to add, and other thoughts about what else I could add (reach goals) in the future.
+There are existing sections that I still want to improve, ideas I want to implement, and other thoughts about what else I could do (reach goals) in the future.
 
 To Do:
 - Custom sprites per skill for the skill section.
-
-Other features:
-- Procedfuraly generated backgrounds with tie-dye style patterns.
+- User holds a skill npc in the air and is able to put them inside a glass vial. That will take the user to another screen where that specific skill shows off all the projects it is a part of. 

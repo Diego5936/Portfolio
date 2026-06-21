@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Application } from "pixi.js";
+import type { CategoryFilterId } from "@/components/skills/categoryFilter";
 import {
-  CATEGORY_FILTERS,
-  type CategoryFilterId,
-} from "@/components/skills/categoryFilter";
+  createCategoryFilters,
+  loadCategoryFilterTextures,
+} from "@/components/skills/categoryFilterSprites";
 import { loadBlankSkinTextures } from "@/components/skills/blankSkin";
 import { getLineupPositions } from "@/components/skills/lineup";
 import { SkillNpc } from "@/components/skills/SkillNpc";
 import { NPC_CONFIG, getNpcLayoutKey } from "@/components/skills/npcConfig";
-import { createTrumpetButton, loadTrumpetTexture } from "@/components/skills/trumpet";
+import { createTrumpetButton, loadTrumpetTextures } from "@/components/skills/trumpet";
 import { skills } from "@/data/skills";
 
 const PANEL_HEIGHT = 400;
@@ -34,8 +35,6 @@ export function SkillsSection() {
     ((category: CategoryFilterId, options?: { holdPost?: boolean }) => void) | null
   >(null);
   const [error, setError] = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] =
-    useState<CategoryFilterId>("all");
   const npcLayoutKey = getNpcLayoutKey();
 
   useEffect(() => {
@@ -84,7 +83,8 @@ export function SkillsSection() {
         app.stage.hitArea = app.screen;
 
         const blankSkinTextures = await loadBlankSkinTextures();
-        const trumpetTexture = await loadTrumpetTexture();
+        const trumpetTextures = await loadTrumpetTextures();
+        const categoryFilterTextures = await loadCategoryFilterTextures();
 
         if (cancelled || !mount) {
           app.destroy(true);
@@ -107,9 +107,28 @@ export function SkillsSection() {
         });
 
         let wanderDelay = NPC_CONFIG.wanderDelaySeconds;
+        let lineupSignRevealDelay =
+          NPC_CONFIG.wanderDelaySeconds +
+          NPC_CONFIG.lineupSignDelayAfterWanderSeconds;
         let currentCategory: CategoryFilterId = "all";
 
+        function hideLineupSignUntilWanderDelay() {
+          lineupSign.visible = false;
+          lineupSignRevealDelay =
+            NPC_CONFIG.wanderDelaySeconds +
+            NPC_CONFIG.lineupSignDelayAfterWanderSeconds;
+        }
+
+        function hideLineupSignUntilHoldPostDelay() {
+          lineupSign.visible = false;
+          lineupSignRevealDelay =
+            NPC_CONFIG.stayTimeAfterSummonSeconds +
+            NPC_CONFIG.lineupSignDelayAfterWanderSeconds;
+        }
+
         function summonLineup() {
+          hideLineupSignUntilHoldPostDelay();
+
           const category = currentCategory;
           const filteredSkills =
             category === "all"
@@ -142,6 +161,8 @@ export function SkillsSection() {
           }
         }
 
+        let updateFilterSelection: (category: CategoryFilterId) => void = () => {};
+
         function applyCategoryFilter(
           category: CategoryFilterId,
           options?: { holdPost?: boolean },
@@ -160,8 +181,9 @@ export function SkillsSection() {
           );
 
           wanderDelay = NPC_CONFIG.wanderDelaySeconds;
+          hideLineupSignUntilWanderDelay();
           currentCategory = category;
-          setSelectedCategory(category);
+          updateFilterSelection(category);
 
           for (const npc of npcs) {
             const isActive =
@@ -189,11 +211,30 @@ export function SkillsSection() {
 
         categoryFilterRef.current = applyCategoryFilter;
 
-        const trumpet = createTrumpetButton(trumpetTexture, bounds, summonLineup);
-        app.stage.addChild(trumpet);
+        const { container: categoryFilters, setSelected } = createCategoryFilters(
+          categoryFilterTextures,
+          bounds,
+          (category) => applyCategoryFilter(category),
+        );
+        updateFilterSelection = setSelected;
+
+        const { container: trumpet, lineupSign } = createTrumpetButton(
+          trumpetTextures,
+          bounds,
+          summonLineup,
+        );
+        app.stage.addChild(categoryFilters, trumpet);
 
         app.ticker.add((ticker) => {
           const dt = ticker.deltaMS / 1000;
+
+          if (lineupSignRevealDelay > 0) {
+            lineupSignRevealDelay -= dt;
+
+            if (lineupSignRevealDelay <= 0) {
+              lineupSign.visible = true;
+            }
+          }
 
           if (wanderDelay > 0) {
             wanderDelay -= dt;
@@ -208,7 +249,7 @@ export function SkillsSection() {
               } else if (npc.landing) {
                 npc.updateLanding(dt, bounds, getLandingOthers(npcs, npc));
               } else if (npc.summoning) {
-                npc.updateSummon(dt);
+                npc.updateSummon(dt, bounds);
               }
             }
 
@@ -231,7 +272,7 @@ export function SkillsSection() {
             }
 
             if (npc.summoning) {
-              npc.updateSummon(dt);
+              npc.updateSummon(dt, bounds);
               continue;
             }
 
@@ -267,7 +308,9 @@ export function SkillsSection() {
       <div className="mb-6">
         <h2 className="portfolio-section-title">Skills</h2>
         <p className="mt-2 text-muted-foreground">
-          Watch them wander — line them up when you're ready.
+          This is my skills section! 
+          Watch them wander and line them up when you are ready. 
+          You can hold them up by dragging or filter them by categories :)
         </p>
       </div>
 
@@ -277,34 +320,14 @@ export function SkillsSection() {
         </p>
       ) : null}
 
-      <div className="relative">
+      <div>
         <div
           ref={containerRef}
           className="h-[400px] w-full overflow-hidden rounded-2xl border border-border/80 bg-card"
         />
-
-        <div className="pointer-events-none absolute inset-0 flex flex-col-reverse items-start justify-end gap-1.5 p-3">
-          {CATEGORY_FILTERS.map((filter) => {
-            const isSelected = selectedCategory === filter.id;
-
-            return (
-              <button
-                key={filter.id}
-                type="button"
-                aria-pressed={isSelected}
-                className={[
-                  "pointer-events-auto min-w-[7.5rem] rounded-md border px-3 py-1.5 text-left text-xs font-medium shadow-sm transition-colors",
-                  isSelected
-                    ? "border-white/40 bg-white/20 text-white"
-                    : "border-white/20 bg-black/35 text-white/85 hover:bg-black/50",
-                ].join(" ")}
-                onClick={() => categoryFilterRef.current?.(filter.id)}
-              >
-                {filter.label}
-              </button>
-            );
-          })}
-        </div>
+        <p className="mt-1.5 text-right text-[0.9375rem] text-[#8f8f8f]">
+          Inspired by Wii Plaza and the Escapist games
+        </p>
       </div>
     </section>
   );
