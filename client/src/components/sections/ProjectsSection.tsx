@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, Github, Globe, Video, X } from "lucide-react";
 import { projects } from "@/data/projects";
 import { ProjectCardTechs } from "@/components/sections/ProjectCardTechs";
@@ -45,10 +45,16 @@ function getProjectLinkIcon(label: string, href: string): LucideIcon | null {
 export function ProjectsSection() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [mediaIndex, setMediaIndex] = useState(0);
+  const modalRef = useRef<HTMLDivElement>(null);
   const selected = projects.find((project) => project.id === selectedId) ?? null;
 
   useEffect(() => {
-    if (selectedId) setMediaIndex(0);
+    if (!selectedId) {
+      return;
+    }
+
+    setMediaIndex(0);
+    modalRef.current?.scrollTo({ top: 0 });
   }, [selectedId]);
   const getProjectPreview = (project: (typeof projects)[number]) =>
     project.descriptionSections[0]?.paragraphs[0] ?? "";
@@ -145,6 +151,7 @@ export function ProjectsSection() {
             onClick={() => setSelectedId(null)}
           >
             <div
+              ref={modalRef}
               data-project={selected.id}
               className="portfolio-modal-scroll max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border p-6 pr-4 shadow-xl animate-in fade-in zoom-in-95 sm:pr-5"
               onClick={(event) => event.stopPropagation()}

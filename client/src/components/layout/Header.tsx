@@ -130,9 +130,7 @@ function handleNavClick(
 
   navigateTo(url.pathname);
 
-  // When switching to Home, scroll the page back to the top.
-  // (HOME uses href="/", so url.hash is empty.)
-  if (url.pathname === "/" && !url.hash) {
+  if (!url.hash && (url.pathname === "/" || url.pathname === "/projects")) {
     requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
   }
 }

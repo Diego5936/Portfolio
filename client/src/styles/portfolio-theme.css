@@ -1,25 +1,3 @@
-.portfolio-sunset-bg {
-  background-color: var(--portfolio-bg-base);
-  background-image:
-    radial-gradient(
-      ellipse 120% 85% at 50% 100%,
-      color-mix(in srgb, var(--portfolio-primary) 26%, transparent) 0%,
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse 70% 55% at 88% 12%,
-      color-mix(in srgb, var(--portfolio-secondary) 16%, transparent) 0%,
-      transparent 48%
-    ),
-    linear-gradient(
-      to bottom,
-      var(--portfolio-bg-gradient-start) 0%,
-      var(--portfolio-bg-gradient-mid) 42%,
-      var(--portfolio-bg-gradient-warm) 72%,
-      var(--portfolio-bg-gradient-end) 100%
-    );
-}
-
 :root {
   /* Centralized portfolio presentation tokens */
   --portfolio-section-title-size: 1.5rem;
@@ -54,10 +32,36 @@
   --portfolio-project-modal-title-size: 2rem;
 
   /* Semantic aliases */
-  --portfolio-surface-muted: hsl(var(--muted));
-  --portfolio-text-muted: hsl(var(--muted-foreground));
+  --portfolio-surface-muted: var(--muted);
+  --portfolio-text-muted: var(--muted-foreground);
 }
 
+/* ----- Background -----*/
+.portfolio-sunset-bg {
+  background-color: var(--portfolio-bg-base);
+  background:
+    radial-gradient(
+      circle at 50% 100%, 
+      var(--portfolio-bg-sun-glow) 0%, 
+      transparent 25.42%
+    ) 0% 0% / 100% 99.4% no-repeat no-repeat,
+    linear-gradient(
+      0deg, 
+      var(--portfolio-bg-linear-warm) 0%, 
+      var(--portfolio-bg-linear-cool) 33.81%, 
+      transparent 56.59%
+    ) 0% 0% / 100% 100% no-repeat no-repeat,
+    radial-gradient(
+      circle at 0% 50%, 
+      var(--portfolio-bg-side-glow) 30.56%, 
+      transparent 100%) 0% 0% / 100% 100% no-repeat no-repeat,
+    linear-gradient(
+      var(--portfolio-bg-solid), 
+      var(--portfolio-bg-solid)
+    ) 0% 0% / 100% 100% no-repeat no-repeat;
+}
+
+/* -----  -----*/
 .portfolio-section-title {
   font-size: var(--portfolio-section-title-size);
   font-weight: 600;
@@ -87,7 +91,7 @@
     "Courier New", monospace;
   font-size: 0.875rem;
   line-height: 1.7;
-  color: hsl(var(--foreground));
+  color: var(--foreground);
 }
 
 .portfolio-readme > :first-child {
@@ -104,13 +108,13 @@
 .portfolio-readme h4 {
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: hsl(var(--foreground));
+  color: var(--foreground);
 }
 
 .portfolio-readme h1 {
   margin: 0 0 1rem;
   font-size: 1.375rem;
-  border-bottom: 1px solid hsl(var(--border));
+  border-bottom: 1px solid var(--border);
   padding-bottom: 0.5rem;
 }
 
@@ -126,14 +130,14 @@
 
 .portfolio-readme p {
   margin: 0 0 1rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
 }
 
 .portfolio-readme ul,
 .portfolio-readme ol {
   margin: 0 0 1rem;
   padding-left: 1.5rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
 }
 
 .portfolio-readme li + li {
@@ -152,7 +156,7 @@
 
 .portfolio-readme code {
   border-radius: 0.375rem;
-  background: hsl(var(--muted));
+  background: var(--muted);
   padding: 0.125rem 0.375rem;
   font-size: 0.8125rem;
 }
@@ -161,8 +165,8 @@
   margin: 0 0 1rem;
   overflow-x: auto;
   border-radius: 0.75rem;
-  border: 1px solid hsl(var(--border));
-  background: hsl(var(--muted) / 0.35);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--muted) 35%, transparent);
   padding: 1rem;
 }
 
@@ -174,15 +178,15 @@
 
 .portfolio-readme blockquote {
   margin: 0 0 1rem;
-  border-left: 3px solid hsl(var(--border));
+  border-left: 3px solid var(--border);
   padding-left: 1rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
 }
 
 .portfolio-readme hr {
   margin: 1.5rem 0;
   border: 0;
-  border-top: 1px solid hsl(var(--border));
+  border-top: 1px solid var(--border);
 }
 
 .portfolio-modal-scroll {
@@ -541,7 +545,7 @@
   position: relative;
   gap: var(--portfolio-header-nav-gap);
   padding: var(--portfolio-header-nav-ring-padding-y) var(--portfolio-header-nav-ring-padding-x);
-  border: 1px solid hsl(var(--border));
+  border: 1px solid var(--border);
   border-radius: 9999px;
   overflow: visible;
 }

@@ -72,21 +72,21 @@
 
 [data-project="real-villagers"] {
   --project-background: var(--black);
-  --project-letter-color: hsl(var(--white));
+  --project-letter-color: var(--white);
   --project-accent-color: var(--black);
   --project-muted-accent-color: var(--white);
 }
 
 [data-project="strata"] {
   --project-background: var(--black);
-  --project-letter-color: hsl(var(--white));
+  --project-letter-color: var(--white);
   --project-accent-color: var(--black);
   --project-muted-accent-color: var(--white);
 }
 
 [data-project="ai-training-env"] {
   --project-background: var(--black);
-  --project-letter-color: hsl(var(--white));
+  --project-letter-color: var(--white);
   --project-accent-color: var(--black);
   --project-muted-accent-color: var(--white);
 }
@@ -198,27 +198,27 @@
 }
 
 [data-project] .project-muted-control {
-  border: 1px solid hsl(var(--border));
-  background-color: hsl(var(--background));
-  color: hsl(var(--muted-foreground));
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  color: var(--muted-foreground);
 }
 
 [data-project] .project-muted-control:hover {
-  background-color: hsl(var(--muted));
-  color: hsl(var(--foreground));
+  background-color: var(--muted);
+  color: var(--foreground);
 }
 
 [data-project] .project-document-panel {
-  border: 1px solid hsl(var(--border));
-  background-color: hsl(var(--muted) / 0.1);
+  border: 1px solid var(--border);
+  background-color: color-mix(in srgb, var(--muted) 10%, transparent);
 }
 
 [data-project] .project-muted-link {
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
 }
 
 [data-project] .project-muted-link:hover {
-  color: hsl(var(--foreground));
+  color: var(--foreground);
 }
 
 :is(

@@ -24,6 +24,13 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const { pathname } = window.location;
+    if (pathname.startsWith("/projects") || pathname.startsWith("/experience")) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location]);
+
   let page = <Home key={location} />;
 
   if (location.startsWith("/projects")) {

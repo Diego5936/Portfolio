@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import meImage from "@/assets/me.jpg";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -167,15 +166,6 @@ export function HeroIntro() {
       <p className="mt-3 text-base text-muted-foreground">
         Computer Science Student @ UCF, AI Researcher, Software Engineer
       </p>
-
-      <div className="mt-7 flex flex-wrap gap-3">
-        <Button asChild>
-          <a href="/projects">Explore projects</a>
-        </Button>
-        <Button asChild variant="outline">
-          <a href="#about">About me</a>
-        </Button>
-      </div>
     </>
   );
 }
