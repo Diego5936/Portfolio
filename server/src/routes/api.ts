@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
-  getDiffusionGenerationJob,
-  startDiffusionGeneration,
+  attachDiffusionSession,
+  getDiffusionSessionView,
 } from "../services/diffusionGeneration.js";
 
 const router = Router();
@@ -10,25 +10,25 @@ router.get("/health", (_req, res) => {
   res.json({ ok: true, message: "Server is up!!" });
 });
 
-router.post("/diffusion/generate", (req, res) => {
-  const { visitDateISO, timezone } = req.body ?? {};
-  const job = startDiffusionGeneration({ visitDateISO, timezone });
+router.post("/diffusion/session", (req, res) => {
+  const { sessionId, visitDateISO, timezone } = req.body ?? {};
+  const job = attachDiffusionSession({ sessionId, visitDateISO, timezone });
 
   res.status(202).json({
     ok: true,
     job,
-    message: "Diffusion image generation started.",
+    message: "Diffusion session attached.",
   });
 });
 
-router.get("/diffusion/generate/:jobId", (req, res) => {
-  const { jobId } = req.params;
-  const job = getDiffusionGenerationJob(jobId);
+router.get("/diffusion/session/:sessionId", (req, res) => {
+  const { sessionId } = req.params;
+  const job = getDiffusionSessionView(sessionId);
 
   if (!job) {
     res.status(404).json({
       ok: false,
-      message: "Diffusion generation job not found.",
+      message: "Diffusion session not found.",
     });
     return;
   }

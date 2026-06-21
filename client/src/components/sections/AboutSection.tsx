@@ -7,7 +7,7 @@ const aboutParagraphs = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="scroll-mt-14 py-14 sm:scroll-mt-16 sm:py-13">
+    <section id="about" className="scroll-mt-14 pb-14 pt-8 sm:scroll-mt-16 sm:pb-13 sm:pt-10">
       <div className="min-h-[28rem] rounded-2xl border bg-card p-6 sm:min-h-[36rem] sm:p-10">
         <h2 className="portfolio-section-title">About Me</h2>
 

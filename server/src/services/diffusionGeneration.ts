@@ -4,18 +4,58 @@ import { spawn, type ChildProcessWithoutNullStreams } from "node:child_process";
 import { mkdir, rm } from "node:fs/promises";
 
 type DiffusionGenerationStatus = "queued" | "running" | "completed" | "failed";
+type SessionMode = "real" | "simulated";
 
-export interface DiffusionGenerationJob {
+interface DiffusionFrame {
+  progress: number;
+  imageUrl: string;
+  emittedAtMs: number;
+}
+
+interface RealJob {
+  id: string;
+  prompt: string;
+  promptKey: string;
+  status: DiffusionGenerationStatus;
+  progress: number;
+  imageUrl: string | null;
+  error: string | null;
+  createdAt: number;
+  startedAt: number | null;
+  completedAt: number | null;
+  frames: DiffusionFrame[];
+}
+
+interface VisitorSession {
+  id: string;
+  type: SessionMode;
+  promptKey: string;
+  realJobId?: string;
+  sourceJobId?: string;
+  simulationStartedAt?: number;
+  createdAt: number;
+}
+
+export interface DiffusionSessionView {
   id: string;
   prompt: string;
   status: DiffusionGenerationStatus;
   progress: number;
-  createdAt: number;
   imageUrl: string | null;
   error: string | null;
+  mode: SessionMode;
+  sourceJobId?: string;
 }
 
-const jobs = new Map<string, DiffusionGenerationJob>();
+interface AttachDiffusionSessionInput {
+  sessionId?: string;
+  visitDateISO?: string;
+  timezone?: string;
+}
+
+const realJobs = new Map<string, RealJob>();
+const sessions = new Map<string, VisitorSession>();
+
 const WORKER_SCRIPT = path.resolve(
   process.cwd(),
   "src",
@@ -38,11 +78,6 @@ let workerReady = false;
 let stdoutRest = "";
 let workerBootPromise: Promise<void> | null = null;
 
-interface StartDiffusionGenerationInput {
-  visitDateISO?: string;
-  timezone?: string;
-}
-
 type WorkerPayload = {
   type: string;
   message?: string;
@@ -50,6 +85,19 @@ type WorkerPayload = {
   imageUrl?: string;
   error?: string;
 };
+
+function _getTimePeriod(hour: number) {
+  if (hour < 12) {
+    return "morning";
+  }
+  if (hour < 18) {
+    return "afternoon";
+  }
+  if (hour === 19) {
+    return "sunset";
+  }
+  return "night";
+}
 
 function _getPrompt(weekDay: string, curDate: string, currentTime: string) {
   const DAY_MAPPINGS: Record<string, string> = {
@@ -80,7 +128,7 @@ function _getPrompt(weekDay: string, curDate: string, currentTime: string) {
   return prompt;
 }
 
-function buildDateBasedPrompt(visitDateISO?: string, timezone?: string) {
+function _parseVisitDate(visitDateISO?: string, timezone?: string) {
   const date = visitDateISO ? new Date(visitDateISO) : new Date();
   const safeDate = Number.isNaN(date.getTime()) ? new Date() : date;
 
@@ -98,13 +146,252 @@ function buildDateBasedPrompt(visitDateISO?: string, timezone?: string) {
     hour12: false,
     timeZone: timezone,
   });
+  const hour = Number.parseInt(currentTime, 10);
 
+  return { weekDay, curDate, currentTime, hour };
+}
+
+export function buildPromptKey(visitDateISO?: string, timezone?: string) {
+  const { weekDay, curDate, hour } = _parseVisitDate(visitDateISO, timezone);
+  const timePeriod = _getTimePeriod(hour);
+  return `${weekDay}|${timePeriod}|${curDate}`;
+}
+
+function buildDateBasedPrompt(visitDateISO?: string, timezone?: string) {
+  const { weekDay, curDate, currentTime } = _parseVisitDate(
+    visitDateISO,
+    timezone,
+  );
   return _getPrompt(weekDay, curDate, currentTime);
 }
 
-async function cleanOldDiffusionSaves() {
-  await rm(OUTPUT_DIR, { recursive: true, force: true });
-  await mkdir(OUTPUT_DIR, { recursive: true });
+function getJobOutputDir(jobId: string) {
+  return path.join(OUTPUT_DIR, jobId);
+}
+
+async function cleanJobOutputDir(jobId: string) {
+  const dir = getJobOutputDir(jobId);
+  await rm(dir, { recursive: true, force: true });
+  await mkdir(dir, { recursive: true });
+}
+
+function getCurrentlyRunningRealJob(): RealJob | null {
+  if (!activeWorkerJobId) {
+    return null;
+  }
+
+  const job = realJobs.get(activeWorkerJobId);
+  if (job?.status === "running") {
+    return job;
+  }
+
+  return null;
+}
+
+function getSourceFinalImage(source: RealJob) {
+  if (source.frames.length > 0) {
+    return source.frames[source.frames.length - 1]!.imageUrl;
+  }
+
+  return source.imageUrl;
+}
+
+function getSourceTotalDurationMs(source: RealJob) {
+  if (source.completedAt !== null && source.startedAt !== null) {
+    return source.completedAt - source.startedAt;
+  }
+
+  if (source.frames.length > 0) {
+    return source.frames[source.frames.length - 1]!.emittedAtMs;
+  }
+
+  return 0;
+}
+
+function pickFrameForElapsed(source: RealJob, elapsedMs: number) {
+  let currentFrame: DiffusionFrame | null = null;
+
+  for (const frame of source.frames) {
+    if (frame.emittedAtMs <= elapsedMs) {
+      currentFrame = frame;
+    } else {
+      break;
+    }
+  }
+
+  return currentFrame;
+}
+
+function computeRealSessionView(session: VisitorSession): DiffusionSessionView | null {
+  if (!session.realJobId) {
+    return null;
+  }
+
+  const job = realJobs.get(session.realJobId);
+  if (!job) {
+    return null;
+  }
+
+  return {
+    id: session.id,
+    prompt: job.prompt,
+    status: job.status,
+    progress: job.progress,
+    imageUrl: job.imageUrl,
+    error: job.error,
+    mode: "real",
+  };
+}
+
+function computeSimulatedSessionView(
+  session: VisitorSession,
+): DiffusionSessionView | null {
+  if (!session.sourceJobId || session.simulationStartedAt === undefined) {
+    return null;
+  }
+
+  const source = realJobs.get(session.sourceJobId);
+  if (!source) {
+    return null;
+  }
+
+  const elapsedMs = Date.now() - session.simulationStartedAt;
+  const totalDurationMs = getSourceTotalDurationMs(source);
+
+  if (source.status === "failed") {
+    return {
+      id: session.id,
+      prompt: source.prompt,
+      status: "failed",
+      progress: 0,
+      imageUrl: null,
+      error: source.error,
+      mode: "simulated",
+      sourceJobId: source.id,
+    };
+  }
+
+  if (totalDurationMs > 0 && elapsedMs >= totalDurationMs) {
+    return {
+      id: session.id,
+      prompt: source.prompt,
+      status: "completed",
+      progress: 100,
+      imageUrl: getSourceFinalImage(source),
+      error: null,
+      mode: "simulated",
+      sourceJobId: source.id,
+    };
+  }
+
+  const currentFrame = pickFrameForElapsed(source, elapsedMs);
+  const status: DiffusionGenerationStatus =
+    source.status === "queued" && source.frames.length === 0
+      ? "queued"
+      : "running";
+
+  return {
+    id: session.id,
+    prompt: source.prompt,
+    status,
+    progress: currentFrame?.progress ?? 0,
+    imageUrl: currentFrame?.imageUrl ?? null,
+    error: null,
+    mode: "simulated",
+    sourceJobId: source.id,
+  };
+}
+
+function computeSessionView(session: VisitorSession): DiffusionSessionView | null {
+  if (session.type === "real") {
+    return computeRealSessionView(session);
+  }
+
+  return computeSimulatedSessionView(session);
+}
+
+function createRealJob(promptKey: string, prompt: string): RealJob {
+  const job: RealJob = {
+    id: crypto.randomUUID(),
+    prompt,
+    promptKey,
+    status: "queued",
+    progress: 0,
+    imageUrl: null,
+    error: null,
+    createdAt: Date.now(),
+    startedAt: null,
+    completedAt: null,
+    frames: [],
+  };
+
+  realJobs.set(job.id, job);
+  return job;
+}
+
+function assignSession(
+  sessionId: string,
+  promptKey: string,
+  visitDateISO?: string,
+  timezone?: string,
+): DiffusionSessionView {
+  const runningReal = getCurrentlyRunningRealJob();
+
+  if (runningReal) {
+    const session: VisitorSession = {
+      id: sessionId,
+      type: "simulated",
+      promptKey,
+      sourceJobId: runningReal.id,
+      simulationStartedAt: Date.now(),
+      createdAt: Date.now(),
+    };
+    sessions.set(sessionId, session);
+    return computeSessionView(session)!;
+  }
+
+  const prompt = buildDateBasedPrompt(visitDateISO, timezone);
+  const realJob = createRealJob(promptKey, prompt);
+  const session: VisitorSession = {
+    id: sessionId,
+    type: "real",
+    promptKey,
+    realJobId: realJob.id,
+    createdAt: Date.now(),
+  };
+
+  sessions.set(sessionId, session);
+  pendingStart.push(realJob.id);
+  void trySendNextJob();
+
+  return computeSessionView(session)!;
+}
+
+export function attachDiffusionSession(input: AttachDiffusionSessionInput = {}) {
+  const promptKey = buildPromptKey(input.visitDateISO, input.timezone);
+  const sessionId = input.sessionId ?? crypto.randomUUID();
+
+  if (input.sessionId) {
+    const existing = sessions.get(input.sessionId);
+    if (existing) {
+      const view = computeSessionView(existing);
+
+      if (view && view.status !== "failed" && existing.promptKey === promptKey) {
+        return view;
+      }
+    }
+  }
+
+  return assignSession(sessionId, promptKey, input.visitDateISO, input.timezone);
+}
+
+export function getDiffusionSessionView(sessionId: string) {
+  const session = sessions.get(sessionId);
+  if (!session) {
+    return null;
+  }
+
+  return computeSessionView(session);
 }
 
 function dispatchWorkerPayload(payload: WorkerPayload) {
@@ -114,13 +401,21 @@ function dispatchWorkerPayload(payload: WorkerPayload) {
     return;
   }
 
-  const job = jobs.get(jobId);
+  const job = realJobs.get(jobId);
   if (!job) return;
 
   if (payload.type === "progress") {
     job.progress = payload.progress ?? job.progress;
     if (payload.imageUrl) {
       job.imageUrl = payload.imageUrl;
+
+      const emittedAtMs =
+        job.startedAt !== null ? Date.now() - job.startedAt : 0;
+      job.frames.push({
+        progress: job.progress,
+        imageUrl: payload.imageUrl,
+        emittedAtMs,
+      });
     }
     job.status = "running";
     return;
@@ -129,7 +424,22 @@ function dispatchWorkerPayload(payload: WorkerPayload) {
   if (payload.type === "completed") {
     job.progress = 100;
     job.status = "completed";
+    job.completedAt = Date.now();
     job.imageUrl = payload.imageUrl ?? job.imageUrl;
+
+    if (payload.imageUrl) {
+      const emittedAtMs =
+        job.startedAt !== null ? Date.now() - job.startedAt : 0;
+      const lastFrame = job.frames[job.frames.length - 1];
+      if (!lastFrame || lastFrame.imageUrl !== payload.imageUrl) {
+        job.frames.push({
+          progress: 100,
+          imageUrl: payload.imageUrl,
+          emittedAtMs,
+        });
+      }
+    }
+
     activeWorkerJobId = null;
     void trySendNextJob();
     return;
@@ -138,6 +448,7 @@ function dispatchWorkerPayload(payload: WorkerPayload) {
   if (payload.type === "error") {
     job.status = "failed";
     job.error = payload.error ?? "Diffusion generation failed.";
+    job.completedAt = Date.now();
     activeWorkerJobId = null;
     void trySendNextJob();
   }
@@ -145,10 +456,11 @@ function dispatchWorkerPayload(payload: WorkerPayload) {
 
 function failPendingStarts(message: string) {
   for (const id of pendingStart.splice(0)) {
-    const j = jobs.get(id);
-    if (j && j.status !== "completed") {
-      j.status = "failed";
-      j.error = message;
+    const job = realJobs.get(id);
+    if (job && job.status !== "completed") {
+      job.status = "failed";
+      job.error = message;
+      job.completedAt = Date.now();
     }
   }
 }
@@ -159,10 +471,11 @@ function onWorkerProcessClosed(code: number | null) {
   stdoutRest = "";
 
   if (activeWorkerJobId) {
-    const job = jobs.get(activeWorkerJobId);
+    const job = realJobs.get(activeWorkerJobId);
     if (job && job.status !== "completed") {
       job.status = "failed";
       job.error = `Diffusion worker exited (code ${code ?? "unknown"}).`;
+      job.completedAt = Date.now();
     }
     activeWorkerJobId = null;
   }
@@ -302,26 +615,28 @@ async function trySendNextJob() {
   const jobId = pendingStart.shift();
   if (!jobId) return;
 
-  const job = jobs.get(jobId);
+  const job = realJobs.get(jobId);
   if (!job) {
     void trySendNextJob();
     return;
   }
 
   try {
-    await cleanOldDiffusionSaves();
+    await cleanJobOutputDir(jobId);
   } catch (error) {
     job.status = "failed";
     job.error =
       error instanceof Error
-        ? `Could not clean old diffusion saves: ${error.message}`
-        : "Could not clean old diffusion saves.";
+        ? `Could not clean job output: ${error.message}`
+        : "Could not clean job output.";
+    job.completedAt = Date.now();
     void trySendNextJob();
     return;
   }
 
   activeWorkerJobId = jobId;
   job.status = "running";
+  job.startedAt = Date.now();
   job.error = null;
 
   const line =
@@ -329,38 +644,11 @@ async function trySendNextJob() {
       action: "generate",
       jobId,
       prompt: job.prompt,
-      outputDir: OUTPUT_DIR,
+      outputDir: getJobOutputDir(jobId),
       publicRoot: PUBLIC_GENERATED_ROOT,
     }) + "\n";
 
   workerProc.stdin.write(line);
-}
-
-export function startDiffusionGeneration(
-  input: StartDiffusionGenerationInput = {},
-) {
-  const id = crypto.randomUUID();
-  const prompt = buildDateBasedPrompt(input.visitDateISO, input.timezone);
-
-  const job: DiffusionGenerationJob = {
-    id,
-    prompt,
-    status: "queued",
-    progress: 0,
-    createdAt: Date.now(),
-    imageUrl: null,
-    error: null,
-  };
-
-  jobs.set(id, job);
-  pendingStart.push(id);
-  void trySendNextJob();
-
-  return job;
-}
-
-export function getDiffusionGenerationJob(jobId: string) {
-  return jobs.get(jobId) ?? null;
 }
 
 export function warmupDiffusionWorker() {

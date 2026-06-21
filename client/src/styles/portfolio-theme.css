@@ -34,6 +34,13 @@
   /* Semantic aliases */
   --portfolio-surface-muted: var(--muted);
   --portfolio-text-muted: var(--muted-foreground);
+
+  /* Continue Below cue */
+  --portfolio-continue-below-duration: 5.5s;
+  --portfolio-continue-below-travel: 0.5rem;
+  --portfolio-continue-below-neon-color: #62d4ff;
+  --portfolio-continue-below-size: 1.0625rem;
+  --portfolio-continue-below-icon-size: 1.375rem;
 }
 
 /* ----- Background -----*/
@@ -655,4 +662,67 @@
 .nav-slide-link[data-slide-direction="rtl"]:not(.nav-slide-active) .nav-slide-char-inner {
   transform: translateY(0);
   transition-delay: calc(var(--char-index) * 30ms);
+}
+
+@keyframes portfolio-continue-below-bounce {
+  0%,
+  36% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(var(--portfolio-continue-below-travel));
+  }
+
+  44% {
+    transform: translateY(0);
+  }
+
+  48% {
+    transform: translateY(var(--portfolio-continue-below-travel));
+  }
+
+  52% {
+    transform: translateY(0);
+  }
+
+  56% {
+    transform: translateY(var(--portfolio-continue-below-travel));
+  }
+
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.portfolio-continue-below-cue {
+  gap: 0.375rem;
+  color: var(--portfolio-continue-below-neon-color);
+  font-size: var(--portfolio-continue-below-size);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-shadow:
+    0 0 4px color-mix(in srgb, var(--portfolio-continue-below-neon-color) 85%, transparent),
+    0 0 14px color-mix(in srgb, var(--portfolio-continue-below-neon-color) 60%, transparent),
+    0 0 28px color-mix(in srgb, var(--portfolio-continue-below-neon-color) 35%, transparent);
+  animation: portfolio-continue-below-bounce var(--portfolio-continue-below-duration)
+    ease-in-out infinite;
+}
+
+.portfolio-continue-below-cue svg {
+  width: var(--portfolio-continue-below-icon-size);
+  height: var(--portfolio-continue-below-icon-size);
+  filter: drop-shadow(
+      0 0 4px color-mix(in srgb, var(--portfolio-continue-below-neon-color) 85%, transparent)
+    )
+    drop-shadow(
+      0 0 12px color-mix(in srgb, var(--portfolio-continue-below-neon-color) 55%, transparent)
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-continue-below-cue {
+    animation: none;
+  }
 }
