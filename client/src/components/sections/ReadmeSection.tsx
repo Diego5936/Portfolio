@@ -6,7 +6,7 @@ import readme from "virtual:readme";
 export function ReadmeSection() {
   return (
     <section id="readme" className="scroll-mt-14 pb-14 sm:scroll-mt-16 sm:pb-0">
-      <div className="portfolio-readme-window overflow-hidden rounded-2xl border bg-card">
+      <div className="portfolio-readme-window overflow-hidden rounded-2xl border">
         <img
           src={readmeTopBar}
           alt=""

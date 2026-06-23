@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <Layout>
       <main>
-        <div className="lg:grid lg:grid-cols-2 lg:gap-10">
+        <div className="lg:grid lg:grid-cols-[minmax(0,10fr)_minmax(0,14fr)] lg:gap-10">
           <aside
             className="relative mb-10 lg:mb-0"
             aria-label="Portrait and diffusion panel"
@@ -32,13 +32,8 @@ export default function Home() {
           </aside>
 
           <div className="min-w-0">
-            <section
-              id="home"
-              className="scroll-mt-14 flex min-h-[calc(100dvh-var(--portfolio-header-height))] flex-col sm:scroll-mt-16"
-            >
-              <div className="mt-auto pb-12 sm:pb-16 lg:pb-20">
-                <Diego />
-              </div>
+            <section id="home" className="scroll-mt-14 sm:scroll-mt-16">
+              <Diego />
             </section>
 
             <AboutSection />

@@ -8,6 +8,7 @@ import {
 import { Github, Linkedin, FileText } from "lucide-react";
 
 import { SlidingHoverText } from "@/components/ui/SlidingHoverText";
+import { PORTFOLIO_HOME_RESET_EVENT } from "@/components/sections/AboutSection";
 import { cn } from "@/lib/utils";
 
 const nav = [
@@ -130,7 +131,13 @@ function handleNavClick(
 
   navigateTo(url.pathname);
 
-  if (!url.hash && (url.pathname === "/" || url.pathname === "/projects")) {
+  if (!url.hash && url.pathname === "/") {
+    window.dispatchEvent(new CustomEvent(PORTFOLIO_HOME_RESET_EVENT));
+    requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
+    return;
+  }
+
+  if (!url.hash && url.pathname === "/projects") {
     requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
   }
 }

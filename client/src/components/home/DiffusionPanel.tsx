@@ -67,22 +67,31 @@ export function DiffusionPanel() {
         </div>
 
         {showProgressBar ? (
-          <div
-            className="absolute inset-x-0 bottom-0 h-2 bg-black/35"
-            role="progressbar"
-            aria-valuenow={progress}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-label="Diffusion generation progress"
-          >
+          <>
+            <p
+              className="portfolio-diffusion-status absolute bottom-4 right-3 z-10 text-xs"
+              aria-live="polite"
+            >
+              Generating Diffusion Image
+              <span className="portfolio-diffusion-status-dots" aria-hidden />
+            </p>
             <div
-              className="h-full transition-[width] duration-300 ease-out"
-              style={{
-                width: `${Math.max(isLoading && !job ? 4 : progress, 0)}%`,
-                background: progressGradient,
-              }}
-            />
-          </div>
+              className="absolute inset-x-0 bottom-0 h-2 bg-black/35"
+              role="progressbar"
+              aria-valuenow={progress}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label="Diffusion generation progress"
+            >
+              <div
+                className="h-full transition-[width] duration-300 ease-out"
+                style={{
+                  width: `${Math.max(isLoading && !job ? 4 : progress, 0)}%`,
+                  background: progressGradient,
+                }}
+              />
+            </div>
+          </>
         ) : null}
       </div>
       <div className="pointer-events-none absolute -bottom-4 -left-4 h-24 w-24 rounded-2xl bg-orange-600/20 blur-2xl" />

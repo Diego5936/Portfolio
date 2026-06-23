@@ -1,21 +1,157 @@
-const aboutParagraphs = [
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  "Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida.",
-  "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris viverra veniam sit amet lacus cursus, non feugiat tellus tincidunt. Phasellus ac arcu at odio volutpat tempus.",
-];
+import { useEffect, useRef, useState } from "react";
+
+import { cn } from "@/lib/utils";
+
+const aboutSections = [
+  {
+    heading: "About Me",
+    paragraphs: [
+      "My name is Diego Pedroza, and I am a senior at the **University of Central Florida** studying **Computer Science** with a minor in **Intelligent Robotic Systems**. I am also a brother of **Theta Tau**, the oldest co-ed engineering fraternity in the U.S.",
+      "Professionally, I am currently doing autonomous navigation robotics research with the **UCF Institute of Artificial Intelligence**. I have also worked as a Neural Systems Intern for **Pheratech Systems**, where I created test simulations and worked on core navigation logic for drone swarms designed for search and rescue applications.",
+    ],
+  },
+  {
+    heading: "My Path",
+    paragraphs: [
+      "I have wanted to work in robotics since I was a kid. Phineas and Ferb heavily inspired my love for engineering, and after watching Big Hero 6, I knew I also wanted a Baymax. I am grateful that I have gotten to work on teams that let me chase that dream and that my niche has become simulations and robotic experiments. When I finally got my hands on a device strong enough to run **NVIDIA Isaac Sim**, you best believe I made some silly **reinforcement learning** simulations of agents playing tag and soccer.",
+      "I have also really enjoyed the research side of my field. The **scientific process** is appealing to me because it turns **failure into part of the plan**. You find a complex problem, brainstorm a way to tackle it, try it, watch it fail miserably, revise, and try again. That cycle of expected adaptation is one of the most interesting parts of research to me. Being surrounded by PhD students has opened my eyes to the path of academic research and its appeal. I still don't know whether I want to pursue a PhD, but as I continue toward graduate research, I am excited to find out which **questions are worth chasing**.",
+    ],
+  },
+  {
+    heading: "Interests",
+    paragraphs: [
+      "I love being an active person. I did track and field in high school, specializing in the **400-meter hurdles**. As I result, it taught me to enjoy pushing the limits of my own mind and body. Although I am no longer subjecting myself to insanely rigorous training, I still enjoy challenging myself. I have completed a **Spartan Beast**, a half-marathon obstacle-course race, and I plan to do an **Ironman** in the future.",
+      "I also love the outdoors. Camping and hiking are the best, especially after spending too much time staring at a screen. As soon as I started college, I started rock climbing and quickly got hooked. You can also find me at the springs or natural reserves **slacklining**, **paddleboarding**, and exploring my local sorroundings whenever I get a chance.",
+    ],
+  },
+] as const;
+
+type AboutSectionData = (typeof aboutSections)[number];
+
+function renderAboutParagraph(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <span key={`${index}-${part}`} className="portfolio-about-highlight">
+          {part.slice(2, -2)}
+        </span>
+      );
+    }
+
+    return part;
+  });
+}
+
+function useRevealOnScroll(resetKey: number) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(false);
+
+    const element = ref.current;
+    if (!element) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        setVisible(true);
+        observer.disconnect();
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [resetKey]);
+
+  return { ref, visible };
+}
+
+function AboutSectionBlock({
+  section,
+  resetKey,
+}: {
+  section: AboutSectionData;
+  resetKey: number;
+}) {
+  const { ref, visible } = useRevealOnScroll(resetKey);
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "portfolio-about-section-block portfolio-about-reveal",
+        visible && "is-visible",
+      )}
+    >
+      <h3 className="portfolio-about-section-title">{section.heading}</h3>
+      <div className="portfolio-about-body space-y-3">
+        {section.paragraphs.map((paragraph) => (
+          <p key={paragraph}>{renderAboutParagraph(paragraph)}</p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export const PORTFOLIO_HOME_RESET_EVENT = "portfolio-home-reset";
+
+const ABOUT_REVEAL_TOP_THRESHOLD_PX = 48;
 
 export function AboutSection() {
-  return (
-    <section id="about" className="scroll-mt-14 pb-14 pt-8 sm:scroll-mt-16 sm:pb-13 sm:pt-10">
-      <div className="min-h-[28rem] rounded-2xl border bg-card p-6 sm:min-h-[36rem] sm:p-10">
-        <h2 className="portfolio-section-title">About Me</h2>
+  const [revealKey, setRevealKey] = useState(0);
+  const wasScrolledBelowTopRef = useRef(false);
 
-        <div className="portfolio-detail-body mt-6 space-y-5">
-          {aboutParagraphs.map((paragraph) => (
-            <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-          ))}
-        </div>
+  useEffect(() => {
+    const resetReveals = () => {
+      setRevealKey((key) => key + 1);
+      wasScrolledBelowTopRef.current = false;
+    };
+
+    const handleScroll = () => {
+      const atTop = window.scrollY <= ABOUT_REVEAL_TOP_THRESHOLD_PX;
+
+      if (atTop) {
+        if (wasScrolledBelowTopRef.current) {
+          resetReveals();
+        }
+        return;
+      }
+
+      wasScrolledBelowTopRef.current = true;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener(PORTFOLIO_HOME_RESET_EVENT, resetReveals);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener(PORTFOLIO_HOME_RESET_EVENT, resetReveals);
+    };
+  }, []);
+
+  return (
+    <section
+      id="about"
+      className="portfolio-about-section scroll-mt-14 pb-14 pt-8 sm:scroll-mt-16 sm:pb-13 sm:pt-10"
+    >
+      <div className="portfolio-about-sections">
+        {aboutSections.map((section) => (
+          <AboutSectionBlock
+            key={section.heading}
+            section={section}
+            resetKey={revealKey}
+          />
+        ))}
       </div>
     </section>
   );
