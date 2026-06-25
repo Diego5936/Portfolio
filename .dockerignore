@@ -4,6 +4,7 @@
 .vscode
 .idea
 *.md
+!README.md
 
 # Dependencies
 node_modules
