@@ -1,4 +1,3 @@
-import meImage from "@/assets/me.jpg";
 import { useDiffusionJob } from "@/components/home/useDiffusionJob";
 import { useMemo } from "react";
 
@@ -35,8 +34,8 @@ export function DiffusionPanel() {
     (isLoading || job?.status === "queued" || job?.status === "running");
 
   return (
-    <div className="relative">
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 shadow-sm">
+    <div className="portfolio-diffusion-panel relative h-full w-full">
+      <div className="portfolio-diffusion-frame relative h-full w-full overflow-hidden rounded-xl">
         <div className="portfolio-sunset-bg absolute inset-0" />
 
         {job?.imageUrl ? (
@@ -56,20 +55,10 @@ export function DiffusionPanel() {
           style={{ opacity: Math.max(0, 1 - progress / 100) }}
         />
 
-        <div className="relative flex h-full items-center justify-center">
-          <div className="h-56 w-56 overflow-hidden rounded-2xl border-2 border-background/70 bg-background/90 shadow-md">
-            <img
-              src={meImage}
-              alt="Diego portrait"
-              className="h-full w-full object-cover object-center"
-            />
-          </div>
-        </div>
-
         {showProgressBar ? (
           <>
             <p
-              className="portfolio-diffusion-status absolute bottom-4 right-3 z-10 text-xs"
+              className="portfolio-diffusion-status absolute bottom-2 right-2 z-10 text-[0.65rem] leading-tight sm:text-xs"
               aria-live="polite"
             >
               Generating Diffusion Image
@@ -94,8 +83,6 @@ export function DiffusionPanel() {
           </>
         ) : null}
       </div>
-      <div className="pointer-events-none absolute -bottom-4 -left-4 h-24 w-24 rounded-2xl bg-orange-600/20 blur-2xl" />
-      <div className="pointer-events-none absolute -top-6 -right-6 h-28 w-28 rounded-full bg-fuchsia-900/25 blur-2xl" />
     </div>
   );
 }

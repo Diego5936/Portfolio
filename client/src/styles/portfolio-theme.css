@@ -43,7 +43,7 @@
   --portfolio-continue-below-icon-size: 1.375rem;
 
   /* About section */
-  --portfolio-about-section-gap: 2.75rem;
+  --portfolio-about-section-gap: 7.0rem;
   --portfolio-about-heading-gap: 0.5rem;
   --portfolio-about-section-title-color: #17d8ff;
   --portfolio-about-highlight-color: #de9837;
@@ -51,6 +51,19 @@
   --portfolio-about-section-title-weight: 700;
   --portfolio-about-reveal-duration: 0.7s;
   --portfolio-about-reveal-offset: 1.5rem;
+
+  /* Diego intro + portrait sidebar */
+  --portfolio-diego-avatar-size: 17.0rem;
+  --portfolio-diego-avatar-zoom: 1.35;
+  --portfolio-diego-avatar-position-x: 50%;
+  --portfolio-diego-avatar-position-y: 50%;
+  --portfolio-diego-about-gap: 15rem;
+  --portfolio-about-readme-gap: 8.5rem;
+  --portfolio-diego-initial-panel-viewport-min: 0.68;
+  --portfolio-sidebar-grid-gap: 0.625rem;
+  --portfolio-sidebar-grid-scrolled-margin-top: 4rem;
+  /* JS commit timer + overlay transition both read this token */
+  --portfolio-grid-photo-crossfade-duration: 2s;
 
   /* README glass */
   --portfolio-readme-glass-bg: rgb(10 10 10 / 0.42);
@@ -105,6 +118,7 @@
 
 .portfolio-about-section {
   color: var(--foreground);
+  padding-top: var(--portfolio-diego-about-gap);
 }
 
 .portfolio-about-body {
@@ -153,6 +167,10 @@
     transform: none;
     transition: none;
   }
+}
+
+.portfolio-readme-section {
+  padding-top: var(--portfolio-about-readme-gap);
 }
 
 .portfolio-readme-window {
@@ -804,6 +822,81 @@
 @media (prefers-reduced-motion: reduce) {
   .portfolio-continue-below-cue {
     animation: none;
+  }
+}
+
+.portfolio-diego-avatar {
+  width: var(--portfolio-diego-avatar-size);
+  height: var(--portfolio-diego-avatar-size);
+}
+
+.portfolio-diego-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--portfolio-diego-avatar-position-x)
+    var(--portfolio-diego-avatar-position-y);
+  transform: scale(var(--portfolio-diego-avatar-zoom));
+  transform-origin: center;
+}
+
+.portfolio-portrait-morph {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.portfolio-portrait-grid {
+  display: grid;
+  margin-inline: auto;
+}
+
+.portfolio-portrait-grid-cell {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+}
+
+.portfolio-portrait-grid-cell--diffusion {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.portfolio-portrait-grid-cell--photo {
+  opacity: var(--photo-opacity, 0);
+  pointer-events: none;
+}
+
+.portfolio-portrait-grid-photo-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-portrait-grid-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio-portrait-grid-photo--base {
+  opacity: 1;
+  z-index: 0;
+}
+
+.portfolio-portrait-grid-photo--overlay {
+  z-index: 1;
+  transition: opacity var(--portfolio-grid-photo-crossfade-duration) ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-portrait-grid-photo--overlay {
+    transition: none;
   }
 }
 

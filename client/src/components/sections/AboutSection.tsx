@@ -21,12 +21,19 @@ const aboutSections = [
     heading: "Interests",
     paragraphs: [
       "I love being an active person. I did track and field in high school, specializing in the **400-meter hurdles**. As I result, it taught me to enjoy pushing the limits of my own mind and body. Although I am no longer subjecting myself to insanely rigorous training, I still enjoy challenging myself. I have completed a **Spartan Beast**, a half-marathon obstacle-course race, and I plan to do an **Ironman** in the future.",
+      "I have a cat! Her name is **Nala**, and she is very cute and friendly. Before having Nala, I fostered an abandoned cat that I named Nana (short for Guanábana). After Nana found her forever home, the house felt empty, so here came little queen Nala, named after the lioness queen from The Lion King, to bring more joy!",
       "I also love the outdoors. Camping and hiking are the best, especially after spending too much time staring at a screen. As soon as I started college, I started rock climbing and quickly got hooked. You can also find me at the springs or natural reserves **slacklining**, **paddleboarding**, and exploring my local sorroundings whenever I get a chance.",
     ],
   },
 ] as const;
 
 type AboutSectionData = (typeof aboutSections)[number];
+
+const aboutSectionIds: Record<AboutSectionData["heading"], string> = {
+  "About Me": "about-me",
+  "My Path": "about-my-path",
+  Interests: "about-interests",
+};
 
 function renderAboutParagraph(text: string) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
@@ -87,6 +94,7 @@ function AboutSectionBlock({
 
   return (
     <div
+      id={aboutSectionIds[section.heading]}
       ref={ref}
       className={cn(
         "portfolio-about-section-block portfolio-about-reveal",
@@ -142,7 +150,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="portfolio-about-section scroll-mt-14 pb-14 pt-8 sm:scroll-mt-16 sm:pb-13 sm:pt-10"
+      className="portfolio-about-section scroll-mt-14 sm:scroll-mt-16"
     >
       <div className="portfolio-about-sections">
         {aboutSections.map((section) => (

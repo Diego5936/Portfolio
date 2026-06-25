@@ -1,3 +1,4 @@
+import { picPortrait } from "@/data/myPics";
 import { ChevronDown } from "lucide-react";
 
 export function Diego() {
@@ -6,8 +7,11 @@ export function Diego() {
   };
 
   return (
-    <div className="flex min-h-[calc(100dvh-var(--portfolio-header-height))] flex-col">
+    <div className="portfolio-diego-section flex min-h-[calc(100dvh-var(--portfolio-header-height))] flex-col">
       <div className="flex flex-1 flex-col items-center justify-center px-4 text-center">
+        <div className="portfolio-diego-avatar mb-6 overflow-hidden rounded-full border-2 border-white/15 shadow-lg shadow-black/25">
+          <img src={picPortrait} alt="Diego Pedroza" />
+        </div>
         <h1 className="text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
           Hello, I'm Diego!
         </h1>
@@ -18,7 +22,7 @@ export function Diego() {
       <button
         type="button"
         onClick={scrollToAbout}
-        className="flex w-full flex-col items-center pb-12 transition-opacity hover:opacity-90 sm:pb-16 lg:pb-20"
+        className="flex w-full flex-col items-center transition-opacity hover:opacity-90"
       >
         <span className="portfolio-continue-below-cue flex flex-col items-center">
           <span>Continue Below</span>

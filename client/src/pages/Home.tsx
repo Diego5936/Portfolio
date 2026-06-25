@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { DiffusionPanel } from "@/components/home/DiffusionPanel";
 import { Diego } from "@/components/home/Diego";
+import { PortraitSidebar } from "@/components/home/PortraitSidebar";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ReadmeSection } from "@/components/sections/ReadmeSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
@@ -26,8 +26,8 @@ export default function Home() {
             className="relative mb-10 lg:mb-0"
             aria-label="Portrait and diffusion panel"
           >
-            <div className="pt-14 sm:pt-20 lg:sticky lg:top-16">
-              <DiffusionPanel />
+            <div className="w-full pt-14 sm:pt-20 lg:sticky lg:top-16 lg:pt-0">
+              <PortraitSidebar />
             </div>
           </aside>
 
