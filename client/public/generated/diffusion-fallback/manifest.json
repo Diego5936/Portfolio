@@ -1,0 +1,3121 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-25T21:27:53.244896+00:00",
+  "comboCount": 28,
+  "periods": [
+    "morning",
+    "afternoon",
+    "sunset",
+    "night"
+  ],
+  "combos": [
+    {
+      "id": "monday-morning",
+      "weekday": "Monday",
+      "timePeriod": "morning",
+      "promptKey": "Monday|morning",
+      "promptKeyWithDate": "Monday|morning|June 16",
+      "prompt": "Create a cute scene, middle of June 16 vibes. Specifically focused on Focused Monday cafe: peace, coffee, books. In the morning",
+      "seed": 1137075774,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 262753,
+      "finalImageUrl": "/generated/diffusion-fallback/monday-morning/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-morning/step-000.png",
+          "emittedAtMs": 34555
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-morning/step-005.png",
+          "emittedAtMs": 117806
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-morning/step-010.png",
+          "emittedAtMs": 152279
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-morning/step-015.png",
+          "emittedAtMs": 180598
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-morning/step-020.png",
+          "emittedAtMs": 211090
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-morning/step-024.png",
+          "emittedAtMs": 252593
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-morning/final.png",
+          "emittedAtMs": 262753
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 34555,
+          "emittedAtMs": 34555
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 83251,
+          "emittedAtMs": 117806
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 34473,
+          "emittedAtMs": 152279
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 28319,
+          "emittedAtMs": 180598
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 30492,
+          "emittedAtMs": 211090
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 41503,
+          "emittedAtMs": 252593
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 10160,
+          "emittedAtMs": 262753
+        }
+      ],
+      "generatedAt": "2026-06-25T20:32:24.159565+00:00"
+    },
+    {
+      "id": "monday-afternoon",
+      "weekday": "Monday",
+      "timePeriod": "afternoon",
+      "promptKey": "Monday|afternoon",
+      "promptKeyWithDate": "Monday|afternoon|June 16",
+      "prompt": "Create a cute scene, middle of June 16 vibes. Specifically focused on Focused Monday cafe: peace, coffee, books. In the afternoon",
+      "seed": 1202889511,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 259778,
+      "finalImageUrl": "/generated/diffusion-fallback/monday-afternoon/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-afternoon/step-000.png",
+          "emittedAtMs": 37792
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-afternoon/step-005.png",
+          "emittedAtMs": 101828
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-afternoon/step-010.png",
+          "emittedAtMs": 145961
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-afternoon/step-015.png",
+          "emittedAtMs": 187082
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-afternoon/step-020.png",
+          "emittedAtMs": 232282
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-afternoon/step-024.png",
+          "emittedAtMs": 253951
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-afternoon/final.png",
+          "emittedAtMs": 259778
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 37792,
+          "emittedAtMs": 37792
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 64036,
+          "emittedAtMs": 101828
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 44133,
+          "emittedAtMs": 145961
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 41121,
+          "emittedAtMs": 187082
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 45200,
+          "emittedAtMs": 232282
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 21669,
+          "emittedAtMs": 253951
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5827,
+          "emittedAtMs": 259778
+        }
+      ],
+      "generatedAt": "2026-06-25T20:36:44.099869+00:00"
+    },
+    {
+      "id": "monday-sunset",
+      "weekday": "Monday",
+      "timePeriod": "sunset",
+      "promptKey": "Monday|sunset",
+      "promptKeyWithDate": "Monday|sunset|June 16",
+      "prompt": "Create a cute scene, middle of June 16 vibes. Specifically focused on Focused Monday cafe: peace, coffee, books. At sunset",
+      "seed": 617235912,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 181414,
+      "finalImageUrl": "/generated/diffusion-fallback/monday-sunset/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-sunset/step-000.png",
+          "emittedAtMs": 28660
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-sunset/step-005.png",
+          "emittedAtMs": 58191
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-sunset/step-010.png",
+          "emittedAtMs": 87014
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-sunset/step-015.png",
+          "emittedAtMs": 117822
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-sunset/step-020.png",
+          "emittedAtMs": 153696
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-sunset/step-024.png",
+          "emittedAtMs": 175160
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-sunset/final.png",
+          "emittedAtMs": 181414
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 28660,
+          "emittedAtMs": 28660
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 29531,
+          "emittedAtMs": 58191
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 28823,
+          "emittedAtMs": 87014
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 30808,
+          "emittedAtMs": 117822
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 35874,
+          "emittedAtMs": 153696
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 21464,
+          "emittedAtMs": 175160
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 6254,
+          "emittedAtMs": 181414
+        }
+      ],
+      "generatedAt": "2026-06-25T20:39:45.620400+00:00"
+    },
+    {
+      "id": "monday-night",
+      "weekday": "Monday",
+      "timePeriod": "night",
+      "promptKey": "Monday|night",
+      "promptKeyWithDate": "Monday|night|June 16",
+      "prompt": "Create a cute scene, middle of June 16 vibes. Specifically focused on Focused Monday cafe: peace, coffee, books. At night",
+      "seed": 207944084,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 133056,
+      "finalImageUrl": "/generated/diffusion-fallback/monday-night/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-night/step-000.png",
+          "emittedAtMs": 13717
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-night/step-005.png",
+          "emittedAtMs": 37514
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-night/step-010.png",
+          "emittedAtMs": 63573
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-night/step-015.png",
+          "emittedAtMs": 84982
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-night/step-020.png",
+          "emittedAtMs": 111640
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-night/step-024.png",
+          "emittedAtMs": 127971
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/monday-night/final.png",
+          "emittedAtMs": 133056
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 13717,
+          "emittedAtMs": 13717
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 23797,
+          "emittedAtMs": 37514
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 26059,
+          "emittedAtMs": 63573
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 21409,
+          "emittedAtMs": 84982
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 26658,
+          "emittedAtMs": 111640
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 16331,
+          "emittedAtMs": 127971
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5085,
+          "emittedAtMs": 133056
+        }
+      ],
+      "generatedAt": "2026-06-25T20:41:58.728684+00:00"
+    },
+    {
+      "id": "tuesday-morning",
+      "weekday": "Tuesday",
+      "timePeriod": "morning",
+      "promptKey": "Tuesday|morning",
+      "promptKeyWithDate": "Tuesday|morning|June 17",
+      "prompt": "Create a cute scene, middle of June 17 vibes. Specifically focused on Inventive Tuesday workshop: science, tools, robots. In the morning",
+      "seed": 499662381,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 123124,
+      "finalImageUrl": "/generated/diffusion-fallback/tuesday-morning/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-000.png",
+          "emittedAtMs": 11409
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-005.png",
+          "emittedAtMs": 32103
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-010.png",
+          "emittedAtMs": 53831
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-015.png",
+          "emittedAtMs": 75408
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-020.png",
+          "emittedAtMs": 95622
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-024.png",
+          "emittedAtMs": 116180
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-morning/final.png",
+          "emittedAtMs": 123124
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 11409,
+          "emittedAtMs": 11409
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 20694,
+          "emittedAtMs": 32103
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 21728,
+          "emittedAtMs": 53831
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 21577,
+          "emittedAtMs": 75408
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 20214,
+          "emittedAtMs": 95622
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 20558,
+          "emittedAtMs": 116180
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 6944,
+          "emittedAtMs": 123124
+        }
+      ],
+      "generatedAt": "2026-06-25T20:44:01.959681+00:00"
+    },
+    {
+      "id": "tuesday-afternoon",
+      "weekday": "Tuesday",
+      "timePeriod": "afternoon",
+      "promptKey": "Tuesday|afternoon",
+      "promptKeyWithDate": "Tuesday|afternoon|June 17",
+      "prompt": "Create a cute scene, middle of June 17 vibes. Specifically focused on Inventive Tuesday workshop: science, tools, robots. In the afternoon",
+      "seed": 523580366,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 131439,
+      "finalImageUrl": "/generated/diffusion-fallback/tuesday-afternoon/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-afternoon/step-000.png",
+          "emittedAtMs": 12902
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-afternoon/step-005.png",
+          "emittedAtMs": 35689
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-afternoon/step-010.png",
+          "emittedAtMs": 57273
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-afternoon/step-015.png",
+          "emittedAtMs": 82399
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-afternoon/step-020.png",
+          "emittedAtMs": 105027
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-afternoon/step-024.png",
+          "emittedAtMs": 123994
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-afternoon/final.png",
+          "emittedAtMs": 131439
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 12902,
+          "emittedAtMs": 12902
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 22787,
+          "emittedAtMs": 35689
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 21584,
+          "emittedAtMs": 57273
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 25126,
+          "emittedAtMs": 82399
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 22628,
+          "emittedAtMs": 105027
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 18967,
+          "emittedAtMs": 123994
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 7445,
+          "emittedAtMs": 131439
+        }
+      ],
+      "generatedAt": "2026-06-25T20:46:13.441203+00:00"
+    },
+    {
+      "id": "tuesday-sunset",
+      "weekday": "Tuesday",
+      "timePeriod": "sunset",
+      "promptKey": "Tuesday|sunset",
+      "promptKeyWithDate": "Tuesday|sunset|June 17",
+      "prompt": "Create a cute scene, middle of June 17 vibes. Specifically focused on Inventive Tuesday workshop: science, tools, robots. At sunset",
+      "seed": 760558601,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 153597,
+      "finalImageUrl": "/generated/diffusion-fallback/tuesday-sunset/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-000.png",
+          "emittedAtMs": 12072
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-005.png",
+          "emittedAtMs": 40219
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-010.png",
+          "emittedAtMs": 73361
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-015.png",
+          "emittedAtMs": 98795
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-020.png",
+          "emittedAtMs": 121911
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-024.png",
+          "emittedAtMs": 146216
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/final.png",
+          "emittedAtMs": 153597
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 12072,
+          "emittedAtMs": 12072
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 28147,
+          "emittedAtMs": 40219
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 33142,
+          "emittedAtMs": 73361
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 25434,
+          "emittedAtMs": 98795
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 23116,
+          "emittedAtMs": 121911
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 24305,
+          "emittedAtMs": 146216
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 7381,
+          "emittedAtMs": 153597
+        }
+      ],
+      "generatedAt": "2026-06-25T20:48:47.083721+00:00"
+    },
+    {
+      "id": "tuesday-night",
+      "weekday": "Tuesday",
+      "timePeriod": "night",
+      "promptKey": "Tuesday|night",
+      "promptKeyWithDate": "Tuesday|night|June 17",
+      "prompt": "Create a cute scene, middle of June 17 vibes. Specifically focused on Inventive Tuesday workshop: science, tools, robots. At night",
+      "seed": 1028595023,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 146884,
+      "finalImageUrl": "/generated/diffusion-fallback/tuesday-night/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-000.png",
+          "emittedAtMs": 10685
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-005.png",
+          "emittedAtMs": 29671
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-010.png",
+          "emittedAtMs": 51490
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-015.png",
+          "emittedAtMs": 86773
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-020.png",
+          "emittedAtMs": 122388
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-024.png",
+          "emittedAtMs": 141479
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/tuesday-night/final.png",
+          "emittedAtMs": 146884
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 10685,
+          "emittedAtMs": 10685
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 18986,
+          "emittedAtMs": 29671
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 21819,
+          "emittedAtMs": 51490
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 35283,
+          "emittedAtMs": 86773
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 35615,
+          "emittedAtMs": 122388
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 19091,
+          "emittedAtMs": 141479
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5405,
+          "emittedAtMs": 146884
+        }
+      ],
+      "generatedAt": "2026-06-25T20:51:14.009033+00:00"
+    },
+    {
+      "id": "wednesday-morning",
+      "weekday": "Wednesday",
+      "timePeriod": "morning",
+      "promptKey": "Wednesday|morning",
+      "promptKeyWithDate": "Wednesday|morning|June 18",
+      "prompt": "Create a cute scene, middle of June 18 vibes. Specifically focused on Curious Wednesday mountains: nature, trails, animals. In the morning",
+      "seed": 1049597922,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 126663,
+      "finalImageUrl": "/generated/diffusion-fallback/wednesday-morning/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-morning/step-000.png",
+          "emittedAtMs": 15886
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-morning/step-005.png",
+          "emittedAtMs": 37676
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-morning/step-010.png",
+          "emittedAtMs": 57023
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-morning/step-015.png",
+          "emittedAtMs": 76614
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-morning/step-020.png",
+          "emittedAtMs": 101700
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-morning/step-024.png",
+          "emittedAtMs": 121087
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-morning/final.png",
+          "emittedAtMs": 126663
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 15886,
+          "emittedAtMs": 15886
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 21790,
+          "emittedAtMs": 37676
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 19347,
+          "emittedAtMs": 57023
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 19591,
+          "emittedAtMs": 76614
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 25086,
+          "emittedAtMs": 101700
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 19387,
+          "emittedAtMs": 121087
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5576,
+          "emittedAtMs": 126663
+        }
+      ],
+      "generatedAt": "2026-06-25T20:53:20.735850+00:00"
+    },
+    {
+      "id": "wednesday-afternoon",
+      "weekday": "Wednesday",
+      "timePeriod": "afternoon",
+      "promptKey": "Wednesday|afternoon",
+      "promptKeyWithDate": "Wednesday|afternoon|June 18",
+      "prompt": "Create a cute scene, middle of June 18 vibes. Specifically focused on Curious Wednesday mountains: nature, trails, animals. In the afternoon",
+      "seed": 1241399002,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 137309,
+      "finalImageUrl": "/generated/diffusion-fallback/wednesday-afternoon/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-000.png",
+          "emittedAtMs": 16050
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-005.png",
+          "emittedAtMs": 41456
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-010.png",
+          "emittedAtMs": 66069
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-015.png",
+          "emittedAtMs": 95743
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-020.png",
+          "emittedAtMs": 116494
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-024.png",
+          "emittedAtMs": 132436
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/final.png",
+          "emittedAtMs": 137309
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 16050,
+          "emittedAtMs": 16050
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 25406,
+          "emittedAtMs": 41456
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 24613,
+          "emittedAtMs": 66069
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 29674,
+          "emittedAtMs": 95743
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 20751,
+          "emittedAtMs": 116494
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 15942,
+          "emittedAtMs": 132436
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 4873,
+          "emittedAtMs": 137309
+        }
+      ],
+      "generatedAt": "2026-06-25T20:55:38.160331+00:00"
+    },
+    {
+      "id": "wednesday-sunset",
+      "weekday": "Wednesday",
+      "timePeriod": "sunset",
+      "promptKey": "Wednesday|sunset",
+      "promptKeyWithDate": "Wednesday|sunset|June 18",
+      "prompt": "Create a cute scene, middle of June 18 vibes. Specifically focused on Curious Wednesday mountains: nature, trails, animals. At sunset",
+      "seed": 144892950,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 105370,
+      "finalImageUrl": "/generated/diffusion-fallback/wednesday-sunset/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-sunset/step-000.png",
+          "emittedAtMs": 12178
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-sunset/step-005.png",
+          "emittedAtMs": 31218
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-sunset/step-010.png",
+          "emittedAtMs": 49821
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-sunset/step-015.png",
+          "emittedAtMs": 66981
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-sunset/step-020.png",
+          "emittedAtMs": 84906
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-sunset/step-024.png",
+          "emittedAtMs": 99898
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-sunset/final.png",
+          "emittedAtMs": 105370
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 12178,
+          "emittedAtMs": 12178
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 19040,
+          "emittedAtMs": 31218
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 18603,
+          "emittedAtMs": 49821
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 17160,
+          "emittedAtMs": 66981
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 17925,
+          "emittedAtMs": 84906
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 14992,
+          "emittedAtMs": 99898
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5472,
+          "emittedAtMs": 105370
+        }
+      ],
+      "generatedAt": "2026-06-25T20:57:23.577143+00:00"
+    },
+    {
+      "id": "wednesday-night",
+      "weekday": "Wednesday",
+      "timePeriod": "night",
+      "promptKey": "Wednesday|night",
+      "promptKeyWithDate": "Wednesday|night|June 18",
+      "prompt": "Create a cute scene, middle of June 18 vibes. Specifically focused on Curious Wednesday mountains: nature, trails, animals. At night",
+      "seed": 471472159,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 118416,
+      "finalImageUrl": "/generated/diffusion-fallback/wednesday-night/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-night/step-000.png",
+          "emittedAtMs": 11926
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-night/step-005.png",
+          "emittedAtMs": 28928
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-night/step-010.png",
+          "emittedAtMs": 51273
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-night/step-015.png",
+          "emittedAtMs": 72740
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-night/step-020.png",
+          "emittedAtMs": 95418
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-night/step-024.png",
+          "emittedAtMs": 113075
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/wednesday-night/final.png",
+          "emittedAtMs": 118416
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 11926,
+          "emittedAtMs": 11926
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 17002,
+          "emittedAtMs": 28928
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 22345,
+          "emittedAtMs": 51273
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 21467,
+          "emittedAtMs": 72740
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 22678,
+          "emittedAtMs": 95418
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 17657,
+          "emittedAtMs": 113075
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5341,
+          "emittedAtMs": 118416
+        }
+      ],
+      "generatedAt": "2026-06-25T20:59:22.045568+00:00"
+    },
+    {
+      "id": "thursday-morning",
+      "weekday": "Thursday",
+      "timePeriod": "morning",
+      "promptKey": "Thursday|morning",
+      "promptKeyWithDate": "Thursday|morning|June 19",
+      "prompt": "Create a cute scene, middle of June 19 vibes. Specifically focused on Creative Thursday canvas: floating shapes, paint, flowers. In the morning",
+      "seed": 1352387338,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 127249,
+      "finalImageUrl": "/generated/diffusion-fallback/thursday-morning/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-morning/step-000.png",
+          "emittedAtMs": 11420
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-morning/step-005.png",
+          "emittedAtMs": 31249
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-morning/step-010.png",
+          "emittedAtMs": 59045
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-morning/step-015.png",
+          "emittedAtMs": 82425
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-morning/step-020.png",
+          "emittedAtMs": 107162
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-morning/step-024.png",
+          "emittedAtMs": 122779
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-morning/final.png",
+          "emittedAtMs": 127249
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 11420,
+          "emittedAtMs": 11420
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 19829,
+          "emittedAtMs": 31249
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 27796,
+          "emittedAtMs": 59045
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 23380,
+          "emittedAtMs": 82425
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 24737,
+          "emittedAtMs": 107162
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 15617,
+          "emittedAtMs": 122779
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 4470,
+          "emittedAtMs": 127249
+        }
+      ],
+      "generatedAt": "2026-06-25T21:01:29.351260+00:00"
+    },
+    {
+      "id": "thursday-afternoon",
+      "weekday": "Thursday",
+      "timePeriod": "afternoon",
+      "promptKey": "Thursday|afternoon",
+      "promptKeyWithDate": "Thursday|afternoon|June 19",
+      "prompt": "Create a cute scene, middle of June 19 vibes. Specifically focused on Creative Thursday canvas: floating shapes, paint, flowers. In the afternoon",
+      "seed": 997804109,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 102658,
+      "finalImageUrl": "/generated/diffusion-fallback/thursday-afternoon/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-afternoon/step-000.png",
+          "emittedAtMs": 8701
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-afternoon/step-005.png",
+          "emittedAtMs": 26700
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-afternoon/step-010.png",
+          "emittedAtMs": 43976
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-afternoon/step-015.png",
+          "emittedAtMs": 61956
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-afternoon/step-020.png",
+          "emittedAtMs": 82706
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-afternoon/step-024.png",
+          "emittedAtMs": 97543
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-afternoon/final.png",
+          "emittedAtMs": 102658
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 8701,
+          "emittedAtMs": 8701
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 17999,
+          "emittedAtMs": 26700
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 17276,
+          "emittedAtMs": 43976
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 17980,
+          "emittedAtMs": 61956
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 20750,
+          "emittedAtMs": 82706
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 14837,
+          "emittedAtMs": 97543
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5115,
+          "emittedAtMs": 102658
+        }
+      ],
+      "generatedAt": "2026-06-25T21:03:12.046945+00:00"
+    },
+    {
+      "id": "thursday-sunset",
+      "weekday": "Thursday",
+      "timePeriod": "sunset",
+      "promptKey": "Thursday|sunset",
+      "promptKeyWithDate": "Thursday|sunset|June 19",
+      "prompt": "Create a cute scene, middle of June 19 vibes. Specifically focused on Creative Thursday canvas: floating shapes, paint, flowers. At sunset",
+      "seed": 1995771804,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 103711,
+      "finalImageUrl": "/generated/diffusion-fallback/thursday-sunset/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-sunset/step-000.png",
+          "emittedAtMs": 9146
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-sunset/step-005.png",
+          "emittedAtMs": 26738
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-sunset/step-010.png",
+          "emittedAtMs": 46138
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-sunset/step-015.png",
+          "emittedAtMs": 63113
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-sunset/step-020.png",
+          "emittedAtMs": 81551
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-sunset/step-024.png",
+          "emittedAtMs": 97999
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-sunset/final.png",
+          "emittedAtMs": 103711
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 9146,
+          "emittedAtMs": 9146
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 17592,
+          "emittedAtMs": 26738
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 19400,
+          "emittedAtMs": 46138
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 16975,
+          "emittedAtMs": 63113
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 18438,
+          "emittedAtMs": 81551
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 16448,
+          "emittedAtMs": 97999
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5712,
+          "emittedAtMs": 103711
+        }
+      ],
+      "generatedAt": "2026-06-25T21:04:55.803710+00:00"
+    },
+    {
+      "id": "thursday-night",
+      "weekday": "Thursday",
+      "timePeriod": "night",
+      "promptKey": "Thursday|night",
+      "promptKeyWithDate": "Thursday|night|June 19",
+      "prompt": "Create a cute scene, middle of June 19 vibes. Specifically focused on Creative Thursday canvas: floating shapes, paint, flowers. At night",
+      "seed": 1413492266,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 126010,
+      "finalImageUrl": "/generated/diffusion-fallback/thursday-night/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-night/step-000.png",
+          "emittedAtMs": 13446
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-night/step-005.png",
+          "emittedAtMs": 35024
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-night/step-010.png",
+          "emittedAtMs": 59698
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-night/step-015.png",
+          "emittedAtMs": 83499
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-night/step-020.png",
+          "emittedAtMs": 103538
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-night/step-024.png",
+          "emittedAtMs": 120589
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/thursday-night/final.png",
+          "emittedAtMs": 126010
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 13446,
+          "emittedAtMs": 13446
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 21578,
+          "emittedAtMs": 35024
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 24674,
+          "emittedAtMs": 59698
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 23801,
+          "emittedAtMs": 83499
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 20039,
+          "emittedAtMs": 103538
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 17051,
+          "emittedAtMs": 120589
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5421,
+          "emittedAtMs": 126010
+        }
+      ],
+      "generatedAt": "2026-06-25T21:07:01.929888+00:00"
+    },
+    {
+      "id": "friday-morning",
+      "weekday": "Friday",
+      "timePeriod": "morning",
+      "promptKey": "Friday|morning",
+      "promptKeyWithDate": "Friday|morning|June 20",
+      "prompt": "Create a cute scene, middle of June 20 vibes. Specifically focused on Electric Friday city: energy, neon lights, music. In the morning",
+      "seed": 652796471,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 103262,
+      "finalImageUrl": "/generated/diffusion-fallback/friday-morning/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-morning/step-000.png",
+          "emittedAtMs": 9922
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-morning/step-005.png",
+          "emittedAtMs": 28372
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-morning/step-010.png",
+          "emittedAtMs": 44918
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-morning/step-015.png",
+          "emittedAtMs": 61484
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-morning/step-020.png",
+          "emittedAtMs": 79586
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-morning/step-024.png",
+          "emittedAtMs": 98584
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-morning/final.png",
+          "emittedAtMs": 103262
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 9922,
+          "emittedAtMs": 9922
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 18450,
+          "emittedAtMs": 28372
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 16546,
+          "emittedAtMs": 44918
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 16566,
+          "emittedAtMs": 61484
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 18102,
+          "emittedAtMs": 79586
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 18998,
+          "emittedAtMs": 98584
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 4678,
+          "emittedAtMs": 103262
+        }
+      ],
+      "generatedAt": "2026-06-25T21:08:45.232344+00:00"
+    },
+    {
+      "id": "friday-afternoon",
+      "weekday": "Friday",
+      "timePeriod": "afternoon",
+      "promptKey": "Friday|afternoon",
+      "promptKeyWithDate": "Friday|afternoon|June 20",
+      "prompt": "Create a cute scene, middle of June 20 vibes. Specifically focused on Electric Friday city: energy, neon lights, music. In the afternoon",
+      "seed": 1031232709,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 97766,
+      "finalImageUrl": "/generated/diffusion-fallback/friday-afternoon/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-afternoon/step-000.png",
+          "emittedAtMs": 10865
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-afternoon/step-005.png",
+          "emittedAtMs": 30660
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-afternoon/step-010.png",
+          "emittedAtMs": 49335
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-afternoon/step-015.png",
+          "emittedAtMs": 64888
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-afternoon/step-020.png",
+          "emittedAtMs": 80652
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-afternoon/step-024.png",
+          "emittedAtMs": 93615
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-afternoon/final.png",
+          "emittedAtMs": 97766
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 10865,
+          "emittedAtMs": 10865
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 19795,
+          "emittedAtMs": 30660
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 18675,
+          "emittedAtMs": 49335
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 15553,
+          "emittedAtMs": 64888
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 15764,
+          "emittedAtMs": 80652
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 12963,
+          "emittedAtMs": 93615
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 4151,
+          "emittedAtMs": 97766
+        }
+      ],
+      "generatedAt": "2026-06-25T21:10:23.050435+00:00"
+    },
+    {
+      "id": "friday-sunset",
+      "weekday": "Friday",
+      "timePeriod": "sunset",
+      "promptKey": "Friday|sunset",
+      "promptKeyWithDate": "Friday|sunset|June 20",
+      "prompt": "Create a cute scene, middle of June 20 vibes. Specifically focused on Electric Friday city: energy, neon lights, music. At sunset",
+      "seed": 68023133,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 116410,
+      "finalImageUrl": "/generated/diffusion-fallback/friday-sunset/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-sunset/step-000.png",
+          "emittedAtMs": 8107
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-sunset/step-005.png",
+          "emittedAtMs": 24915
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-sunset/step-010.png",
+          "emittedAtMs": 47436
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-sunset/step-015.png",
+          "emittedAtMs": 68655
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-sunset/step-020.png",
+          "emittedAtMs": 87536
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-sunset/step-024.png",
+          "emittedAtMs": 108892
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-sunset/final.png",
+          "emittedAtMs": 116410
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 8107,
+          "emittedAtMs": 8107
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 16808,
+          "emittedAtMs": 24915
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 22521,
+          "emittedAtMs": 47436
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 21219,
+          "emittedAtMs": 68655
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 18881,
+          "emittedAtMs": 87536
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 21356,
+          "emittedAtMs": 108892
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 7518,
+          "emittedAtMs": 116410
+        }
+      ],
+      "generatedAt": "2026-06-25T21:12:19.497021+00:00"
+    },
+    {
+      "id": "friday-night",
+      "weekday": "Friday",
+      "timePeriod": "night",
+      "promptKey": "Friday|night",
+      "promptKeyWithDate": "Friday|night|June 20",
+      "prompt": "Create a cute scene, middle of June 20 vibes. Specifically focused on Electric Friday city: energy, neon lights, music. At night",
+      "seed": 1564579353,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 125271,
+      "finalImageUrl": "/generated/diffusion-fallback/friday-night/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-night/step-000.png",
+          "emittedAtMs": 14271
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-night/step-005.png",
+          "emittedAtMs": 35261
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-night/step-010.png",
+          "emittedAtMs": 54670
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-night/step-015.png",
+          "emittedAtMs": 74264
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-night/step-020.png",
+          "emittedAtMs": 93741
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-night/step-024.png",
+          "emittedAtMs": 118779
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/friday-night/final.png",
+          "emittedAtMs": 125271
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 14271,
+          "emittedAtMs": 14271
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 20990,
+          "emittedAtMs": 35261
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 19409,
+          "emittedAtMs": 54670
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 19594,
+          "emittedAtMs": 74264
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 19477,
+          "emittedAtMs": 93741
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 25038,
+          "emittedAtMs": 118779
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 6492,
+          "emittedAtMs": 125271
+        }
+      ],
+      "generatedAt": "2026-06-25T21:14:24.876617+00:00"
+    },
+    {
+      "id": "saturday-morning",
+      "weekday": "Saturday",
+      "timePeriod": "morning",
+      "promptKey": "Saturday|morning",
+      "promptKeyWithDate": "Saturday|morning|June 21",
+      "prompt": "Create a cute scene, middle of June 21 vibes. Specifically focused on Escape Saturday world: vibrant, magic, dreamy. In the morning",
+      "seed": 26616753,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 125584,
+      "finalImageUrl": "/generated/diffusion-fallback/saturday-morning/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-morning/step-000.png",
+          "emittedAtMs": 17158
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-morning/step-005.png",
+          "emittedAtMs": 48006
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-morning/step-010.png",
+          "emittedAtMs": 70697
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-morning/step-015.png",
+          "emittedAtMs": 88737
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-morning/step-020.png",
+          "emittedAtMs": 107254
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-morning/step-024.png",
+          "emittedAtMs": 121031
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-morning/final.png",
+          "emittedAtMs": 125584
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 17158,
+          "emittedAtMs": 17158
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 30848,
+          "emittedAtMs": 48006
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 22691,
+          "emittedAtMs": 70697
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 18040,
+          "emittedAtMs": 88737
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 18517,
+          "emittedAtMs": 107254
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 13777,
+          "emittedAtMs": 121031
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 4553,
+          "emittedAtMs": 125584
+        }
+      ],
+      "generatedAt": "2026-06-25T21:16:30.551935+00:00"
+    },
+    {
+      "id": "saturday-afternoon",
+      "weekday": "Saturday",
+      "timePeriod": "afternoon",
+      "promptKey": "Saturday|afternoon",
+      "promptKeyWithDate": "Saturday|afternoon|June 21",
+      "prompt": "Create a cute scene, middle of June 21 vibes. Specifically focused on Escape Saturday world: vibrant, magic, dreamy. In the afternoon",
+      "seed": 1227183518,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 92829,
+      "finalImageUrl": "/generated/diffusion-fallback/saturday-afternoon/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-000.png",
+          "emittedAtMs": 10366
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-005.png",
+          "emittedAtMs": 26838
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-010.png",
+          "emittedAtMs": 42897
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-015.png",
+          "emittedAtMs": 58759
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-020.png",
+          "emittedAtMs": 74720
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-024.png",
+          "emittedAtMs": 88292
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/final.png",
+          "emittedAtMs": 92829
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 10366,
+          "emittedAtMs": 10366
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 16472,
+          "emittedAtMs": 26838
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 16059,
+          "emittedAtMs": 42897
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 15862,
+          "emittedAtMs": 58759
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 15961,
+          "emittedAtMs": 74720
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 13572,
+          "emittedAtMs": 88292
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 4537,
+          "emittedAtMs": 92829
+        }
+      ],
+      "generatedAt": "2026-06-25T21:18:03.424924+00:00"
+    },
+    {
+      "id": "saturday-sunset",
+      "weekday": "Saturday",
+      "timePeriod": "sunset",
+      "promptKey": "Saturday|sunset",
+      "promptKeyWithDate": "Saturday|sunset|June 21",
+      "prompt": "Create a cute scene, middle of June 21 vibes. Specifically focused on Escape Saturday world: vibrant, magic, dreamy. At sunset",
+      "seed": 1256616767,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 100155,
+      "finalImageUrl": "/generated/diffusion-fallback/saturday-sunset/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-000.png",
+          "emittedAtMs": 9271
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-005.png",
+          "emittedAtMs": 27155
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-010.png",
+          "emittedAtMs": 44466
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-015.png",
+          "emittedAtMs": 62188
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-020.png",
+          "emittedAtMs": 79777
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-024.png",
+          "emittedAtMs": 94965
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-sunset/final.png",
+          "emittedAtMs": 100155
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 9271,
+          "emittedAtMs": 9271
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 17884,
+          "emittedAtMs": 27155
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 17311,
+          "emittedAtMs": 44466
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 17722,
+          "emittedAtMs": 62188
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 17589,
+          "emittedAtMs": 79777
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 15188,
+          "emittedAtMs": 94965
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5190,
+          "emittedAtMs": 100155
+        }
+      ],
+      "generatedAt": "2026-06-25T21:19:43.622586+00:00"
+    },
+    {
+      "id": "saturday-night",
+      "weekday": "Saturday",
+      "timePeriod": "night",
+      "promptKey": "Saturday|night",
+      "promptKeyWithDate": "Saturday|night|June 21",
+      "prompt": "Create a cute scene, middle of June 21 vibes. Specifically focused on Escape Saturday world: vibrant, magic, dreamy. At night",
+      "seed": 1219876893,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 104200,
+      "finalImageUrl": "/generated/diffusion-fallback/saturday-night/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-night/step-000.png",
+          "emittedAtMs": 9549
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-night/step-005.png",
+          "emittedAtMs": 28128
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-night/step-010.png",
+          "emittedAtMs": 46474
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-night/step-015.png",
+          "emittedAtMs": 64523
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-night/step-020.png",
+          "emittedAtMs": 83843
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-night/step-024.png",
+          "emittedAtMs": 99197
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/saturday-night/final.png",
+          "emittedAtMs": 104200
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 9549,
+          "emittedAtMs": 9549
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 18579,
+          "emittedAtMs": 28128
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 18346,
+          "emittedAtMs": 46474
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 18049,
+          "emittedAtMs": 64523
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 19320,
+          "emittedAtMs": 83843
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 15354,
+          "emittedAtMs": 99197
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5003,
+          "emittedAtMs": 104200
+        }
+      ],
+      "generatedAt": "2026-06-25T21:21:27.863118+00:00"
+    },
+    {
+      "id": "sunday-morning",
+      "weekday": "Sunday",
+      "timePeriod": "morning",
+      "promptKey": "Sunday|morning",
+      "promptKeyWithDate": "Sunday|morning|June 22",
+      "prompt": "Create a cute scene, middle of June 22 vibes. Specifically focused on Relaxing Sunday beach: waves, soft clouds, palm trees. In the morning",
+      "seed": 733452810,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 98189,
+      "finalImageUrl": "/generated/diffusion-fallback/sunday-morning/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-morning/step-000.png",
+          "emittedAtMs": 11112
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-morning/step-005.png",
+          "emittedAtMs": 29344
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-morning/step-010.png",
+          "emittedAtMs": 45530
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-morning/step-015.png",
+          "emittedAtMs": 62000
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-morning/step-020.png",
+          "emittedAtMs": 78529
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-morning/step-024.png",
+          "emittedAtMs": 93437
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-morning/final.png",
+          "emittedAtMs": 98189
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 11112,
+          "emittedAtMs": 11112
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 18232,
+          "emittedAtMs": 29344
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 16186,
+          "emittedAtMs": 45530
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 16470,
+          "emittedAtMs": 62000
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 16529,
+          "emittedAtMs": 78529
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 14908,
+          "emittedAtMs": 93437
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 4752,
+          "emittedAtMs": 98189
+        }
+      ],
+      "generatedAt": "2026-06-25T21:23:06.105405+00:00"
+    },
+    {
+      "id": "sunday-afternoon",
+      "weekday": "Sunday",
+      "timePeriod": "afternoon",
+      "promptKey": "Sunday|afternoon",
+      "promptKeyWithDate": "Sunday|afternoon|June 22",
+      "prompt": "Create a cute scene, middle of June 22 vibes. Specifically focused on Relaxing Sunday beach: waves, soft clouds, palm trees. In the afternoon",
+      "seed": 2088498295,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 93018,
+      "finalImageUrl": "/generated/diffusion-fallback/sunday-afternoon/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-afternoon/step-000.png",
+          "emittedAtMs": 9183
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-afternoon/step-005.png",
+          "emittedAtMs": 26168
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-afternoon/step-010.png",
+          "emittedAtMs": 43182
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-afternoon/step-015.png",
+          "emittedAtMs": 59500
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-afternoon/step-020.png",
+          "emittedAtMs": 75334
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-afternoon/step-024.png",
+          "emittedAtMs": 88601
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-afternoon/final.png",
+          "emittedAtMs": 93018
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 9183,
+          "emittedAtMs": 9183
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 16985,
+          "emittedAtMs": 26168
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 17014,
+          "emittedAtMs": 43182
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 16318,
+          "emittedAtMs": 59500
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 15834,
+          "emittedAtMs": 75334
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 13267,
+          "emittedAtMs": 88601
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 4417,
+          "emittedAtMs": 93018
+        }
+      ],
+      "generatedAt": "2026-06-25T21:24:39.162310+00:00"
+    },
+    {
+      "id": "sunday-sunset",
+      "weekday": "Sunday",
+      "timePeriod": "sunset",
+      "promptKey": "Sunday|sunset",
+      "promptKeyWithDate": "Sunday|sunset|June 22",
+      "prompt": "Create a cute scene, middle of June 22 vibes. Specifically focused on Relaxing Sunday beach: waves, soft clouds, palm trees. At sunset",
+      "seed": 2098784888,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 93527,
+      "finalImageUrl": "/generated/diffusion-fallback/sunday-sunset/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-sunset/step-000.png",
+          "emittedAtMs": 7859
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-sunset/step-005.png",
+          "emittedAtMs": 24262
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-sunset/step-010.png",
+          "emittedAtMs": 40335
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-sunset/step-015.png",
+          "emittedAtMs": 56520
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-sunset/step-020.png",
+          "emittedAtMs": 73384
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-sunset/step-024.png",
+          "emittedAtMs": 88499
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-sunset/final.png",
+          "emittedAtMs": 93527
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 7859,
+          "emittedAtMs": 7859
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 16403,
+          "emittedAtMs": 24262
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 16073,
+          "emittedAtMs": 40335
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 16185,
+          "emittedAtMs": 56520
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 16864,
+          "emittedAtMs": 73384
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 15115,
+          "emittedAtMs": 88499
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 5028,
+          "emittedAtMs": 93527
+        }
+      ],
+      "generatedAt": "2026-06-25T21:26:12.725474+00:00"
+    },
+    {
+      "id": "sunday-night",
+      "weekday": "Sunday",
+      "timePeriod": "night",
+      "promptKey": "Sunday|night",
+      "promptKeyWithDate": "Sunday|night|June 22",
+      "prompt": "Create a cute scene, middle of June 22 vibes. Specifically focused on Relaxing Sunday beach: waves, soft clouds, palm trees. At night",
+      "seed": 1325116819,
+      "numInferenceSteps": 25,
+      "decodeEvery": 5,
+      "imageSize": 256,
+      "pixelSize": 55,
+      "totalDurationMs": 100469,
+      "finalImageUrl": "/generated/diffusion-fallback/sunday-night/final.png",
+      "frames": [
+        {
+          "step": 0,
+          "progress": 4,
+          "filename": "step-000.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-night/step-000.png",
+          "emittedAtMs": 9094
+        },
+        {
+          "step": 5,
+          "progress": 24,
+          "filename": "step-005.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-night/step-005.png",
+          "emittedAtMs": 26556
+        },
+        {
+          "step": 10,
+          "progress": 44,
+          "filename": "step-010.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-night/step-010.png",
+          "emittedAtMs": 43867
+        },
+        {
+          "step": 15,
+          "progress": 64,
+          "filename": "step-015.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-night/step-015.png",
+          "emittedAtMs": 62668
+        },
+        {
+          "step": 20,
+          "progress": 84,
+          "filename": "step-020.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-night/step-020.png",
+          "emittedAtMs": 80294
+        },
+        {
+          "step": 24,
+          "progress": 99,
+          "filename": "step-024.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-night/step-024.png",
+          "emittedAtMs": 95757
+        },
+        {
+          "step": 24,
+          "progress": 100,
+          "filename": "final.png",
+          "imageUrl": "/generated/diffusion-fallback/sunday-night/final.png",
+          "emittedAtMs": 100469
+        }
+      ],
+      "frameGaps": [
+        {
+          "fromStep": null,
+          "toStep": 0,
+          "durationMs": 9094,
+          "emittedAtMs": 9094
+        },
+        {
+          "fromStep": 0,
+          "toStep": 5,
+          "durationMs": 17462,
+          "emittedAtMs": 26556
+        },
+        {
+          "fromStep": 5,
+          "toStep": 10,
+          "durationMs": 17311,
+          "emittedAtMs": 43867
+        },
+        {
+          "fromStep": 10,
+          "toStep": 15,
+          "durationMs": 18801,
+          "emittedAtMs": 62668
+        },
+        {
+          "fromStep": 15,
+          "toStep": 20,
+          "durationMs": 17626,
+          "emittedAtMs": 80294
+        },
+        {
+          "fromStep": 20,
+          "toStep": 24,
+          "durationMs": 15463,
+          "emittedAtMs": 95757
+        },
+        {
+          "fromStep": 24,
+          "toStep": 24,
+          "durationMs": 4712,
+          "emittedAtMs": 100469
+        }
+      ],
+      "generatedAt": "2026-06-25T21:27:53.225562+00:00"
+    }
+  ]
+}

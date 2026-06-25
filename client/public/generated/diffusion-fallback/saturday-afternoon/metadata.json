@@ -1,0 +1,111 @@
+{
+  "id": "saturday-afternoon",
+  "weekday": "Saturday",
+  "timePeriod": "afternoon",
+  "promptKey": "Saturday|afternoon",
+  "promptKeyWithDate": "Saturday|afternoon|June 21",
+  "prompt": "Create a cute scene, middle of June 21 vibes. Specifically focused on Escape Saturday world: vibrant, magic, dreamy. In the afternoon",
+  "seed": 1227183518,
+  "numInferenceSteps": 25,
+  "decodeEvery": 5,
+  "imageSize": 256,
+  "pixelSize": 55,
+  "totalDurationMs": 92829,
+  "finalImageUrl": "/generated/diffusion-fallback/saturday-afternoon/final.png",
+  "frames": [
+    {
+      "step": 0,
+      "progress": 4,
+      "filename": "step-000.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-000.png",
+      "emittedAtMs": 10366
+    },
+    {
+      "step": 5,
+      "progress": 24,
+      "filename": "step-005.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-005.png",
+      "emittedAtMs": 26838
+    },
+    {
+      "step": 10,
+      "progress": 44,
+      "filename": "step-010.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-010.png",
+      "emittedAtMs": 42897
+    },
+    {
+      "step": 15,
+      "progress": 64,
+      "filename": "step-015.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-015.png",
+      "emittedAtMs": 58759
+    },
+    {
+      "step": 20,
+      "progress": 84,
+      "filename": "step-020.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-020.png",
+      "emittedAtMs": 74720
+    },
+    {
+      "step": 24,
+      "progress": 99,
+      "filename": "step-024.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/step-024.png",
+      "emittedAtMs": 88292
+    },
+    {
+      "step": 24,
+      "progress": 100,
+      "filename": "final.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-afternoon/final.png",
+      "emittedAtMs": 92829
+    }
+  ],
+  "frameGaps": [
+    {
+      "fromStep": null,
+      "toStep": 0,
+      "durationMs": 10366,
+      "emittedAtMs": 10366
+    },
+    {
+      "fromStep": 0,
+      "toStep": 5,
+      "durationMs": 16472,
+      "emittedAtMs": 26838
+    },
+    {
+      "fromStep": 5,
+      "toStep": 10,
+      "durationMs": 16059,
+      "emittedAtMs": 42897
+    },
+    {
+      "fromStep": 10,
+      "toStep": 15,
+      "durationMs": 15862,
+      "emittedAtMs": 58759
+    },
+    {
+      "fromStep": 15,
+      "toStep": 20,
+      "durationMs": 15961,
+      "emittedAtMs": 74720
+    },
+    {
+      "fromStep": 20,
+      "toStep": 24,
+      "durationMs": 13572,
+      "emittedAtMs": 88292
+    },
+    {
+      "fromStep": 24,
+      "toStep": 24,
+      "durationMs": 4537,
+      "emittedAtMs": 92829
+    }
+  ],
+  "generatedAt": "2026-06-25T21:18:03.424924+00:00"
+}

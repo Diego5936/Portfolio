@@ -1,0 +1,111 @@
+{
+  "id": "wednesday-afternoon",
+  "weekday": "Wednesday",
+  "timePeriod": "afternoon",
+  "promptKey": "Wednesday|afternoon",
+  "promptKeyWithDate": "Wednesday|afternoon|June 18",
+  "prompt": "Create a cute scene, middle of June 18 vibes. Specifically focused on Curious Wednesday mountains: nature, trails, animals. In the afternoon",
+  "seed": 1241399002,
+  "numInferenceSteps": 25,
+  "decodeEvery": 5,
+  "imageSize": 256,
+  "pixelSize": 55,
+  "totalDurationMs": 137309,
+  "finalImageUrl": "/generated/diffusion-fallback/wednesday-afternoon/final.png",
+  "frames": [
+    {
+      "step": 0,
+      "progress": 4,
+      "filename": "step-000.png",
+      "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-000.png",
+      "emittedAtMs": 16050
+    },
+    {
+      "step": 5,
+      "progress": 24,
+      "filename": "step-005.png",
+      "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-005.png",
+      "emittedAtMs": 41456
+    },
+    {
+      "step": 10,
+      "progress": 44,
+      "filename": "step-010.png",
+      "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-010.png",
+      "emittedAtMs": 66069
+    },
+    {
+      "step": 15,
+      "progress": 64,
+      "filename": "step-015.png",
+      "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-015.png",
+      "emittedAtMs": 95743
+    },
+    {
+      "step": 20,
+      "progress": 84,
+      "filename": "step-020.png",
+      "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-020.png",
+      "emittedAtMs": 116494
+    },
+    {
+      "step": 24,
+      "progress": 99,
+      "filename": "step-024.png",
+      "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/step-024.png",
+      "emittedAtMs": 132436
+    },
+    {
+      "step": 24,
+      "progress": 100,
+      "filename": "final.png",
+      "imageUrl": "/generated/diffusion-fallback/wednesday-afternoon/final.png",
+      "emittedAtMs": 137309
+    }
+  ],
+  "frameGaps": [
+    {
+      "fromStep": null,
+      "toStep": 0,
+      "durationMs": 16050,
+      "emittedAtMs": 16050
+    },
+    {
+      "fromStep": 0,
+      "toStep": 5,
+      "durationMs": 25406,
+      "emittedAtMs": 41456
+    },
+    {
+      "fromStep": 5,
+      "toStep": 10,
+      "durationMs": 24613,
+      "emittedAtMs": 66069
+    },
+    {
+      "fromStep": 10,
+      "toStep": 15,
+      "durationMs": 29674,
+      "emittedAtMs": 95743
+    },
+    {
+      "fromStep": 15,
+      "toStep": 20,
+      "durationMs": 20751,
+      "emittedAtMs": 116494
+    },
+    {
+      "fromStep": 20,
+      "toStep": 24,
+      "durationMs": 15942,
+      "emittedAtMs": 132436
+    },
+    {
+      "fromStep": 24,
+      "toStep": 24,
+      "durationMs": 4873,
+      "emittedAtMs": 137309
+    }
+  ],
+  "generatedAt": "2026-06-25T20:55:38.160331+00:00"
+}

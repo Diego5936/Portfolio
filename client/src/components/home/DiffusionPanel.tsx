@@ -1,4 +1,5 @@
 import { useDiffusionJob } from "@/components/home/useDiffusionJob";
+import { resolveDiffusionImageUrl } from "@/lib/diffusionFallback";
 import { useMemo } from "react";
 
 const BRIGHT_GRADIENT_COLORS = [
@@ -40,11 +41,7 @@ export function DiffusionPanel() {
 
         {job?.imageUrl ? (
           <img
-            src={
-              job.imageUrl.startsWith("http")
-                ? job.imageUrl
-                : `${apiBaseUrl}${job.imageUrl}`
-            }
+            src={resolveDiffusionImageUrl(job.imageUrl, apiBaseUrl)}
             alt="AI-generated diffusion background"
             className="absolute inset-0 h-full w-full object-cover"
           />

@@ -1,0 +1,111 @@
+{
+  "id": "thursday-night",
+  "weekday": "Thursday",
+  "timePeriod": "night",
+  "promptKey": "Thursday|night",
+  "promptKeyWithDate": "Thursday|night|June 19",
+  "prompt": "Create a cute scene, middle of June 19 vibes. Specifically focused on Creative Thursday canvas: floating shapes, paint, flowers. At night",
+  "seed": 1413492266,
+  "numInferenceSteps": 25,
+  "decodeEvery": 5,
+  "imageSize": 256,
+  "pixelSize": 55,
+  "totalDurationMs": 126010,
+  "finalImageUrl": "/generated/diffusion-fallback/thursday-night/final.png",
+  "frames": [
+    {
+      "step": 0,
+      "progress": 4,
+      "filename": "step-000.png",
+      "imageUrl": "/generated/diffusion-fallback/thursday-night/step-000.png",
+      "emittedAtMs": 13446
+    },
+    {
+      "step": 5,
+      "progress": 24,
+      "filename": "step-005.png",
+      "imageUrl": "/generated/diffusion-fallback/thursday-night/step-005.png",
+      "emittedAtMs": 35024
+    },
+    {
+      "step": 10,
+      "progress": 44,
+      "filename": "step-010.png",
+      "imageUrl": "/generated/diffusion-fallback/thursday-night/step-010.png",
+      "emittedAtMs": 59698
+    },
+    {
+      "step": 15,
+      "progress": 64,
+      "filename": "step-015.png",
+      "imageUrl": "/generated/diffusion-fallback/thursday-night/step-015.png",
+      "emittedAtMs": 83499
+    },
+    {
+      "step": 20,
+      "progress": 84,
+      "filename": "step-020.png",
+      "imageUrl": "/generated/diffusion-fallback/thursday-night/step-020.png",
+      "emittedAtMs": 103538
+    },
+    {
+      "step": 24,
+      "progress": 99,
+      "filename": "step-024.png",
+      "imageUrl": "/generated/diffusion-fallback/thursday-night/step-024.png",
+      "emittedAtMs": 120589
+    },
+    {
+      "step": 24,
+      "progress": 100,
+      "filename": "final.png",
+      "imageUrl": "/generated/diffusion-fallback/thursday-night/final.png",
+      "emittedAtMs": 126010
+    }
+  ],
+  "frameGaps": [
+    {
+      "fromStep": null,
+      "toStep": 0,
+      "durationMs": 13446,
+      "emittedAtMs": 13446
+    },
+    {
+      "fromStep": 0,
+      "toStep": 5,
+      "durationMs": 21578,
+      "emittedAtMs": 35024
+    },
+    {
+      "fromStep": 5,
+      "toStep": 10,
+      "durationMs": 24674,
+      "emittedAtMs": 59698
+    },
+    {
+      "fromStep": 10,
+      "toStep": 15,
+      "durationMs": 23801,
+      "emittedAtMs": 83499
+    },
+    {
+      "fromStep": 15,
+      "toStep": 20,
+      "durationMs": 20039,
+      "emittedAtMs": 103538
+    },
+    {
+      "fromStep": 20,
+      "toStep": 24,
+      "durationMs": 17051,
+      "emittedAtMs": 120589
+    },
+    {
+      "fromStep": 24,
+      "toStep": 24,
+      "durationMs": 5421,
+      "emittedAtMs": 126010
+    }
+  ],
+  "generatedAt": "2026-06-25T21:07:01.929888+00:00"
+}

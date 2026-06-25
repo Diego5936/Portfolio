@@ -1,0 +1,111 @@
+{
+  "id": "friday-morning",
+  "weekday": "Friday",
+  "timePeriod": "morning",
+  "promptKey": "Friday|morning",
+  "promptKeyWithDate": "Friday|morning|June 20",
+  "prompt": "Create a cute scene, middle of June 20 vibes. Specifically focused on Electric Friday city: energy, neon lights, music. In the morning",
+  "seed": 652796471,
+  "numInferenceSteps": 25,
+  "decodeEvery": 5,
+  "imageSize": 256,
+  "pixelSize": 55,
+  "totalDurationMs": 103262,
+  "finalImageUrl": "/generated/diffusion-fallback/friday-morning/final.png",
+  "frames": [
+    {
+      "step": 0,
+      "progress": 4,
+      "filename": "step-000.png",
+      "imageUrl": "/generated/diffusion-fallback/friday-morning/step-000.png",
+      "emittedAtMs": 9922
+    },
+    {
+      "step": 5,
+      "progress": 24,
+      "filename": "step-005.png",
+      "imageUrl": "/generated/diffusion-fallback/friday-morning/step-005.png",
+      "emittedAtMs": 28372
+    },
+    {
+      "step": 10,
+      "progress": 44,
+      "filename": "step-010.png",
+      "imageUrl": "/generated/diffusion-fallback/friday-morning/step-010.png",
+      "emittedAtMs": 44918
+    },
+    {
+      "step": 15,
+      "progress": 64,
+      "filename": "step-015.png",
+      "imageUrl": "/generated/diffusion-fallback/friday-morning/step-015.png",
+      "emittedAtMs": 61484
+    },
+    {
+      "step": 20,
+      "progress": 84,
+      "filename": "step-020.png",
+      "imageUrl": "/generated/diffusion-fallback/friday-morning/step-020.png",
+      "emittedAtMs": 79586
+    },
+    {
+      "step": 24,
+      "progress": 99,
+      "filename": "step-024.png",
+      "imageUrl": "/generated/diffusion-fallback/friday-morning/step-024.png",
+      "emittedAtMs": 98584
+    },
+    {
+      "step": 24,
+      "progress": 100,
+      "filename": "final.png",
+      "imageUrl": "/generated/diffusion-fallback/friday-morning/final.png",
+      "emittedAtMs": 103262
+    }
+  ],
+  "frameGaps": [
+    {
+      "fromStep": null,
+      "toStep": 0,
+      "durationMs": 9922,
+      "emittedAtMs": 9922
+    },
+    {
+      "fromStep": 0,
+      "toStep": 5,
+      "durationMs": 18450,
+      "emittedAtMs": 28372
+    },
+    {
+      "fromStep": 5,
+      "toStep": 10,
+      "durationMs": 16546,
+      "emittedAtMs": 44918
+    },
+    {
+      "fromStep": 10,
+      "toStep": 15,
+      "durationMs": 16566,
+      "emittedAtMs": 61484
+    },
+    {
+      "fromStep": 15,
+      "toStep": 20,
+      "durationMs": 18102,
+      "emittedAtMs": 79586
+    },
+    {
+      "fromStep": 20,
+      "toStep": 24,
+      "durationMs": 18998,
+      "emittedAtMs": 98584
+    },
+    {
+      "fromStep": 24,
+      "toStep": 24,
+      "durationMs": 4678,
+      "emittedAtMs": 103262
+    }
+  ],
+  "generatedAt": "2026-06-25T21:08:45.232344+00:00"
+}

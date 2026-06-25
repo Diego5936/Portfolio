@@ -1,0 +1,111 @@
+{
+  "id": "saturday-night",
+  "weekday": "Saturday",
+  "timePeriod": "night",
+  "promptKey": "Saturday|night",
+  "promptKeyWithDate": "Saturday|night|June 21",
+  "prompt": "Create a cute scene, middle of June 21 vibes. Specifically focused on Escape Saturday world: vibrant, magic, dreamy. At night",
+  "seed": 1219876893,
+  "numInferenceSteps": 25,
+  "decodeEvery": 5,
+  "imageSize": 256,
+  "pixelSize": 55,
+  "totalDurationMs": 104200,
+  "finalImageUrl": "/generated/diffusion-fallback/saturday-night/final.png",
+  "frames": [
+    {
+      "step": 0,
+      "progress": 4,
+      "filename": "step-000.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-night/step-000.png",
+      "emittedAtMs": 9549
+    },
+    {
+      "step": 5,
+      "progress": 24,
+      "filename": "step-005.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-night/step-005.png",
+      "emittedAtMs": 28128
+    },
+    {
+      "step": 10,
+      "progress": 44,
+      "filename": "step-010.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-night/step-010.png",
+      "emittedAtMs": 46474
+    },
+    {
+      "step": 15,
+      "progress": 64,
+      "filename": "step-015.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-night/step-015.png",
+      "emittedAtMs": 64523
+    },
+    {
+      "step": 20,
+      "progress": 84,
+      "filename": "step-020.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-night/step-020.png",
+      "emittedAtMs": 83843
+    },
+    {
+      "step": 24,
+      "progress": 99,
+      "filename": "step-024.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-night/step-024.png",
+      "emittedAtMs": 99197
+    },
+    {
+      "step": 24,
+      "progress": 100,
+      "filename": "final.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-night/final.png",
+      "emittedAtMs": 104200
+    }
+  ],
+  "frameGaps": [
+    {
+      "fromStep": null,
+      "toStep": 0,
+      "durationMs": 9549,
+      "emittedAtMs": 9549
+    },
+    {
+      "fromStep": 0,
+      "toStep": 5,
+      "durationMs": 18579,
+      "emittedAtMs": 28128
+    },
+    {
+      "fromStep": 5,
+      "toStep": 10,
+      "durationMs": 18346,
+      "emittedAtMs": 46474
+    },
+    {
+      "fromStep": 10,
+      "toStep": 15,
+      "durationMs": 18049,
+      "emittedAtMs": 64523
+    },
+    {
+      "fromStep": 15,
+      "toStep": 20,
+      "durationMs": 19320,
+      "emittedAtMs": 83843
+    },
+    {
+      "fromStep": 20,
+      "toStep": 24,
+      "durationMs": 15354,
+      "emittedAtMs": 99197
+    },
+    {
+      "fromStep": 24,
+      "toStep": 24,
+      "durationMs": 5003,
+      "emittedAtMs": 104200
+    }
+  ],
+  "generatedAt": "2026-06-25T21:21:27.863118+00:00"
+}

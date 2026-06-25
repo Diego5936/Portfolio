@@ -58,7 +58,15 @@ export default defineConfig({
     },
     proxy: {
       "/api": devApiProxy,
-      "/generated": devApiProxy,
+      "/generated": {
+        target: devApiProxy,
+        bypass(req) {
+          const url = req.url ?? "";
+          if (url.startsWith("/generated/diffusion-fallback")) {
+            return url;
+          }
+        },
+      },
     },
   },
 });

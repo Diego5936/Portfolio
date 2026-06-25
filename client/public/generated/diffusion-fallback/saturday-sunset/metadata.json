@@ -1,0 +1,111 @@
+{
+  "id": "saturday-sunset",
+  "weekday": "Saturday",
+  "timePeriod": "sunset",
+  "promptKey": "Saturday|sunset",
+  "promptKeyWithDate": "Saturday|sunset|June 21",
+  "prompt": "Create a cute scene, middle of June 21 vibes. Specifically focused on Escape Saturday world: vibrant, magic, dreamy. At sunset",
+  "seed": 1256616767,
+  "numInferenceSteps": 25,
+  "decodeEvery": 5,
+  "imageSize": 256,
+  "pixelSize": 55,
+  "totalDurationMs": 100155,
+  "finalImageUrl": "/generated/diffusion-fallback/saturday-sunset/final.png",
+  "frames": [
+    {
+      "step": 0,
+      "progress": 4,
+      "filename": "step-000.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-000.png",
+      "emittedAtMs": 9271
+    },
+    {
+      "step": 5,
+      "progress": 24,
+      "filename": "step-005.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-005.png",
+      "emittedAtMs": 27155
+    },
+    {
+      "step": 10,
+      "progress": 44,
+      "filename": "step-010.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-010.png",
+      "emittedAtMs": 44466
+    },
+    {
+      "step": 15,
+      "progress": 64,
+      "filename": "step-015.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-015.png",
+      "emittedAtMs": 62188
+    },
+    {
+      "step": 20,
+      "progress": 84,
+      "filename": "step-020.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-020.png",
+      "emittedAtMs": 79777
+    },
+    {
+      "step": 24,
+      "progress": 99,
+      "filename": "step-024.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-sunset/step-024.png",
+      "emittedAtMs": 94965
+    },
+    {
+      "step": 24,
+      "progress": 100,
+      "filename": "final.png",
+      "imageUrl": "/generated/diffusion-fallback/saturday-sunset/final.png",
+      "emittedAtMs": 100155
+    }
+  ],
+  "frameGaps": [
+    {
+      "fromStep": null,
+      "toStep": 0,
+      "durationMs": 9271,
+      "emittedAtMs": 9271
+    },
+    {
+      "fromStep": 0,
+      "toStep": 5,
+      "durationMs": 17884,
+      "emittedAtMs": 27155
+    },
+    {
+      "fromStep": 5,
+      "toStep": 10,
+      "durationMs": 17311,
+      "emittedAtMs": 44466
+    },
+    {
+      "fromStep": 10,
+      "toStep": 15,
+      "durationMs": 17722,
+      "emittedAtMs": 62188
+    },
+    {
+      "fromStep": 15,
+      "toStep": 20,
+      "durationMs": 17589,
+      "emittedAtMs": 79777
+    },
+    {
+      "fromStep": 20,
+      "toStep": 24,
+      "durationMs": 15188,
+      "emittedAtMs": 94965
+    },
+    {
+      "fromStep": 24,
+      "toStep": 24,
+      "durationMs": 5190,
+      "emittedAtMs": 100155
+    }
+  ],
+  "generatedAt": "2026-06-25T21:19:43.622586+00:00"
+}

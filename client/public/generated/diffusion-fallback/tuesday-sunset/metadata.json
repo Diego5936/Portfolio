@@ -1,0 +1,111 @@
+{
+  "id": "tuesday-sunset",
+  "weekday": "Tuesday",
+  "timePeriod": "sunset",
+  "promptKey": "Tuesday|sunset",
+  "promptKeyWithDate": "Tuesday|sunset|June 17",
+  "prompt": "Create a cute scene, middle of June 17 vibes. Specifically focused on Inventive Tuesday workshop: science, tools, robots. At sunset",
+  "seed": 760558601,
+  "numInferenceSteps": 25,
+  "decodeEvery": 5,
+  "imageSize": 256,
+  "pixelSize": 55,
+  "totalDurationMs": 153597,
+  "finalImageUrl": "/generated/diffusion-fallback/tuesday-sunset/final.png",
+  "frames": [
+    {
+      "step": 0,
+      "progress": 4,
+      "filename": "step-000.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-000.png",
+      "emittedAtMs": 12072
+    },
+    {
+      "step": 5,
+      "progress": 24,
+      "filename": "step-005.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-005.png",
+      "emittedAtMs": 40219
+    },
+    {
+      "step": 10,
+      "progress": 44,
+      "filename": "step-010.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-010.png",
+      "emittedAtMs": 73361
+    },
+    {
+      "step": 15,
+      "progress": 64,
+      "filename": "step-015.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-015.png",
+      "emittedAtMs": 98795
+    },
+    {
+      "step": 20,
+      "progress": 84,
+      "filename": "step-020.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-020.png",
+      "emittedAtMs": 121911
+    },
+    {
+      "step": 24,
+      "progress": 99,
+      "filename": "step-024.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/step-024.png",
+      "emittedAtMs": 146216
+    },
+    {
+      "step": 24,
+      "progress": 100,
+      "filename": "final.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-sunset/final.png",
+      "emittedAtMs": 153597
+    }
+  ],
+  "frameGaps": [
+    {
+      "fromStep": null,
+      "toStep": 0,
+      "durationMs": 12072,
+      "emittedAtMs": 12072
+    },
+    {
+      "fromStep": 0,
+      "toStep": 5,
+      "durationMs": 28147,
+      "emittedAtMs": 40219
+    },
+    {
+      "fromStep": 5,
+      "toStep": 10,
+      "durationMs": 33142,
+      "emittedAtMs": 73361
+    },
+    {
+      "fromStep": 10,
+      "toStep": 15,
+      "durationMs": 25434,
+      "emittedAtMs": 98795
+    },
+    {
+      "fromStep": 15,
+      "toStep": 20,
+      "durationMs": 23116,
+      "emittedAtMs": 121911
+    },
+    {
+      "fromStep": 20,
+      "toStep": 24,
+      "durationMs": 24305,
+      "emittedAtMs": 146216
+    },
+    {
+      "fromStep": 24,
+      "toStep": 24,
+      "durationMs": 7381,
+      "emittedAtMs": 153597
+    }
+  ],
+  "generatedAt": "2026-06-25T20:48:47.083721+00:00"
+}

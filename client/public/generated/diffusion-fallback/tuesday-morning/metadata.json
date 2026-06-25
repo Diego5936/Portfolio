@@ -1,0 +1,111 @@
+{
+  "id": "tuesday-morning",
+  "weekday": "Tuesday",
+  "timePeriod": "morning",
+  "promptKey": "Tuesday|morning",
+  "promptKeyWithDate": "Tuesday|morning|June 17",
+  "prompt": "Create a cute scene, middle of June 17 vibes. Specifically focused on Inventive Tuesday workshop: science, tools, robots. In the morning",
+  "seed": 499662381,
+  "numInferenceSteps": 25,
+  "decodeEvery": 5,
+  "imageSize": 256,
+  "pixelSize": 55,
+  "totalDurationMs": 123124,
+  "finalImageUrl": "/generated/diffusion-fallback/tuesday-morning/final.png",
+  "frames": [
+    {
+      "step": 0,
+      "progress": 4,
+      "filename": "step-000.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-000.png",
+      "emittedAtMs": 11409
+    },
+    {
+      "step": 5,
+      "progress": 24,
+      "filename": "step-005.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-005.png",
+      "emittedAtMs": 32103
+    },
+    {
+      "step": 10,
+      "progress": 44,
+      "filename": "step-010.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-010.png",
+      "emittedAtMs": 53831
+    },
+    {
+      "step": 15,
+      "progress": 64,
+      "filename": "step-015.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-015.png",
+      "emittedAtMs": 75408
+    },
+    {
+      "step": 20,
+      "progress": 84,
+      "filename": "step-020.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-020.png",
+      "emittedAtMs": 95622
+    },
+    {
+      "step": 24,
+      "progress": 99,
+      "filename": "step-024.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-morning/step-024.png",
+      "emittedAtMs": 116180
+    },
+    {
+      "step": 24,
+      "progress": 100,
+      "filename": "final.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-morning/final.png",
+      "emittedAtMs": 123124
+    }
+  ],
+  "frameGaps": [
+    {
+      "fromStep": null,
+      "toStep": 0,
+      "durationMs": 11409,
+      "emittedAtMs": 11409
+    },
+    {
+      "fromStep": 0,
+      "toStep": 5,
+      "durationMs": 20694,
+      "emittedAtMs": 32103
+    },
+    {
+      "fromStep": 5,
+      "toStep": 10,
+      "durationMs": 21728,
+      "emittedAtMs": 53831
+    },
+    {
+      "fromStep": 10,
+      "toStep": 15,
+      "durationMs": 21577,
+      "emittedAtMs": 75408
+    },
+    {
+      "fromStep": 15,
+      "toStep": 20,
+      "durationMs": 20214,
+      "emittedAtMs": 95622
+    },
+    {
+      "fromStep": 20,
+      "toStep": 24,
+      "durationMs": 20558,
+      "emittedAtMs": 116180
+    },
+    {
+      "fromStep": 24,
+      "toStep": 24,
+      "durationMs": 6944,
+      "emittedAtMs": 123124
+    }
+  ],
+  "generatedAt": "2026-06-25T20:44:01.959681+00:00"
+}

@@ -1,0 +1,111 @@
+{
+  "id": "sunday-night",
+  "weekday": "Sunday",
+  "timePeriod": "night",
+  "promptKey": "Sunday|night",
+  "promptKeyWithDate": "Sunday|night|June 22",
+  "prompt": "Create a cute scene, middle of June 22 vibes. Specifically focused on Relaxing Sunday beach: waves, soft clouds, palm trees. At night",
+  "seed": 1325116819,
+  "numInferenceSteps": 25,
+  "decodeEvery": 5,
+  "imageSize": 256,
+  "pixelSize": 55,
+  "totalDurationMs": 100469,
+  "finalImageUrl": "/generated/diffusion-fallback/sunday-night/final.png",
+  "frames": [
+    {
+      "step": 0,
+      "progress": 4,
+      "filename": "step-000.png",
+      "imageUrl": "/generated/diffusion-fallback/sunday-night/step-000.png",
+      "emittedAtMs": 9094
+    },
+    {
+      "step": 5,
+      "progress": 24,
+      "filename": "step-005.png",
+      "imageUrl": "/generated/diffusion-fallback/sunday-night/step-005.png",
+      "emittedAtMs": 26556
+    },
+    {
+      "step": 10,
+      "progress": 44,
+      "filename": "step-010.png",
+      "imageUrl": "/generated/diffusion-fallback/sunday-night/step-010.png",
+      "emittedAtMs": 43867
+    },
+    {
+      "step": 15,
+      "progress": 64,
+      "filename": "step-015.png",
+      "imageUrl": "/generated/diffusion-fallback/sunday-night/step-015.png",
+      "emittedAtMs": 62668
+    },
+    {
+      "step": 20,
+      "progress": 84,
+      "filename": "step-020.png",
+      "imageUrl": "/generated/diffusion-fallback/sunday-night/step-020.png",
+      "emittedAtMs": 80294
+    },
+    {
+      "step": 24,
+      "progress": 99,
+      "filename": "step-024.png",
+      "imageUrl": "/generated/diffusion-fallback/sunday-night/step-024.png",
+      "emittedAtMs": 95757
+    },
+    {
+      "step": 24,
+      "progress": 100,
+      "filename": "final.png",
+      "imageUrl": "/generated/diffusion-fallback/sunday-night/final.png",
+      "emittedAtMs": 100469
+    }
+  ],
+  "frameGaps": [
+    {
+      "fromStep": null,
+      "toStep": 0,
+      "durationMs": 9094,
+      "emittedAtMs": 9094
+    },
+    {
+      "fromStep": 0,
+      "toStep": 5,
+      "durationMs": 17462,
+      "emittedAtMs": 26556
+    },
+    {
+      "fromStep": 5,
+      "toStep": 10,
+      "durationMs": 17311,
+      "emittedAtMs": 43867
+    },
+    {
+      "fromStep": 10,
+      "toStep": 15,
+      "durationMs": 18801,
+      "emittedAtMs": 62668
+    },
+    {
+      "fromStep": 15,
+      "toStep": 20,
+      "durationMs": 17626,
+      "emittedAtMs": 80294
+    },
+    {
+      "fromStep": 20,
+      "toStep": 24,
+      "durationMs": 15463,
+      "emittedAtMs": 95757
+    },
+    {
+      "fromStep": 24,
+      "toStep": 24,
+      "durationMs": 4712,
+      "emittedAtMs": 100469
+    }
+  ],
+  "generatedAt": "2026-06-25T21:27:53.225562+00:00"
+}

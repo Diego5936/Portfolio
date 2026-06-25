@@ -1,0 +1,111 @@
+{
+  "id": "tuesday-night",
+  "weekday": "Tuesday",
+  "timePeriod": "night",
+  "promptKey": "Tuesday|night",
+  "promptKeyWithDate": "Tuesday|night|June 17",
+  "prompt": "Create a cute scene, middle of June 17 vibes. Specifically focused on Inventive Tuesday workshop: science, tools, robots. At night",
+  "seed": 1028595023,
+  "numInferenceSteps": 25,
+  "decodeEvery": 5,
+  "imageSize": 256,
+  "pixelSize": 55,
+  "totalDurationMs": 146884,
+  "finalImageUrl": "/generated/diffusion-fallback/tuesday-night/final.png",
+  "frames": [
+    {
+      "step": 0,
+      "progress": 4,
+      "filename": "step-000.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-000.png",
+      "emittedAtMs": 10685
+    },
+    {
+      "step": 5,
+      "progress": 24,
+      "filename": "step-005.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-005.png",
+      "emittedAtMs": 29671
+    },
+    {
+      "step": 10,
+      "progress": 44,
+      "filename": "step-010.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-010.png",
+      "emittedAtMs": 51490
+    },
+    {
+      "step": 15,
+      "progress": 64,
+      "filename": "step-015.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-015.png",
+      "emittedAtMs": 86773
+    },
+    {
+      "step": 20,
+      "progress": 84,
+      "filename": "step-020.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-020.png",
+      "emittedAtMs": 122388
+    },
+    {
+      "step": 24,
+      "progress": 99,
+      "filename": "step-024.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-night/step-024.png",
+      "emittedAtMs": 141479
+    },
+    {
+      "step": 24,
+      "progress": 100,
+      "filename": "final.png",
+      "imageUrl": "/generated/diffusion-fallback/tuesday-night/final.png",
+      "emittedAtMs": 146884
+    }
+  ],
+  "frameGaps": [
+    {
+      "fromStep": null,
+      "toStep": 0,
+      "durationMs": 10685,
+      "emittedAtMs": 10685
+    },
+    {
+      "fromStep": 0,
+      "toStep": 5,
+      "durationMs": 18986,
+      "emittedAtMs": 29671
+    },
+    {
+      "fromStep": 5,
+      "toStep": 10,
+      "durationMs": 21819,
+      "emittedAtMs": 51490
+    },
+    {
+      "fromStep": 10,
+      "toStep": 15,
+      "durationMs": 35283,
+      "emittedAtMs": 86773
+    },
+    {
+      "fromStep": 15,
+      "toStep": 20,
+      "durationMs": 35615,
+      "emittedAtMs": 122388
+    },
+    {
+      "fromStep": 20,
+      "toStep": 24,
+      "durationMs": 19091,
+      "emittedAtMs": 141479
+    },
+    {
+      "fromStep": 24,
+      "toStep": 24,
+      "durationMs": 5405,
+      "emittedAtMs": 146884
+    }
+  ],
+  "generatedAt": "2026-06-25T20:51:14.009033+00:00"
+}

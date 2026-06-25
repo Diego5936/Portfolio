@@ -1,0 +1,111 @@
+{
+  "id": "monday-night",
+  "weekday": "Monday",
+  "timePeriod": "night",
+  "promptKey": "Monday|night",
+  "promptKeyWithDate": "Monday|night|June 16",
+  "prompt": "Create a cute scene, middle of June 16 vibes. Specifically focused on Focused Monday cafe: peace, coffee, books. At night",
+  "seed": 207944084,
+  "numInferenceSteps": 25,
+  "decodeEvery": 5,
+  "imageSize": 256,
+  "pixelSize": 55,
+  "totalDurationMs": 133056,
+  "finalImageUrl": "/generated/diffusion-fallback/monday-night/final.png",
+  "frames": [
+    {
+      "step": 0,
+      "progress": 4,
+      "filename": "step-000.png",
+      "imageUrl": "/generated/diffusion-fallback/monday-night/step-000.png",
+      "emittedAtMs": 13717
+    },
+    {
+      "step": 5,
+      "progress": 24,
+      "filename": "step-005.png",
+      "imageUrl": "/generated/diffusion-fallback/monday-night/step-005.png",
+      "emittedAtMs": 37514
+    },
+    {
+      "step": 10,
+      "progress": 44,
+      "filename": "step-010.png",
+      "imageUrl": "/generated/diffusion-fallback/monday-night/step-010.png",
+      "emittedAtMs": 63573
+    },
+    {
+      "step": 15,
+      "progress": 64,
+      "filename": "step-015.png",
+      "imageUrl": "/generated/diffusion-fallback/monday-night/step-015.png",
+      "emittedAtMs": 84982
+    },
+    {
+      "step": 20,
+      "progress": 84,
+      "filename": "step-020.png",
+      "imageUrl": "/generated/diffusion-fallback/monday-night/step-020.png",
+      "emittedAtMs": 111640
+    },
+    {
+      "step": 24,
+      "progress": 99,
+      "filename": "step-024.png",
+      "imageUrl": "/generated/diffusion-fallback/monday-night/step-024.png",
+      "emittedAtMs": 127971
+    },
+    {
+      "step": 24,
+      "progress": 100,
+      "filename": "final.png",
+      "imageUrl": "/generated/diffusion-fallback/monday-night/final.png",
+      "emittedAtMs": 133056
+    }
+  ],
+  "frameGaps": [
+    {
+      "fromStep": null,
+      "toStep": 0,
+      "durationMs": 13717,
+      "emittedAtMs": 13717
+    },
+    {
+      "fromStep": 0,
+      "toStep": 5,
+      "durationMs": 23797,
+      "emittedAtMs": 37514
+    },
+    {
+      "fromStep": 5,
+      "toStep": 10,
+      "durationMs": 26059,
+      "emittedAtMs": 63573
+    },
+    {
+      "fromStep": 10,
+      "toStep": 15,
+      "durationMs": 21409,
+      "emittedAtMs": 84982
+    },
+    {
+      "fromStep": 15,
+      "toStep": 20,
+      "durationMs": 26658,
+      "emittedAtMs": 111640
+    },
+    {
+      "fromStep": 20,
+      "toStep": 24,
+      "durationMs": 16331,
+      "emittedAtMs": 127971
+    },
+    {
+      "fromStep": 24,
+      "toStep": 24,
+      "durationMs": 5085,
+      "emittedAtMs": 133056
+    }
+  ],
+  "generatedAt": "2026-06-25T20:41:58.728684+00:00"
+}
